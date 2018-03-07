@@ -3,9 +3,39 @@ from django.db import models
 from lib.util import *
 # Create your models here.
 import django.utils.timezone as timezone
+from lib.image_save import *
+
+#企业信息
+class Lite(models.Model):
+    app_id =  models.CharField(max_length=100, verbose_name=u'AppID',null=True,blank=True)
+    secret_key = models.CharField(max_length=100, verbose_name=u'SecretKey',null=True,blank=True)
+
+    class Meta:
+        verbose_name_plural = verbose_name = u'机构展示信息'
+
+    def __unicode__(self):
+        return '%s' % (self.name)
+
+#7 图片库
+class FileLibrary(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
+    url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
+    style = models.IntegerField(u'类别',default=IMAGE_COVER,choices=IMAGE_STYLE.items(),)
+    local_path = models.ImageField(u'图标',upload_to='static/img/')
+    create_time = models.DateTimeField(u'创建时间', default = timezone.now)
+    class Meta:
+        verbose_name_plural = verbose_name = u'图库'
+
+    def __unicode__(self):
+        return '%s' % (self.id)
+
+    def save(self):
+        ImageSave(self,FileLibrary)
+
 
 class User(models.Model):
     # models.ImageField()
+    app =  models.ForeignKey( Lite, verbose_name=u'所属小程序',null=True,blank=True)
     logo = models.CharField(max_length=300, verbose_name=u'logo链接',default="",null=True,blank=True)
     # logo = models.ImageField(max_length=150, verbose_name=u'logo链接',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)

@@ -46,3 +46,20 @@ IS_TOP = {
     NO:u"不置顶",
 }
 
+ROOM_PREPARE = 0
+ROOM_PLAYER = 1
+ROOM_LIVE = 2
+ROOM_STYLE = {
+    ROOM_PREPARE:u"准备",
+    ROOM_PLAYER:u"直播",
+    ROOM_LIVE:u"纯文字",
+}
+
+MESSAGE_TEXT = 0
+MESSAGE_IMAGE = 1
+MESSAGE_AUDIO = 2
+MESSAGE_STYLE = {
+    MESSAGE_TEXT:u"文字",
+    MESSAGE_IMAGE:u"图片",
+    MESSAGE_AUDIO:u"语音",
+}

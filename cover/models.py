@@ -2,10 +2,12 @@
 from django.db import models
 from lib.util import *
 from lib.image_save import *
+from lite.models import *
 # Create your models here.
 
 #文章标签
 class Tag(models.Model):
+    app =  models.ForeignKey( Lite, verbose_name=u'所属小程序',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'小程序显示名称',null=True,blank=True)
     name_admin =  models.CharField(max_length=100, verbose_name=u'后台显示名称',null=True,blank=True)
     # father =  models.ForeignKey('Tag',verbose_name=u'父目录',null=True,blank=True)
@@ -19,22 +21,6 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return '%s' % (self.name_admin)
-
-#7 图片库
-class ImageLibrary(models.Model):
-    name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
-    url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
-    style = models.IntegerField(u'类别',default=IMAGE_COVER,choices=IMAGE_STYLE.items(),)
-    local_path = models.ImageField(u'图标',upload_to='static/img/')
-    create_time = models.DateTimeField(u'创建时间', default = timezone.now)
-    class Meta:
-        verbose_name_plural = verbose_name = u'图库'
-
-    def __unicode__(self):
-        return '%s' % (self.id)
-
-    def save(self):
-        ImageSave(self,ImageLibrary)
 
 
 #8 文章库
@@ -88,7 +74,7 @@ class News(models.Model):
     name =  models.CharField(max_length=100, verbose_name=u'名称',default="",null=True,blank=True)
     article =  models.ForeignKey('Article',verbose_name=u'链接文章',null=True,blank=True) #所属会议
     tag =  models.ForeignKey('Tag',verbose_name=u'所属标签',null=True,blank=True) #所属会议
-    cover_image = models.ForeignKey('ImageLibrary', verbose_name=u'封面图片',null=True,blank=True)
+    cover_image = models.ForeignKey(FileLibrary, verbose_name=u'封面图片',null=True,blank=True)
     title = models.CharField(max_length=100, verbose_name=u'标题',null=True,blank=True)
     summary = models.CharField(max_length=100, verbose_name=u'摘要',null=True,blank=True)
     des = models.CharField(max_length=100, verbose_name=u'详细描述',null=True,blank=True)

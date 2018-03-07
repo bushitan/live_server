@@ -13,7 +13,7 @@ admin.site.register(Article,ArticleAdmin)
 
 class ImageLibraryAdmin(admin.ModelAdmin):
     pass
-admin.site.register(ImageLibrary,ImageLibraryAdmin)
+admin.site.register(FileLibrary,ImageLibraryAdmin)
 class NewsAdmin(admin.ModelAdmin):
     pass
 admin.site.register(News,NewsAdmin)

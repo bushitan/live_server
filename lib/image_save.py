@@ -5,16 +5,16 @@ from qi_niu import *
 import datetime
 from util import *
 
-def ImageSave(self,ImageLibrary):
+def ImageSave(self,FileLibrary):
         #ID 为空，新增图片
     if self.id is None:
-        super(ImageLibrary, self).save() #先保存一遍
-        QNUploadImageMeet(self,ImageLibrary)
+        super(FileLibrary, self).save() #先保存一遍
+        QNUploadImageMeet(self,FileLibrary)
     #未保存前，获取原来的地址
-    m = ImageLibrary.objects.get(id = self.id)
+    m = FileLibrary.objects.get(id = self.id)
     _old_path = m.local_path.path if m.local_path != "" else ""
     print "2:",_old_path
-    super(ImageLibrary, self).save()
+    super(FileLibrary, self).save()
 
     #保存后，获取新地址
     _new_path = self.local_path.path if self.local_path !="" else ""
@@ -23,10 +23,10 @@ def ImageSave(self,ImageLibrary):
     if  _old_path == _new_path:
         return
     else:
-        QNUploadImageMeet(self,ImageLibrary)
+        QNUploadImageMeet(self,FileLibrary)
 
     #更新图片
-def QNUploadImageMeet(self,ImageLibrary):
+def QNUploadImageMeet(self,FileLibrary):
         #获取本地地址
         _local_path = self.local_path.path
         _now = datetime.datetime.now()
@@ -40,4 +40,4 @@ def QNUploadImageMeet(self,ImageLibrary):
         print self.local_path.url
         print self.local_path.name
         _qiniu.put( "" , _file_name , _local_path )
-        super(ImageLibrary, self).save()
+        super(FileLibrary, self).save()
