@@ -6,12 +6,14 @@ import django.utils.timezone as timezone
 from lib.image_save import *
 
 #企业信息
-class Lite(models.Model):
+class App(models.Model):
     app_id =  models.CharField(max_length=100, verbose_name=u'AppID',null=True,blank=True)
     secret_key = models.CharField(max_length=100, verbose_name=u'SecretKey',null=True,blank=True)
-
+    # longitude = models.CharField(max_length=32, verbose_name=u'经度',null=True,blank=True)
+    # latitude = models.CharField(max_length=32, verbose_name=u'纬度',null=True,blank=True)
+    # taste_qr = models.CharField(max_length=500, verbose_name=u'体验二维码',null=True,blank=True)
     class Meta:
-        verbose_name_plural = verbose_name = u'机构展示信息'
+        verbose_name_plural = verbose_name = u'APP应用'
 
     def __unicode__(self):
         return '%s' % (self.name)
@@ -21,7 +23,7 @@ class FileLibrary(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
     style = models.IntegerField(u'类别',default=IMAGE_COVER,choices=IMAGE_STYLE.items(),)
-    local_path = models.ImageField(u'图标',upload_to='static/img/')
+    local_path = models.ImageField(u'图标',upload_to='static/img/',default="",null=True,blank=True)
     create_time = models.DateTimeField(u'创建时间', default = timezone.now)
     class Meta:
         verbose_name_plural = verbose_name = u'图库'
@@ -35,7 +37,7 @@ class FileLibrary(models.Model):
 
 class User(models.Model):
     # models.ImageField()
-    app =  models.ForeignKey( Lite, verbose_name=u'所属小程序',null=True,blank=True)
+    app =  models.ForeignKey( App, verbose_name=u'所属小程序',null=True,blank=True)
     logo = models.CharField(max_length=300, verbose_name=u'logo链接',default="",null=True,blank=True)
     # logo = models.ImageField(max_length=150, verbose_name=u'logo链接',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
@@ -60,6 +62,7 @@ class User(models.Model):
 
 #企业信息
 class Company(models.Model):
+    # app =  models.ForeignKey( App, verbose_name=u'所属小程序',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     phone = models.CharField(max_length=40, verbose_name=u'手机',null=True,blank=True)
     introduction = models.CharField(max_length=500, verbose_name=u'个人简介',default="",null=True,blank=True)

@@ -7,9 +7,14 @@ from util import *
 
 def ImageSave(self,FileLibrary):
         #ID 为空，新增图片
+
     if self.id is None:
         super(FileLibrary, self).save() #先保存一遍
-        QNUploadImageMeet(self,FileLibrary)
+        try:
+            url = self.local_path.url  #如果为空的图片上传，会保存出错，则不上传七牛云
+            QNUploadImageMeet(self,FileLibrary)
+        except:
+            return
     #未保存前，获取原来的地址
     m = FileLibrary.objects.get(id = self.id)
     _old_path = m.local_path.path if m.local_path != "" else ""

@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
                 ('is_show', models.IntegerField(default=1, verbose_name='\u662f\u5426\u5728\u9996\u9875\u663e\u793a\u6807\u7b7e', choices=[(0, '\u9690\u85cf'), (1, '\u663e\u793a')])),
                 ('serial', models.IntegerField(default=0, verbose_name='\u6392\u5e8f')),
                 ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='\u521b\u5efa\u65f6\u95f4', null=True)),
-                ('app', models.ForeignKey(verbose_name='\u6240\u5c5e\u5c0f\u7a0b\u5e8f', blank=True, to='lite.Lite', null=True)),
+                ('app', models.ForeignKey(verbose_name='\u6240\u5c5e\u5c0f\u7a0b\u5e8f', blank=True, to='lite.App', null=True)),
             ],
             options={
                 'ordering': ['-serial'],

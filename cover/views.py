@@ -52,7 +52,7 @@ class ArticleGetDictByID( ListView):
         try:
             _article_id = request.GET.get('article_id',"")
             _dict = {
-                'list_cover':self.action_news.GetArticleContentByID( _article_id )
+                'dict_article':self.action_news.GetArticleContentByID( _article_id )
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)

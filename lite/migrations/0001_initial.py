@@ -12,6 +12,21 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='App',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('app_id', models.CharField(max_length=100, null=True, verbose_name='AppID', blank=True)),
+                ('secret_key', models.CharField(max_length=100, null=True, verbose_name='SecretKey', blank=True)),
+                ('longitude', models.CharField(max_length=32, null=True, verbose_name='\u7ecf\u5ea6', blank=True)),
+                ('latitude', models.CharField(max_length=32, null=True, verbose_name='\u7eac\u5ea6', blank=True)),
+                ('taste_qr', models.CharField(max_length=500, null=True, verbose_name='\u4f53\u9a8c\u4e8c\u7ef4\u7801', blank=True)),
+            ],
+            options={
+                'verbose_name': '\u673a\u6784\u5c55\u793a\u4fe1\u606f',
+                'verbose_name_plural': '\u673a\u6784\u5c55\u793a\u4fe1\u606f',
+            },
+        ),
+        migrations.CreateModel(
             name='Company',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -43,18 +58,6 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='Lite',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('app_id', models.CharField(max_length=100, null=True, verbose_name='AppID', blank=True)),
-                ('secret_key', models.CharField(max_length=100, null=True, verbose_name='SecretKey', blank=True)),
-            ],
-            options={
-                'verbose_name': '\u673a\u6784\u5c55\u793a\u4fe1\u606f',
-                'verbose_name_plural': '\u673a\u6784\u5c55\u793a\u4fe1\u606f',
-            },
-        ),
-        migrations.CreateModel(
             name='User',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -70,7 +73,7 @@ class Migration(migrations.Migration):
                 ('uuid', models.CharField(max_length=32, null=True, verbose_name='uuid\u6807\u8bc6', blank=True)),
                 ('create_time', models.DateTimeField(default=django.utils.timezone.now, null=True, verbose_name='\u521b\u5efa\u65f6\u95f4', blank=True)),
                 ('phone', models.CharField(max_length=40, null=True, verbose_name='\u624b\u673a', blank=True)),
-                ('app', models.ForeignKey(verbose_name='\u6240\u5c5e\u5c0f\u7a0b\u5e8f', blank=True, to='lite.Lite', null=True)),
+                ('app', models.ForeignKey(verbose_name='\u6240\u5c5e\u5c0f\u7a0b\u5e8f', blank=True, to='lite.App', null=True)),
             ],
             options={
                 'verbose_name': '\u7528\u6237_\u57fa\u672c\u4fe1\u606f',

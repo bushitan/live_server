@@ -1,0 +1,56 @@
+
+#header {
+    width: 100%;
+    background: #417690;
+    color: #ffc;
+    display: flex;
+    justify-content: space-between;
+     align-items:center
+    /*overflow: hidden;*/
+}
+
+
+#user-tools a:link, #user-tools a:visited {
+    color: #fff;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    /*color: #333;*/
+    /*background: #fff;*/
+}
+
+#branding {
+    /*float: left;*/
+    display: flex;
+}
+/*#branding h1, #branding h1 a:link, #branding h1 a:visited {*/
+    /*color: #f4f379;*/
+/*}*/
+
+#branding h1 {
+    padding: 0 10px;
+    font-size: 18px;
+    margin: 0 0;
+    font-weight: normal;
+}
+.site-django a,.site-django a:link ,  #site-django a:visited{
+    color: #FFFFFF;
+}
+
+.site-statistics a ,.site-statistics a:link,.site-statistics a:visited{
+    color: #f4f379;
+}
+
+
+
+#user-tools {
+    /*float: right;*/
+    /*padding: 0 10px;*/
+    padding:1em;
+    /*padding: 1.2em 10px;*/
+    font-size: 11px;
+    /*text-align: right;*/
+}

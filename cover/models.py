@@ -7,7 +7,7 @@ from lite.models import *
 
 #文章标签
 class Tag(models.Model):
-    app =  models.ForeignKey( Lite, verbose_name=u'所属小程序',null=True,blank=True)
+    app =  models.ForeignKey( App, verbose_name=u'所属小程序',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'小程序显示名称',null=True,blank=True)
     name_admin =  models.CharField(max_length=100, verbose_name=u'后台显示名称',null=True,blank=True)
     # father =  models.ForeignKey('Tag',verbose_name=u'父目录',null=True,blank=True)
@@ -86,4 +86,4 @@ class News(models.Model):
         ordering = ['-create_time']
 
     def __unicode__(self):
-        return '%s' % (self.name)
+        return '%s' % (self.id)

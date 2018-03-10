@@ -9,7 +9,7 @@ import django.utils.timezone as timezone
 
 #房间
 class Room(models.Model):
-    app =  models.ForeignKey(Lite, verbose_name=u'所属小程序',null=True,blank=True)
+    app =  models.ForeignKey(App, verbose_name=u'所属小程序',null=True,blank=True)
     im_num =  models.CharField(max_length=100, verbose_name=u'IM房间号',null=True,blank=True)
     pusher =  models.CharField(max_length=500, verbose_name=u'推流地址',null=True,blank=True)
     player =  models.CharField(max_length=500, verbose_name=u'播放地址',null=True,blank=True)

@@ -2,7 +2,6 @@
 class QueryBase(object):
 	def __init__(self,model = None):
 		self.model = model
-		print self.model
 	def _PackList(self,_pack_fun,query_filter):
 		_list = []
 		for q in query_filter:
