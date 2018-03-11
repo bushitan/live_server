@@ -15,8 +15,10 @@ class Login( ListView):
             print 11111
             _s_js_code = request.GET.get('js_code',"")
             _s_session = request.GET.get('session',"")
+            _app_id = request.GET.get('app_id',"")
+            print _app_id
             _dict = {
-                'dict_user':self.action_login.CheckSession(_s_js_code,_s_session)
+                'dict_user':self.action_login.CheckSession(_s_js_code,_s_session,_app_id)
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)

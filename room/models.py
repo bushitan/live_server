@@ -18,6 +18,7 @@ class Room(models.Model):
     cover = models.ForeignKey(FileLibrary, verbose_name=u'主题封面', related_name='room_cover',null=True,blank=True)
     title =  models.CharField(max_length=100, verbose_name=u'标题',null=True,blank=True)
     description =  models.CharField(max_length=100, verbose_name=u'描述',null=True,blank=True)
+    content =  models.ForeignKey(FileLibrary, verbose_name=u'内容图片', related_name='room_content',null=True,blank=True)
     serial =  models.IntegerField(verbose_name=u'排序',default=0)
     is_show = models.IntegerField(u'是否显示',default=YES,choices=IS_SHOW.items(),)
     create_time = models.DateTimeField(u'创建时间',default = timezone.now,null=True,blank=True)
@@ -46,6 +47,21 @@ class Message(models.Model):
         # ordering = ['-serial']
     def __unicode__(self):
         return '%s' % (self.id)
+
+#推流用户
+class PusherUser(models.Model):
+    room =  models.ForeignKey(Room, verbose_name=u'所属聊天室',null=True,blank=True)
+    user =  models.ForeignKey(User, verbose_name=u'用户',null=True,blank=True)
+    create_time = models.DateTimeField(u'创建时间',default = timezone.now,null=True,blank=True)
+    class Meta:
+        verbose_name_plural = verbose_name = u'推流用户'
+        # ordering = ['-serial']
+    def __unicode__(self):
+        return '%s' % (self.id)
+
+
+
+
 
 
 

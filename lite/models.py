@@ -7,6 +7,7 @@ from lib.image_save import *
 
 #企业信息
 class App(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     app_id =  models.CharField(max_length=100, verbose_name=u'AppID',null=True,blank=True)
     secret_key = models.CharField(max_length=100, verbose_name=u'SecretKey',null=True,blank=True)
     # longitude = models.CharField(max_length=32, verbose_name=u'经度',null=True,blank=True)

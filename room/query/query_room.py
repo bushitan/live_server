@@ -16,6 +16,7 @@ class QueryRoom(QueryBase):
 			"cover_url":obj.cover.url if obj.cover is not None else "",
 			"title":obj.title,
 			"description":obj.description,
+			"content_url":obj.content.url if obj.content is not None else "",
 			"serial":obj.serial, # 七牛云自动缩略图
 			"create_time":obj.create_time.strftime("%Y-%m-%d"),
 		}

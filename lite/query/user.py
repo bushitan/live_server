@@ -8,6 +8,7 @@ class QueryUser(QueryBase):
 
 	def _PackDict(self,query_get):
 		_dict = {
+			'user_id':query_get.id,
 			'session':query_get.session,
 			'logo':query_get.logo,
 			'nick_name':query_get.nick_name,

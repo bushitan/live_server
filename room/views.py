@@ -14,14 +14,15 @@ class GetCurrentRoom( ListView):
         super(GetCurrentRoom,self).__init__()
     def get(self, request, *args, **kwargs):
         try:
-            # _room_id = request.GET.get('room_id',"")
+            _session = request.GET.get('session',"")
             _room = self.action_live.GetCurrentRoom()
             _room_id = _room["room_id"]
             _dict = {
                 'dict_room':_room,
-                'list_message':self.action_live.GetMessageList(_room_id )
+                'list_message':self.action_live.GetMessageList(_room_id ),
+                "is_pusher_user":self.action_live.CheckPusherUser(_room_id,_session)
             }
-            print _dict
+            # print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)
         except Exception as e :
             return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
