@@ -23,6 +23,20 @@ IS_SHOW = {
 	YES:u"显示",
 	NO:u"隐藏",
 }
+IS_ALIVE = {
+    YES:u"激活",
+    NO:u"失效",
+}
+IS_TOP = {
+    YES:u"置顶",
+    NO:u"不置顶",
+}
+
+IS_PAY = {
+    YES:u"已支付",
+    NO:u"未支付",
+}
+
 
 IMAGE_COVER = 1
 IMAGE_LOGO = 2
@@ -41,11 +55,6 @@ ARTICLE_STYLE = {
     ARTICLE_STYLE_AUDIO :"音频",
     ARTICLE_STYLE_VIDEO :"视频",
 }
-IS_TOP = {
-    YES:u"置顶",
-    NO:u"不置顶",
-}
-
 ROOM_PREPARE = 0
 ROOM_PLAYER = 1
 ROOM_LIVE = 2

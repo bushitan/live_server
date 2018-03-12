@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'lite',
     'cover',
     'room',
+    'order',
 )
 
 MIDDLEWARE_CLASSES = (
