@@ -3,7 +3,7 @@
 from django.views.generic import ListView
 from lib.message import *
 from action.login import *
-from action.company import *
+from action.my import *
 
 # 登陆
 class Login( ListView):
@@ -32,21 +32,52 @@ class Login( ListView):
 # 登陆
 class CompanyGetInfo( ListView):
     def __init__(self):
-        self.action_company = ActionCompany()
+        self.action_my = ActionMy()
         super(CompanyGetInfo,self).__init__()
     def get(self, request, *args, **kwargs):
         try:
             _dict = {
-                'dict_company':self.action_company.GetCompanyInfo()
+                'dict_company':self.action_my.GetCompanyInfo()
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)
         except Exception as e :
-            a = Exception
-            print Exception
-            print e
             return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
 
+
+# 登陆
+class UserSetInfo( ListView):
+    def __init__(self):
+        self.action_my = ActionMy()
+        super(UserSetInfo,self).__init__()
+    def get(self, request, *args, **kwargs):
+        try:
+            _s_session = request.GET.get('session',"")
+            _name = request.GET.get('name',"")
+            _phone = request.GET.get('phone',"")
+            _dict = {
+                'msg':self.action_my.SetUserInfo(_s_session ,_name ,_phone)
+            }
+            print _dict
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+        except Exception as e :
+            return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
+
+# 登陆
+class UserGetPPT( ListView):
+    def __init__(self):
+        self.action_my = ActionMy()
+        super(UserGetPPT,self).__init__()
+    def get(self, request, *args, **kwargs):
+        try:
+            _s_session = request.GET.get('session',"")
+            _dict = {
+                'ppt_list':self.action_my.GetUserPPT(_s_session )
+            }
+            print _dict
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+        except Exception as e :
+            return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
 
 
 

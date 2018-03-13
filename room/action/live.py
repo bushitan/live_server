@@ -5,12 +5,14 @@ import urllib2
 from room.query.message import *
 from room.query.query_room import *
 from room.query.pusher_user import *
+from room.query.classroom import *
 
 class ActionLive():
     def __init__(self):
         self.query_room = QueryRoom()
         self.query_message = QueryMessage()
         self.query_pusher_user = QueryPusherUser()
+        self.query_classroom = QueryClassroom()
     #获取当前激活的房间
     def GetCurrentRoom(self):
         return self.query_room.Get(is_show = YES)
@@ -23,6 +25,9 @@ class ActionLive():
             room_id = room_id,
             user__session = session,
         )
+    def CheckTeacher(self,session):
+        return self.query_classroom.IsExists(teacher__session = session)
+
 
 if __name__ == "__main__":
     a = ActionLive()

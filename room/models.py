@@ -33,6 +33,21 @@ class Room(models.Model):
         return '%s' % (self.id)
 
 
+class Classroom(models.Model):
+    app =  models.ForeignKey(App, verbose_name=u'所属小程序',null=True,blank=True)
+    teacher =  models.ForeignKey(User, verbose_name=u'老师',null=True,blank=True)
+    teacher_pusher =  models.CharField(max_length=100, verbose_name=u'教室推流地址',null=True,blank=True)
+    teacher_player =  models.CharField(max_length=100, verbose_name=u'教室播放地址',null=True,blank=True)
+    student_pusher =  models.CharField(max_length=100, verbose_name=u'学生推流地址',null=True,blank=True)
+    student_player =  models.CharField(max_length=100, verbose_name=u'学生播放地址',null=True,blank=True)
+    key =  models.CharField(max_length=32, verbose_name=u'秘钥',null=True,blank=True)
+    create_time = models.DateTimeField(u'创建时间',default = timezone.now,null=True,blank=True)
+    class Meta:
+        verbose_name_plural = verbose_name = u'1v1教室'
+    def __unicode__(self):
+        return '%s' % (self.id)
+
+
 #信息
 class Message(models.Model):
     room =  models.ForeignKey(Room, verbose_name=u'所属聊天室',null=True,blank=True)

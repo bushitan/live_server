@@ -30,8 +30,9 @@ class QueryBase(object):
 	def FilterQuery(self,*args,**kwargs):
 		return self.model.objects.filter(*args,**kwargs)
 
-	def Update(self,*args,**kwargs):
-		pass
+	def Update(self,obj,*args,**kwargs):
+		obj.update(*args,**kwargs)
+		return self._PackList( self._PackDict,obj)
 
 	def Delete(self,*args,**kwargs):
 		_m = self.model.delete(*args,**kwargs)

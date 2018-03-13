@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^live/lite/', include('lite.urls')),
     url(r'^live/cover/', include('cover.urls')),
     url(r'^live/room/', include('room.urls')),
+    url(r'^live/order/', include('order.urls')),
 ]

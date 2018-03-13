@@ -21,6 +21,7 @@ class App(models.Model):
 
 #7 图片库
 class FileLibrary(models.Model):
+    user =  models.ForeignKey('User', verbose_name=u'所属用户',null=True,blank=True)
     name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
     style = models.IntegerField(u'类别',default=IMAGE_COVER,choices=IMAGE_STYLE.items(),)

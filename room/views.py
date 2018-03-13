@@ -26,3 +26,18 @@ class GetCurrentRoom( ListView):
             return MESSAGE_RESPONSE_SUCCESS(_dict)
         except Exception as e :
             return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
+
+class CheckTeacher( ListView):
+    def __init__(self):
+        self.action_live = ActionLive()
+        super(CheckTeacher,self).__init__()
+    def get(self, request, *args, **kwargs):
+        try:
+            _session = request.GET.get('session',"")
+            _dict = {
+                'is_teacher':self.action_live.CheckTeacher(_session ),
+            }
+            # print _dict
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+        except Exception as e :
+            return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )

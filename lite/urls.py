@@ -11,6 +11,8 @@ urlpatterns = [
     # url(r'^index/$', Index.as_view()),
     url(r'^login/$', Login.as_view()),
     url(r'^company/get/info/$', CompanyGetInfo.as_view()),
+    url(r'^user/set/info/$', UserSetInfo.as_view()),
+    url(r'^user/get/ppt/$', UserGetPPT.as_view()),
 
 
     # url(r'^tag/delete/$', TagAdd.as_view()),

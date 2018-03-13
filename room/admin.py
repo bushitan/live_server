@@ -13,3 +13,6 @@ admin.site.register(Message,MessageAdmin)
 class PusherUserAdmin(admin.ModelAdmin):
     pass
 admin.site.register(PusherUser,PusherUserAdmin)
+class ClassroomAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Classroom,ClassroomAdmin)
