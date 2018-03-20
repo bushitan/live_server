@@ -28,6 +28,29 @@ class Login( ListView):
             print e
             return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
 
+class WXRegister( ListView):
+    def __init__(self):
+        self.action_my = ActionMy()
+        super(WXRegister,self).__init__()
+    def get(self, request, *args, **kwargs):
+        try:
+            _s_session = request.GET.get('session',"")
+            _user_dict = self.action_my.WXRegisterUserInfo(
+                _s_session ,
+                nick_name = request.GET.get('nickName',""),
+                avatar_url = request.GET.get('avatarUrl',""),
+                gender = request.GET.get('gender',""),
+                province = request.GET.get('province',""),
+                city = request.GET.get('city',""),
+                country = request.GET.get('country',""),
+            )
+            _dict = {
+                'user_dict':_user_dict
+            }
+            print _dict
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+        except Exception as e :
+            return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
 
 # 登陆
 class CompanyGetInfo( ListView):

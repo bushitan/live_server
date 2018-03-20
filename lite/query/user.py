@@ -10,7 +10,7 @@ class QueryUser(QueryBase):
 		_dict = {
 			'user_id':query_get.id,
 			'session':query_get.session,
-			'logo':query_get.logo,
+			'avatar_url':query_get.avatar_url,
 			'nick_name':query_get.nick_name,
 		}
 		return _dict

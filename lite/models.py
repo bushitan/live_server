@@ -24,7 +24,7 @@ class FileLibrary(models.Model):
     user =  models.ForeignKey('User', verbose_name=u'所属用户',null=True,blank=True)
     name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
-    style = models.IntegerField(u'类别',default=IMAGE_COVER,choices=IMAGE_STYLE.items(),)
+    style = models.IntegerField(u'类别',default=FILE_IMAGE,choices=FILE_STYLE.items(),)
     local_path = models.ImageField(u'图标',upload_to='static/img/',default="",null=True,blank=True)
     create_time = models.DateTimeField(u'创建时间', default = timezone.now)
     class Meta:
@@ -43,8 +43,16 @@ class User(models.Model):
     logo = models.CharField(max_length=300, verbose_name=u'logo链接',default="",null=True,blank=True)
     # logo = models.ImageField(max_length=150, verbose_name=u'logo链接',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
-    nick_name =  models.CharField(max_length=100, verbose_name=u'微信昵称',null=True,blank=True)
     wx_id =  models.CharField(max_length=100, verbose_name=u'微信号',null=True,blank=True)
+
+    #微信信息
+    nick_name =  models.CharField(max_length=100, verbose_name=u'昵称',null=True,blank=True)
+    avatar_url =  models.CharField(max_length=100, verbose_name=u'头像',null=True,blank=True)
+    gender =  models.CharField(max_length=100, verbose_name=u'性别',null=True,blank=True)
+    province =  models.CharField(max_length=100, verbose_name=u'位置',null=True,blank=True)
+    city =  models.CharField(max_length=100, verbose_name=u'国家',null=True,blank=True)
+    country =  models.CharField(max_length=100, verbose_name=u'城市',null=True,blank=True)
+
 
     wx_open_id = models.CharField(max_length=50, verbose_name=u'微信OpenID',null=True,blank=True)
     wx_session_key = models.CharField( max_length=128,verbose_name=u'微信SessionKey',null=True,blank=True)

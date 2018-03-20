@@ -15,6 +15,11 @@ class ActionMy():
     def GetCompanyInfo(self):
         return self.query_company.Get()
 
+    #微信用户注册
+    def WXRegisterUserInfo(self,session,*args,**kwargs):
+        obj = self.query_user.FilterQuery(session = session)
+        return self.query_user.Update(obj,*args,**kwargs)[0]
+    #用户报名
     def SetUserInfo(self,session,name,phone):
         obj = self.query_user.FilterQuery(session = session)
         self.query_user.Update(obj,name=name,phone=phone)

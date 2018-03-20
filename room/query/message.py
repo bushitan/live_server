@@ -14,8 +14,8 @@ class QueryMessage(QueryBase):
 			"im_num":obj.room.im_num if obj.room is not None else "",
 			"style":obj.style,
 			"text":obj.text,
-			"image_url":obj.image.url if obj.image is not None else "",
-			"audio_url":obj.audio.url if obj.audio is not None else "",
+			"image_url":obj.image,
+			"audio_url":obj.audio,
 		}
 
 if __name__ == "__main__":

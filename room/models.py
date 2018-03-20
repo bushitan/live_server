@@ -15,6 +15,8 @@ class Room(models.Model):
     player =  models.CharField(max_length=500, verbose_name=u'播放地址',null=True,blank=True)
     style = models.IntegerField(u'房间类型',default=ROOM_PREPARE,choices=ROOM_STYLE.items(),)
     # father =  models.ForeignKey('Tag',verbose_name=u'父目录',null=True,blank=True)
+    name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
+    name_admin =  models.CharField(max_length=100, verbose_name=u'admin后台名称',null=True,blank=True)
     cover = models.ForeignKey(FileLibrary, verbose_name=u'主题封面', related_name='room_cover',null=True,blank=True)
     title =  models.CharField(max_length=100, verbose_name=u'标题',null=True,blank=True)
     description =  models.CharField(max_length=100, verbose_name=u'描述',null=True,blank=True)
@@ -53,9 +55,13 @@ class Message(models.Model):
     room =  models.ForeignKey(Room, verbose_name=u'所属聊天室',null=True,blank=True)
     user =  models.ForeignKey(User, verbose_name=u'用户',null=True,blank=True)
     style =  models.IntegerField(u'类型',default=MESSAGE_TEXT,choices=MESSAGE_STYLE.items(),)
+    is_teacher =  models.IntegerField(u'是否讲师发言',default=YES,choices=IS_TEACHER.items(),)
     text =  models.CharField(max_length=400, verbose_name=u'文字',null=True,blank=True)
-    image =  models.ForeignKey(FileLibrary, verbose_name=u'图片',related_name='message_image',null=True,blank=True)
-    audio =  models.ForeignKey(FileLibrary, verbose_name=u'语音',null=True,blank=True)
+    image = models.CharField(max_length=500, verbose_name=u'图片',default="",null=True,blank=True)
+    audio = models.CharField(max_length=500, verbose_name=u'语音',default="",null=True,blank=True)
+
+    # image =  models.ForeignKey(FileLibrary, verbose_name=u'图片',related_name='message_image',null=True,blank=True)
+    # audio =  models.ForeignKey(FileLibrary, verbose_name=u'语音',null=True,blank=True)
     create_time = models.DateTimeField(u'创建时间',default = timezone.now,null=True,blank=True)
     class Meta:
         verbose_name_plural = verbose_name = u'官方信息'

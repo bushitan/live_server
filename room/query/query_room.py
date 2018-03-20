@@ -14,6 +14,7 @@ class QueryRoom(QueryBase):
 			"player_url":obj.player,
 			"style":obj.style,
 			"cover_url":obj.cover.url if obj.cover is not None else "",
+			"name":obj.name,
 			"title":obj.title,
 			"description":obj.description,
 			"content_url":obj.content.url if obj.content is not None else "",

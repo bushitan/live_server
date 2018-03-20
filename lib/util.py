@@ -37,12 +37,19 @@ IS_PAY = {
     NO:u"未支付",
 }
 
+IS_TEACHER = {
+    YES:u"讲师",
+    NO:u"听众",
+}
 
-IMAGE_COVER = 1
-IMAGE_LOGO = 2
-IMAGE_STYLE = {
-    IMAGE_COVER:u"封面",
-    IMAGE_LOGO:u"头像",
+
+FILE_IMAGE = 1
+FILE_AUDIO = 1
+FILE_VIDEO = 2
+FILE_STYLE = {
+    FILE_IMAGE:u"图片",
+    FILE_AUDIO:u"音频",
+    FILE_VIDEO:u"视频",
 }
 
 ARTICLE_STYLE_NORMAL = 1

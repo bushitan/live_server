@@ -7,6 +7,7 @@ class QueryFileLibrary(QueryBase):
 
 	def _PackDict(self,query_get):
 		_dict = {
+			'file_id':query_get.id,
 			'user_id':query_get.user_id,
 			'name':query_get.name,
 			'url':query_get.url,
