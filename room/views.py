@@ -17,9 +17,10 @@ class GetCurrentRoom( ListView):
             _session = request.GET.get('session',"")
             _room = self.action_live.GetCurrentRoom()
             _room_id = _room["room_id"]
+            print self.action_live.GetMessageList(_room_id )
             _dict = {
-                'dict_room':_room,
-                'list_message':self.action_live.GetMessageList(_room_id ),
+                'room_dict':_room,
+                'message_list':self.action_live.GetMessageList(_room_id ),
                 "is_pusher_user":self.action_live.CheckPusherUser(_room_id,_session)
             }
             # print _dict
@@ -53,19 +54,13 @@ class AddMessage( ListView):
         try:
             _room_list = self.action_live.AddMessage(
                 request.GET.get('session',""),
+                room_id = request.GET.get('room_id',""),
                 style = request.GET.get('style',""),
                 is_teacher = request.GET.get('is_teacher',""),
-                audio_url = request.GET.get('audio_url',""),
-                text = request.GET.get('text',""),
+                text = request.GET.get('content',""),
+                audio = request.GET.get('audio_url',""),
+                image = request.GET.get('image_url',""),
             )
-
-            # _room_list = self.action_live.AddMessageByFile(
-            #     request.GET.get('session',""),
-            #     request.GET.get('audio_url',""),
-            #     style = request.GET.get('style',""),
-            #     is_teacher = request.GET.get('is_teacher',""),
-            #     text = request.GET.get('text',""),
-            # )
             _dict = {
                 'msg':u"添加音频成功"
             }

@@ -9,11 +9,12 @@ class QueryMessage(QueryBase):
 	#获取文章详细内容
 	def _PackDict(self,obj):
 		return {
+			"id":obj.id,
 			"nick_name":obj.user.nick_name if obj.user is not None else "",
-			"logo":obj.user.logo if obj.user is not None else "",
-			"im_num":obj.room.im_num if obj.room is not None else "",
+			"avatar_url":obj.user.avatar_url if obj.user is not None else "",
+			"is_teacher":obj.is_teacher,
 			"style":obj.style,
-			"text":obj.text,
+			"content":obj.text,
 			"image_url":obj.image,
 			"audio_url":obj.audio,
 		}
