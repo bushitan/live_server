@@ -13,6 +13,7 @@ class Room(models.Model):
     im_num =  models.CharField(max_length=100, verbose_name=u'IM房间号',null=True,blank=True)
     pusher =  models.CharField(max_length=500, verbose_name=u'推流地址',null=True,blank=True)
     player =  models.CharField(max_length=500, verbose_name=u'播放地址',null=True,blank=True)
+    status = models.IntegerField(u'状态',default=ROOM_STATUS_PREPARE,choices=ROOM_STATUS.items(),)
     style = models.IntegerField(u'房间类型',default=ROOM_PREPARE,choices=ROOM_STYLE.items(),)
     # father =  models.ForeignKey('Tag',verbose_name=u'父目录',null=True,blank=True)
     name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
@@ -71,7 +72,8 @@ class Message(models.Model):
 
 #推流用户
 class PusherUser(models.Model):
-    room =  models.ForeignKey(Room, verbose_name=u'所属聊天室',null=True,blank=True)
+    # room =  models.ForeignKey(Room, verbose_name=u'所属聊天室',null=True,blank=True)
+    app =  models.ForeignKey(App, verbose_name=u'所属小程序',null=True,blank=True)
     user =  models.ForeignKey(User, verbose_name=u'用户',null=True,blank=True)
     create_time = models.DateTimeField(u'创建时间',default = timezone.now,null=True,blank=True)
     class Meta:

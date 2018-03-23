@@ -116,7 +116,7 @@ USE_TZ = False #计算机所在地时间#
 
 STATIC_URL = '/live/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
+AUTH_USER_MODEL = "lite.AdminUser"
 
 
 # log配置

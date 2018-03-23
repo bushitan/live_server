@@ -3,7 +3,14 @@ from django.db import models
 from lib.util import *
 # Create your models here.
 import django.utils.timezone as timezone
+
 from lib.image_save import *
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+# Create your models here.
+
+class AdminUser(AbstractUser):
+    address = models.CharField(max_length=100)
 
 #企业信息
 class App(models.Model):
@@ -21,7 +28,9 @@ class App(models.Model):
 
 #7 图片库
 class FileLibrary(models.Model):
-    user =  models.ForeignKey('User', verbose_name=u'所属用户',null=True,blank=True)
+    app =  models.ForeignKey( App, verbose_name=u'所属小程序',null=True,blank=True)
+    # user =  models.ForeignKey('User', verbose_name=u'所属用户',null=True,blank=True)
+    file_tag =  models.ForeignKey('FileTag', verbose_name=u'所属标签',null=True,blank=True)
     name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
     style = models.IntegerField(u'类别',default=FILE_IMAGE,choices=FILE_STYLE.items(),)
@@ -33,8 +42,16 @@ class FileLibrary(models.Model):
     def __unicode__(self):
         return '%s' % (self.id)
 
-    def save(self):
-        ImageSave(self,FileLibrary)
+#7 图片库
+class FileTag(models.Model):
+    app =  models.ForeignKey( App, verbose_name=u'所属小程序',null=True,blank=True)
+    name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
+    create_time = models.DateTimeField(u'创建时间', default = timezone.now)
+    class Meta:
+        verbose_name_plural = verbose_name = u'图库标签'
+    def __unicode__(self):
+        return '%s' % (self.id)
+
 
 
 class User(models.Model):

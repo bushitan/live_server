@@ -14,9 +14,6 @@ class ArticleAdmin(admin.ModelAdmin):
                STATIC_URL + 'tinymce/textareas.js')
 admin.site.register(Article,ArticleAdmin)
 
-class ImageLibraryAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(FileLibrary,ImageLibraryAdmin)
 class NewsAdmin(admin.ModelAdmin):
     pass
 admin.site.register(News,NewsAdmin)

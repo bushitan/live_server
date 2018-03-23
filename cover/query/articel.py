@@ -25,6 +25,9 @@ class QueryArticle(QueryBase):
 			"article_id":obj.id,
 			"style":obj.style,
 			"is_show":obj.is_show,
+			#直播间ID
+			"room_id":obj.room_id,
+
 			#综合
 			"click_rate":obj.click_rate,
 			"is_top":obj.is_top,

@@ -9,6 +9,14 @@ admin.site.register(App,LiteAdmin)
 
 class UserAdmin(admin.ModelAdmin):
     pass
+class FileLibraryAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(FileLibrary,FileLibraryAdmin)
+class FileTagAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(FileTag,FileTagAdmin)
+
+
 admin.site.register(User,UserAdmin)
 class CompanyAdmin(admin.ModelAdmin):
     pass

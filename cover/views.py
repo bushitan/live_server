@@ -49,18 +49,18 @@ class ArticleGetDictByID( ListView):
         self.action_news = ActionNews()
         super(ArticleGetDictByID,self).__init__()
     def get(self, request, *args, **kwargs):
-        try:
+        # try:
             _article_id = request.GET.get('article_id',"")
             _dict = {
                 'dict_article':self.action_news.GetArticleContentByID( _article_id )
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)
-        except Exception as e :
-            a = Exception
-            print Exception
-            print e
-            return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
+        # except Exception as e :
+        #     a = Exception
+        #     print Exception
+        #     print e
+        #     return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
 
 
 

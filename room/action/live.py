@@ -20,7 +20,7 @@ class ActionLive():
         self.query_user = QueryUser()
     #获取当前激活的房间
     def GetCurrentRoom(self):
-        return self.query_room.Get(is_show = YES)
+        return self.query_room.Filter(is_show = YES,status=ROOM_STATUS_ING)[0]
 
     # 获取聊天室内的信息列表
     def GetMessageList(self,room_id):
@@ -48,9 +48,9 @@ class ActionLive():
         self.query_message.Add(user_id = _user["user_id"],**kwargs)
 
     # 检测是否推流用户
-    def CheckPusherUser(self,room_id,session):
+    def CheckPusherUser(self,app_id,session):
         return self.query_pusher_user.IsExists(
-            room_id = room_id,
+            app__app_id = app_id,
             user__session = session,
         )
 
@@ -69,7 +69,8 @@ if __name__ == "__main__":
     a = ActionLive()
     import os,django
     django.setup()
-    print a.GetListRoomByApp("wx76cc2152eea29e91")
+    # print a.GetListRoomByApp("wx76cc2152eea29e91")
+    print a.CheckPusherUser(    u'wx76cc2152eea29e91' , u'9GEUS5/0FMeW2hnRpBOBzg==')
     # print a.GetTagList()
     # room = a.GetCurrentRoom()
     # print room

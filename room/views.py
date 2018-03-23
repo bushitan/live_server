@@ -15,13 +15,15 @@ class GetCurrentRoom( ListView):
     def get(self, request, *args, **kwargs):
         try:
             _session = request.GET.get('session',"")
+            _app_id = request.GET.get('app_id',"")
             _room = self.action_live.GetCurrentRoom()
             _room_id = _room["room_id"]
             print self.action_live.GetMessageList(_room_id )
+            print self.action_live.CheckPusherUser(_app_id,_session)
             _dict = {
                 'room_dict':_room,
                 'message_list':self.action_live.GetMessageList(_room_id ),
-                "is_pusher_user":self.action_live.CheckPusherUser(_room_id,_session)
+                "is_pusher_user":self.action_live.CheckPusherUser(_app_id,_session)
             }
             # print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)

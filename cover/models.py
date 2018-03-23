@@ -3,6 +3,7 @@ from django.db import models
 from lib.util import *
 from lib.image_save import *
 from lite.models import *
+from room.models import *
 # Create your models here.
 
 #文章标签
@@ -27,6 +28,9 @@ class Tag(models.Model):
 class Article(models.Model):
 
     style = models.IntegerField(u'文章类别',default=ARTICLE_STYLE_TEXT,choices=ARTICLE_STYLE.items(),)
+
+    room =  models.ForeignKey(Room, verbose_name=u'直播房间',null=True,blank=True)
+
     # style =  models.ForeignKey(ArticleStyle,verbose_name=u'页面类别',null=True,blank=True) #所属会议
     is_show = models.IntegerField(u'是否显示文章',default=YES,choices=IS_SHOW.items(),)
     click_rate = models.IntegerField(u'点击率',default=8965)

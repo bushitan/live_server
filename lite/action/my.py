@@ -5,6 +5,7 @@ import urllib2
 from lite.query.company import *
 from lite.query.user import *
 from lite.query.file_library import *
+from lite.query.file_tag import *
 
 
 class ActionMy():
@@ -12,6 +13,7 @@ class ActionMy():
         self.query_company = QueryCompany()
         self.query_user = QueryUser()
         self.query_file = QueryFileLibrary()
+        self.query_file_tag = QueryFileTag()
     def GetCompanyInfo(self):
         return self.query_company.Get()
 
@@ -24,13 +26,16 @@ class ActionMy():
         obj = self.query_user.FilterQuery(session = session)
         self.query_user.Update(obj,name=name,phone=phone)
         return True
-    def GetUserPPT(self,session):
-        return self.query_file.Filter(user__session = session)
+    def GetAppPPT(self,app_id):
+        return self.query_file.Filter(app__app_id = app_id)
+    def GetAppPPTTagList(self,app_id):
+        return self.query_file_tag.Filter(app__app_id = app_id)
+
 if __name__ == "__main__":
     import os,django
     django.setup()
     a = ActionMy()
-    print a.GetUserPPT("9GEUS5/0FMeW2hnRpBOBzg==")
+    print a.GetAppPPT("9GEUS5/0FMeW2hnRpBOBzg==")
 
 
 

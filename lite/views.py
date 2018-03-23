@@ -90,15 +90,15 @@ class UserGetPPT( ListView):
         super(UserGetPPT,self).__init__()
     def get(self, request, *args, **kwargs):
         try:
-            _s_session = request.GET.get('session',"")
+            _app_id = request.GET.get('app_id',"")
             _dict = {
-                'ppt_list':self.action_my.GetUserPPT(_s_session )
+                'ppt_list':self.action_my.GetAppPPT(_app_id ),
+                'ppt_tag_list':self.action_my.GetAppPPTTagList(_app_id ),
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)
         except Exception as e :
             return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
-
 
 
 
