@@ -7,13 +7,18 @@ import django.utils.timezone as timezone
 from lib.image_save import *
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# Create your models here.
 
-class AdminUser(AbstractUser):
-    address = models.CharField(max_length=100)
+# class AdminUser(AbstractUser):
+#     address = models.CharField(max_length=100)
+
+from django.contrib.auth.models import User as  AdminUser
+# class UserProfile(models.Model):
+#     user = models.OneToOneField(AdminUser)
+#     app =  models.ForeignKey( 'App', verbose_name=u'所属小程序',null=True,blank=True)
 
 #企业信息
 class App(models.Model):
+    sys_user = models.OneToOneField(AdminUser,related_name=u"system_user",verbose_name=u'系统管理员',null=True,blank=True)
     name = models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     app_id =  models.CharField(max_length=100, verbose_name=u'AppID',null=True,blank=True)
     secret_key = models.CharField(max_length=100, verbose_name=u'SecretKey',null=True,blank=True)
