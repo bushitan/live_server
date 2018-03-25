@@ -12,8 +12,9 @@ class ActionNews():
         self.query_article = QueryArticle()
         self.query_tag = QueryTag()
 
-    def GetTagList(self):
-        return self.query_tag.Filter(is_show = YES)
+    def GetTagList(self,app_id):
+        print self.query_tag.Filter(is_show = YES,app__app_id = app_id)
+        return self.query_tag.Filter(is_show = YES,app__app_id = app_id)
     def GetCoverListByTagID(self,tag_id):
         # a = self.query_tag.FilterQuery(id=1)
         return self.query_news.Filter(tag = tag_id)

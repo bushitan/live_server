@@ -14,8 +14,9 @@ class TagGetList( ListView):
         super(TagGetList,self).__init__()
     def get(self, request, *args, **kwargs):
         try:
+            _app_id = request.GET.get('app_id',"")
             _dict = {
-                'list_tag':self.action_news.GetTagList()
+                'list_tag':self.action_news.GetTagList(_app_id)
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)

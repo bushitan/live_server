@@ -9,9 +9,9 @@ class QueryRoom(QueryBase):
 	def _PackDict(self,obj):
 		return {
 			"room_id":obj.id,
-			"im_num":obj.im_num,
-			"pusher_url":obj.pusher,
-			"player_url":obj.player,
+			# "im_num":obj.im_num,
+			# "pusher_url":obj.pusher,
+			# "player_url":obj.player,
 			"style":obj.style,
 			"cover_url":obj.cover.url if obj.cover is not None else "",
 			"name":obj.name,

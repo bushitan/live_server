@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +58,73 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'live_server.urls'
+
+
+#django suit
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': u'索骏TV直播平台',
+    'HEADER_DATE_FORMAT': 'l, j. F Y', # Saturday, 16th March 2013
+    'HEADER_TIME_FORMAT': 'H:i',       # 18:42
+
+     # forms
+    'SHOW_REQUIRED_ASTERISK': True, #Automatically adds asterisk symbol * to the end of every required field label:
+    'CONFIRM_UNSAVED_CHANGES': True, #Alert will be shown, when you’ll try to leave page, without saving changed form first:
+
+     # menu
+    'SEARCH_URL': '/huaxun/admin/api/user/',
+    'MENU_ICONS': {
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+    },
+     'MENU_EXCLUDE': ('auth.group', 'auth'),#  menu不显示的栏目图标
+    'MENU': (
+        # sites是默认原先的app和models
+        # 'sites',
+        '-',
+        {'app': 'lite', 'label': u'小程序', 'icon': 'icon-user',
+            'models': (
+                'lite.App',
+                'lite.User',
+                'lite.Company',
+                'lite.FileLibrary',
+                'lite.FileTag',
+                # {'model': 'lite.FileTag', 'label': 'Staff',},
+            )
+        },
+        {'app': 'room', 'label': u'直播间', 'icon': 'icon-leaf',
+            'models': (
+                'room.Room',
+                'room.Message',
+
+            )
+        },
+        {'app': 'cover', 'label': u'专栏', 'icon': 'icon-edit',
+            'models': (
+                'cover.Tag',
+                'cover.News',
+                'cover.Article',
+
+            )
+        },
+        {'app': 'order', 'label': u'会员支付', 'icon': 'icon-tags',
+            'models': (
+                'order.Cost',
+                'order.Member',
+                'order.Order',
+                # 'order.Discount',
+                # 'order.DiscountTemplate',
+            )
+        },
+    ),
+    # misc
+    'LIST_PER_PAGE': 15 #每页数量
+}
+
 
 TEMPLATES = [
     {

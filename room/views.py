@@ -13,22 +13,39 @@ class GetCurrentRoom( ListView):
         self.action_live = ActionLive()
         super(GetCurrentRoom,self).__init__()
     def get(self, request, *args, **kwargs):
-        try:
+        # try:
             _session = request.GET.get('session',"")
             _app_id = request.GET.get('app_id',"")
-            _room = self.action_live.GetCurrentRoom()
+            _room = self.action_live.GetCurrentRoom(_app_id)
+            _app = self.action_live.GetCurrentRoom(_app_id)
             _room_id = _room["room_id"]
-            print self.action_live.GetMessageList(_room_id )
-            print self.action_live.CheckPusherUser(_app_id,_session)
+            print _room
+            # print self.action_live.GetMessageList(_room_id )
+            # print self.action_live.CheckPusherUser(_app_id,_session)
             _dict = {
                 'room_dict':_room,
+                'app_dict':self.action_live.GetLiveUrlCurrentRoom(_app_id),
                 'message_list':self.action_live.GetMessageList(_room_id ),
-                "is_pusher_user":self.action_live.CheckPusherUser(_app_id,_session)
+                "is_teacher":self.action_live.CheckPusherUser(_app_id,_session)
             }
             # print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)
-        except Exception as e :
-            return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )
+
+# 获取当前房间的封面，简介
+class GetCurrentRoomCover( ListView):
+    def __init__(self):
+        self.action_live = ActionLive()
+        super(GetCurrentRoomCover,self).__init__()
+    def get(self, request, *args, **kwargs):
+        # try:
+            _session = request.GET.get('session',"")
+            _app_id = request.GET.get('app_id',"")
+            _room = self.action_live.GetCurrentRoom(_app_id)
+            _dict = {
+                'room_dict':_room,
+                "is_teacher":self.action_live.CheckPusherUser(_app_id,_session)
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
 
 # 获取APP下的房间列表
 class GetListRoomByApp( ListView):

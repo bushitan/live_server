@@ -5,12 +5,15 @@ class QueryApp(QueryBase):
 	def __init__(self):
 		super(QueryApp,self).__init__(App)
 
-	def _PackDict(self,query_get):
+	def _PackDict(self,obj):
 		_dict = {
-			'id':query_get.id,
-			'app_id':query_get.app_id,
-			'app_secret':query_get.secret_key,
-			'app_name':query_get.name,
+			'id':obj.id,
+			'app_id':obj.app_id,
+			'app_secret':obj.secret_key,
+			'app_name':obj.name,
+			"im_num":obj.im_num,
+			"pusher_url":obj.pusher,
+			"player_url":obj.player,
 			# 'longitude':query_get.longitude,
 			# 'latitude':query_get.latitude,
 			# 'taste_qr':query_get.taste_qr,

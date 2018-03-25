@@ -95,7 +95,7 @@ class UserGetPPT( ListView):
                 'ppt_list':self.action_my.GetAppPPT(_app_id ),
                 'ppt_tag_list':self.action_my.GetAppPPTTagList(_app_id ),
             }
-            print _dict
+            # print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)
         except Exception as e :
             return MESSAGE_RESPONSE_NET_ERROR( self.__class__.__name__ ,e )

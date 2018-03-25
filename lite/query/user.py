@@ -12,6 +12,7 @@ class QueryUser(QueryBase):
 			'session':query_get.session,
 			'avatar_url':query_get.avatar_url,
 			'nick_name':query_get.nick_name,
+			'is_teacher':query_get.is_teacher,
 		}
 		return _dict
 

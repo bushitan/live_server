@@ -9,6 +9,7 @@ from views import *
 urlpatterns = [
 
     url(r'^get/$', GetCurrentRoom.as_view()), # 获取当前房间
+    url(r'^get/cover/$', GetCurrentRoomCover.as_view()), # 获取当前房间
     url(r'^get_list/app/$', GetListRoomByApp.as_view()), # 获取当前房间
     url(r'^add/message/$', AddMessage.as_view()), # 获取当前房间
     # url(r'^get/message/$', GetMessageByRoom.as_view()), # 获取当前房间
