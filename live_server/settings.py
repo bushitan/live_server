@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'cover',
     'room',
     'order',
+    'pvp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,6 +119,12 @@ SUIT_CONFIG = {
                 'order.Order',
                 # 'order.Discount',
                 # 'order.DiscountTemplate',
+            )
+        },
+        {'app': 'order', 'label': u'1v1课堂', 'icon': 'icon-fire',
+            'models': (
+                'pvp.Stage',
+                'pvp.Background',
             )
         },
     ),

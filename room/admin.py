@@ -2,7 +2,6 @@
 from django.contrib import admin
 from models import *
 from lib.admin_config import *
-# Register your models here.
 
 class RoomAdmin(AppAdmin):
     list_display = ("cover_pre","title","description","content",)
