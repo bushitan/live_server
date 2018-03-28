@@ -62,10 +62,10 @@ ROOT_URLCONF = 'live_server.urls'
 
 
 #django suit
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
-)
+# from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+# TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+#     'django.core.context_processors.request',
+# )
 SUIT_CONFIG = {
     # header
     'ADMIN_NAME': u'索骏TV直播平台',
@@ -124,7 +124,8 @@ SUIT_CONFIG = {
         {'app': 'order', 'label': u'1v1课堂', 'icon': 'icon-fire',
             'models': (
                 'pvp.Stage',
-                'pvp.Background',
+                'pvp.StageTag',
+                'pvp.StageFile',
             )
         },
     ),

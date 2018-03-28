@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^live/cover/', include('cover.urls')),
     url(r'^live/room/', include('room.urls')),
     url(r'^live/order/', include('order.urls')),
+    url(r'^live/pvp/', include('pvp.urls')),
 ]
