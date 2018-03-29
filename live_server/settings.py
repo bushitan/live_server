@@ -126,6 +126,7 @@ SUIT_CONFIG = {
                 'pvp.Stage',
                 'pvp.StageTag',
                 'pvp.StageFile',
+                'pvp.PVPMember',
             )
         },
     ),

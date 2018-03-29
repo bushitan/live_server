@@ -4,6 +4,8 @@ from django.views.generic import ListView
 from lib.message import *
 from action.online import *
 action_online = ActionOnline()
+
+
 # 获取故事列表
 class StoryGetList( ListView):
     def __init__(self):
@@ -47,3 +49,16 @@ class RoomJoin( ListView):
 			'room_config':_room_config,
 		}
 		return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+
+# 加入房间
+class MemberCheck( ListView):
+    def __init__(self):
+        super(MemberCheck,self).__init__()
+    def get(self, request, *args, **kwargs):
+        _session = request.GET.get('session',"")
+        print _session
+        _dict = {
+        'is_member':action_online.CheckMember(_session),
+        }
+        return MESSAGE_RESPONSE_SUCCESS(_dict)

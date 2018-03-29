@@ -3,6 +3,7 @@ from lite.query.user import *
 from pvp.query.background import *
 from pvp.query.stage import *
 from pvp.query.stage_tag import *
+from pvp.query.pvp_member import *
 
 
 class ActionOnline():
@@ -13,7 +14,10 @@ class ActionOnline():
 		self.stage = QueryStage()
 		self.stage_tag = QueryStageTag()
 		self.background = QueryBackground()
+		self.pvp_member = QueryPVPMember()
 
+	def CheckMember(self,session):
+		return self.pvp_member.IsExists(user__session = session)
 	# 用户获取自己的图片
 	def GetListBackgroundBySelf(self,session):
 		return self.background.Filter(user__session = session)

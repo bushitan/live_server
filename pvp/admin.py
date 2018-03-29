@@ -77,3 +77,37 @@ class StageAdmin(AppAdmin):
 	readonly_fields = ['cover_pre',] #图片一定要只读
 	# raw_id_fields = ('user','room',)
 admin.site.register(Stage,StageAdmin)
+
+
+
+class PVPMemberAdmin(AppAdmin):
+	list_display = ("id","user","start_time","end_time",'is_alive',)
+	temp_suit_form_tabs = (('content', u'会员'),)
+	temp_fieldsets = (
+		(u"分类", {
+			'classes': ('suit-tab', 'suit-tab-content',),
+			'fields': ["user",'start_time','end_time',]
+		}),
+    )
+admin.site.register(PVPMember,PVPMemberAdmin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

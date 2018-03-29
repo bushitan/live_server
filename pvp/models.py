@@ -88,3 +88,35 @@ class Stage(AppBase):
 		verbose_name_plural = verbose_name = u'舞台'
 	def __unicode__(self):
 		return '%s' % (self.id)
+
+
+class PVPMember(AppBase):
+	user = models.ForeignKey(User, verbose_name=u'用户',null=True,blank=True)
+	# is_alive = models.IntegerField( verbose_name=u'是否有效',default=YES,choices=IS_ALIVE.items())
+	start_time = models.DateTimeField(u'开始时间', default = timezone.now)
+	end_time = models.DateTimeField(u'结束时间', default = timezone.now)
+	# 点击链接的文章
+	class Meta:
+		verbose_name_plural = verbose_name = u'会员'
+		ordering = ['-create_time']
+	def __unicode__(self):
+		return '%s' % (self.id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
