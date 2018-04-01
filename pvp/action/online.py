@@ -48,7 +48,8 @@ class ActionOnline():
 		return _uid , _room_config
 	def JoinPvpRoom(self,key):
 		if self.pvpRoomDict.has_key(key) is True:
-			_room_config = self.pvpRoomDict.pop(key)
+			# _room_config = self.pvpRoomDict.pop(key)
+			_room_config = self.pvpRoomDict[key]
 			print  True,_room_config
 			print self.pvpRoomDict
 

@@ -24,7 +24,7 @@ class LiteAdmin(admin.ModelAdmin):
 admin.site.register(App,LiteAdmin)
 
 class UserAdmin(AppAdmin):
-    list_display = ("avatar","nick_name","phone","is_teacher",)
+    list_display = ("id","avatar","nick_name","phone","is_teacher",)
     temp_suit_form_tabs = (('content', u'微信信息'),)
     def get_form(self, request, obj=None, *args, **kwargs):
         _fieldsets = (
