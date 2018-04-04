@@ -9,7 +9,8 @@ class QueryStage(QueryBase):
 	def _PackDict(self,obj):
 		return {
 			"stage_id":obj.id,
-			"stage_background":obj.background_image.url if obj.background_image is not None else "",
+			"stage_background_image":obj.background_image.url if obj.background_image is not None else "",
+			"stage_background_audio":obj.background_audio.url if obj.background_audio is not None else "",
 			"stage_cover":obj.cover_image.url if obj.cover_image is not None else "",
 			"stage_audio":obj.audio_image.url if obj.audio_image is not None else "",
 			"stage_orientation":obj.orientation,

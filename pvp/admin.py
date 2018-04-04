@@ -27,6 +27,8 @@ admin.site.register(Background,BackgroundAdmin)
 
 
 class StageFileAdmin(AppAdmin):
+	list_filter = ('style',)
+	temp_list_display = ('style',)
 	temp_suit_form_tabs = (('content', u'舞台配置'),)
 	temp_fieldsets = (
 		(u"分类", {
@@ -56,7 +58,7 @@ class StageAdmin(AppAdmin):
 		}),
 		(u"舞台参数", {
 			'classes': ('suit-tab', 'suit-tab-content',),
-			'fields': ["background_image","cover_image","audio_image","orientation","width","height",]
+			'fields': ["background_image","background_audio","cover_image","audio_image","orientation","width","height",]
 		}),
 		(u"录制参数", {
 			'classes': ('suit-tab', 'suit-tab-content',),
@@ -75,7 +77,15 @@ class StageAdmin(AppAdmin):
 	cover_pre.short_description = u'背景预览'
 	cover_pre.allow_tags = True  # 允許執行 image_tag 中回傳的 html 語法，若為 False(預設)則會被視為純文字
 	readonly_fields = ['cover_pre',] #图片一定要只读
-	# raw_id_fields = ('user','room',)
+	raw_id_fields = ('background_image','background_audio','cover_image','pusher_image','player_image',)
+
+ 	# def formfield_for_foreignkey(self, db_field, request, **kwargs):
+		# if request.user.is_superuser is False:
+		# 	if db_field.name == "background_image":
+		# 		kwargs["queryset"] =  StageFile.objects.filter(style = FILE_IMAGE)
+		# 	if db_field.name == "background_audio":
+		# 		kwargs["queryset"] =  StageFile.objects.filter(style = FILE_AUDIO)
+		# return super(StageAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 admin.site.register(Stage,StageAdmin)
 
 

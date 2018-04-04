@@ -49,14 +49,15 @@ class StageTag(AppBase):
 VERTICAL = 0
 HORIZONTAL = 1
 STAGE_ORIENTATION = {
-    VERTICAL:u"水平",
-    HORIZONTAL:u"竖直",
+    VERTICAL:u"横屏",
+    HORIZONTAL:u"竖屏",
 }
 # 舞台——系统提供内容
 class Stage(AppBase):
 	# teacher =  models.ForeignKey(User, verbose_name=u'老师',null=True,blank=True)
 	tag =  models.ForeignKey(StageTag,verbose_name=u'所属标签',null=True,blank=True) #所属会议
 	background_image =  models.ForeignKey(StageFile, verbose_name=u'背景图片',related_name="background_image",null=True,blank=True)
+	background_audio =  models.ForeignKey(StageFile, verbose_name=u'背景音乐',related_name="background_audio",null=True,blank=True)
 	cover_image =  models.ForeignKey(StageFile, verbose_name=u'封面图片',related_name="cover_image",null=True,blank=True)
 	audio_image =  models.ForeignKey(StageFile, verbose_name=u'背景音乐',related_name="audio_image",null=True,blank=True)
 	orientation = models.IntegerField(u'方向',default=VERTICAL,choices=STAGE_ORIENTATION.items(),)
