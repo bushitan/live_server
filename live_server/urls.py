@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^live/room/', include('room.urls')),
     url(r'^live/order/', include('order.urls')),
     url(r'^live/pvp/', include('pvp.urls')),
+    url(r'^live/ppt/', include('ppt.urls')),
 ]

@@ -13,7 +13,7 @@ class QueryStage(QueryBase):
 			"stage_background_audio":obj.background_audio.url if obj.background_audio is not None else "",
 			"stage_cover":obj.cover_image.url if obj.cover_image is not None else "",
 			"stage_audio":obj.audio_image.url if obj.audio_image is not None else "",
-			"stage_orientation":obj.orientation,
+			"stage_orientation":"vertical" if obj.orientation == VERTICAL else 'horizontal' ,
 			"stage_width":obj.width,
 			"stage_height":obj.height,
 

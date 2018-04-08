@@ -46,11 +46,9 @@ class StageTag(AppBase):
 
 
 
-VERTICAL = 0
-HORIZONTAL = 1
 STAGE_ORIENTATION = {
-    VERTICAL:u"横屏",
-    HORIZONTAL:u"竖屏",
+    VERTICAL:u"竖屏",
+    HORIZONTAL:u"横屏",
 }
 # 舞台——系统提供内容
 class Stage(AppBase):

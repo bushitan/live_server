@@ -60,11 +60,11 @@ class StageAdmin(AppAdmin):
 			'classes': ('suit-tab', 'suit-tab-content',),
 			'fields': ["background_image","background_audio","cover_image","audio_image","orientation","width","height",]
 		}),
-		(u"录制参数", {
+		(u"老师参数", {
 			'classes': ('suit-tab', 'suit-tab-content',),
 			'fields': ["pusher_image","pusher_x","pusher_y","pusher_width","pusher_height",]
 		}),
-		(u"播放参数", {
+		(u"学生参数", {
 			'classes': ('suit-tab', 'suit-tab-content',),
 			'fields': ["player_image","player_x","player_y","player_width","player_height",]
 		}),

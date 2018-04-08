@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'room',
     'order',
     'pvp',
+    'ppt',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,12 +122,18 @@ SUIT_CONFIG = {
                 # 'order.DiscountTemplate',
             )
         },
-        {'app': 'order', 'label': u'1v1课堂', 'icon': 'icon-fire',
+        {'app': 'pvp', 'label': u'1v1课堂', 'icon': 'icon-fire',
             'models': (
                 'pvp.Stage',
                 'pvp.StageTag',
                 'pvp.StageFile',
                 'pvp.PVPMember',
+            )
+        },
+        {'app': 'ppt', 'label': u'PPT课堂', 'icon': 'icon-fire',
+            'models': (
+                'ppt.PPTFile',
+                'ppt.PPTTag',
             )
         },
     ),

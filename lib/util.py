@@ -43,6 +43,7 @@ IS_TEACHER = {
 }
 
 
+
 FILE_IMAGE = 0
 FILE_AUDIO = 1
 FILE_VIDEO = 2
@@ -90,3 +91,7 @@ MESSAGE_STYLE = {
     MESSAGE_IMAGE:u"图片",
     MESSAGE_AUDIO:u"语音",
 }
+
+
+VERTICAL = 0  #竖屏
+HORIZONTAL = 1 #横屏
