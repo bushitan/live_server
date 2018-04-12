@@ -57,7 +57,7 @@ class CompanyGetInfo( ListView):
     def get(self, request, *args, **kwargs):
         try:
             _dict = {
-                'dict_company':self.action_my.GetCompanyInfo()
+                'company_dict':self.action_my.GetCompanyInfo()
             }
             print _dict
             return MESSAGE_RESPONSE_SUCCESS(_dict)

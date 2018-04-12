@@ -9,7 +9,7 @@ class QueryRoom(QueryBase):
 	def _PackDict(self,obj):
 		return {
 			"room_id":obj.id,
-			# "im_num":obj.im_num,
+			"status":obj.status,
 			# "pusher_url":obj.pusher,
 			# "player_url":obj.player,
 			"style":obj.style,

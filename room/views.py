@@ -71,11 +71,12 @@ class AddMessage( ListView):
         super(AddMessage,self).__init__()
     def get(self, request, *args, **kwargs):
         try:
+            print type( request.GET.get('is_teacher',"")), request.GET.get('is_teacher',"")
             _room_list = self.action_live.AddMessage(
                 request.GET.get('session',""),
                 room_id = request.GET.get('room_id',""),
                 style = request.GET.get('style',""),
-                is_teacher = request.GET.get('is_teacher',""),
+                # is_teacher = request.GET.get('is_teacher',""),
                 text = request.GET.get('content',""),
                 audio = request.GET.get('audio_url',""),
                 image = request.GET.get('image_url',""),

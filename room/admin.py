@@ -35,17 +35,28 @@ class RoomAdmin(AppAdmin):
     readonly_fields = ['cover_pre','content_pre'] #图片一定要只读
 admin.site.register(Room,RoomAdmin)
 
+ #复制message
+def MessageCopy(self, request, queryset): #def one action for change alarm Off
+    print queryset
+    for m in queryset:
+        m.pk = None
+        m.save()
+MessageCopy.short_description = "复制" #action show title in admin action select.
 
 class MessageAdmin(AppAdmin):
-    list_display = ("room","user","is_teacher","style","text","image","audio",)
+    search_fields =  ("room",)
+    list_filter = ("room",)
+    list_display = ("room","user","style","text","image","audio",)
     temp_suit_form_tabs = (('content', u'信息'),)
     temp_fieldsets = (
         (u"封面", {
             'classes': ('suit-tab', 'suit-tab-content',),
-            'fields': ["room","user","is_teacher","style","text","image","audio",]
+            'fields': ["room","user","style","text","image","audio",]
         }),
     )
     raw_id_fields = ('user','room',)
+    actions = [MessageCopy,]  #复制message
+
 admin.site.register(Message,MessageAdmin)
 
 

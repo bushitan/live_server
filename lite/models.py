@@ -86,6 +86,7 @@ class User(AppBase):
     # name =  models.CharField(max_length=100, verbose_name=u'名称',null=True,blank=True)
     wx_id =  models.CharField(max_length=100, verbose_name=u'微信号',null=True,blank=True)
 
+    user_name =  models.CharField(max_length=100, verbose_name=u'姓名',null=True,blank=True)
     #微信信息
     nick_name =  models.CharField(max_length=100, verbose_name=u'昵称',null=True,blank=True)
     avatar_url =  models.CharField(max_length=500, verbose_name=u'头像',null=True,blank=True)
@@ -120,8 +121,8 @@ class Company(AppBase):
     phone = models.CharField(max_length=40, verbose_name=u'手机',null=True,blank=True)
     introduction = models.CharField(max_length=500, verbose_name=u'个人简介',default="",null=True,blank=True)
     address = models.CharField(max_length=200, verbose_name=u'地址',default="",null=True,blank=True)
-    latitude = models.FloatField(verbose_name=u'精度',default=0)
-    longitude = models.FloatField(verbose_name=u'维度',default=0)
+    latitude = models.FloatField(verbose_name=u'纬度',default=0)
+    longitude = models.FloatField(verbose_name=u'精度',default=0)
     class Meta:
         verbose_name_plural = verbose_name = u'联系方式'
 

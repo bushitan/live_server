@@ -24,13 +24,17 @@ class LiteAdmin(admin.ModelAdmin):
 admin.site.register(App,LiteAdmin)
 
 class UserAdmin(AppAdmin):
-    list_display = ("id","avatar","nick_name","phone","is_teacher",)
+    list_display = ("id","avatar","user_name","nick_name","phone","is_teacher",)
     temp_suit_form_tabs = (('content', u'微信信息'),)
     def get_form(self, request, obj=None, *args, **kwargs):
         _fieldsets = (
                 (u"个人资料", {
                     'classes': ('suit-tab', 'suit-tab-content',),
-                    'fields': ['is_teacher','avatar','wx_id','nick_name','avatar_url','gender','province','city','country','phone',]
+                    'fields': ['is_teacher','user_name']
+                }),
+                (u"微信资料", {
+                    'classes': ('suit-tab', 'suit-tab-content',),
+                    'fields': ['avatar','wx_id','nick_name','avatar_url','gender','province','city','country','phone',]
                 }),
             )
         if request.user.is_superuser is True:

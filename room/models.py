@@ -33,7 +33,7 @@ class Room(AppBase):
         ordering = ['-serial']
 
     def __unicode__(self):
-        return '%s' % (self.id)
+        return '%s' % (self.name)
 
 
 #信息
@@ -41,8 +41,8 @@ class Message(AppBase):
     room =  models.ForeignKey(Room, verbose_name=u'所属聊天室',null=True,blank=True)
     user =  models.ForeignKey(User, verbose_name=u'用户',null=True,blank=True)
     style =  models.IntegerField(u'类型',default=MESSAGE_TEXT,choices=MESSAGE_STYLE.items(),)
-    is_teacher =  models.IntegerField(u'是否讲师发言',default=YES,choices=IS_TEACHER.items(),)
-    text =  models.CharField(max_length=400, verbose_name=u'文字',null=True,blank=True)
+    # is_teacher =  models.IntegerField(u'是否讲师发言',default=YES,choices=IS_TEACHER.items(),)
+    text =  models.TextField(verbose_name=u'文字',null=True,blank=True)
     image = models.CharField(max_length=500, verbose_name=u'图片',default="",null=True,blank=True)
     audio = models.CharField(max_length=500, verbose_name=u'语音',default="",null=True,blank=True)
     class Meta:

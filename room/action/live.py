@@ -16,7 +16,7 @@ class ActionLive():
         self.query_room = QueryRoom()
         self.query_message = QueryMessage()
         self.query_pusher_user = QueryPusherUser()
-        self.query_classroom = QueryClassroom()
+        # self.query_classroom = QueryClassroom()
         # self.query_file_library = QueryFileLibrary()
         self.query_app = QueryApp()
         self.query_user = QueryUser()
@@ -24,7 +24,7 @@ class ActionLive():
     def GetLiveUrlCurrentRoom(self,app_id):
         return self.query_app.Get(app_id = app_id)
     def GetCurrentRoom(self,app_id):
-        return self.query_room.Filter(is_show = YES,status=ROOM_STATUS_ING , app__app_id = app_id)[0]
+        return self.query_room.Filter(is_show = YES, app__app_id = app_id)[0]
 
     # 获取聊天室内的信息列表
     def GetMessageList(self,room_id):

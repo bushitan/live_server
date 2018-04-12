@@ -24,7 +24,7 @@ class ActionMy():
     #用户报名
     def SetUserInfo(self,session,name,phone):
         obj = self.query_user.FilterQuery(session = session)
-        self.query_user.Update(obj,name=name,phone=phone)
+        self.query_user.Update(obj,user_name=name,phone=phone)
         return True
     def GetAppPPT(self,app_id):
         return self.query_file.Filter(app__app_id = app_id)
