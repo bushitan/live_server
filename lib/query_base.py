@@ -23,6 +23,10 @@ class QueryBase(object):
 		_m = self.model.objects.get(*args,**kwargs)
 		return self._PackDict(_m)
 
+	def GetQuery(self,*args,**kwargs):
+		return self.model.objects.get(*args,**kwargs)
+		# return self._PackDict(_m)
+
 	def Filter(self,*args,**kwargs):
 		_m = self.model.objects.filter(*args,**kwargs)
 		return self._PackList( self._PackDict,_m)
@@ -34,7 +38,6 @@ class QueryBase(object):
 		obj.update(*args,**kwargs)
 		return self._PackList( self._PackDict,obj)
 
-	def Delete(self,*args,**kwargs):
-		_m = self.model.delete(*args,**kwargs)
-		_m.save()
-		return self._PackDict(_m)
+	def Delete(self,obj):
+		obj.delete()
+		return True

@@ -43,7 +43,6 @@ IS_TEACHER = {
 }
 
 
-
 FILE_IMAGE = 0
 FILE_AUDIO = 1
 FILE_VIDEO = 2

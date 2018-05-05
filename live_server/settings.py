@@ -134,6 +134,14 @@ SUIT_CONFIG = {
             'models': (
                 'ppt.PPTFile',
                 'ppt.PPTTag',
+                'ppt.PPTTeam',
+                'ppt.PPTTeamUser',
+            )
+        },
+        {'app': 'ppt', 'label': u'通讯录', 'icon': 'icon-fire',
+            'models': (
+                'ppt.PPTRosterTag',
+                'ppt.PPTRoster',
             )
         },
     ),
