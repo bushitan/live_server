@@ -50,8 +50,8 @@ class ActionFile():
 		return _token,_key ,_hash
 
 	def UploadComplete(self,user_id,url,tag_id):
-		_user = self.user.Get(id = user_id)
-		_tag = self.ppt_tag.Get(id = tag_id)
+		_user = self.user.GetQuery(id = user_id)
+		_tag = self.ppt_tag.GetQuery(id = tag_id)
 		return self.ppt_file.Add(
 			upload_user = _user,
 			tag = _tag ,

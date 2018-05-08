@@ -92,7 +92,7 @@ class SelfUploadToken( ListView):
 class SelfUploadCallback( ListView):
     def __init__(self):
         super(SelfUploadCallback,self).__init__()
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         # try:
             key = request.POST['key']
             if FILE_KEY_HASH.has_key(key):
