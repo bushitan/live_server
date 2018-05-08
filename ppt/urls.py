@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^self/add/tag/$', SelfAddTag.as_view()), # 获取当前房间
     url(r'^self/get/tag/$', SelfGetTag.as_view()), # 获取当前房间
     url(r'^self/get/file/$', SelfGetFile.as_view()), # 获取当前房间
+    url(r'^self/upload/token/$', SelfUploadToken.as_view()), # 获取当前房间
+    url(r'^self/upload/callback/$', SelfUploadCallback.as_view()), # 获取当前房间
 
     url(r'^team/get/tag/$', TeamGetTag.as_view()), # 获取当前房间
     url(r'^team/check/$', TeamCheck.as_view()), # 获取当前房间

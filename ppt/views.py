@@ -70,6 +70,51 @@ class SelfGetFile( ListView):
             }
             return MESSAGE_RESPONSE_SUCCESS(_dict)
 
+FILE_KEY_HASH = {}
+# 上传图片，获取token
+class SelfUploadToken( ListView):
+    def __init__(self):
+        super(SelfUploadToken,self).__init__()
+    def get(self, request, *args, **kwargs):
+        # try:
+            _session = request.GET.get('session',"")
+            _tag_id = request.GET.get('tag_id',"")
+            _suffix = request.GET.get('suffix',"")  #后缀
+            _token,_key,_hash = action_file.UploadGetToken(_session,_tag_id,_suffix)
+            FILE_KEY_HASH[_key] = _hash
+            _dict = {
+                "token":_token,
+                "key":_key,
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+# 上传图片，获取token
+class SelfUploadCallback( ListView):
+    def __init__(self):
+        super(SelfUploadCallback,self).__init__()
+    def get(self, request, *args, **kwargs):
+        # try:
+            key = request.POST['key']
+            if FILE_KEY_HASH.has_key(key):
+                _user_id = FILE_KEY_HASH[key]["user_id"]
+                _url = FILE_KEY_HASH[key]["url"]
+                _tag_id = FILE_KEY_HASH[key]["tag_id"]
+                _image = action_file.UploadComplete(_user_id,_url,_tag_id)
+                _dict = {
+                    'image_dict':_image,
+                }
+            else :
+                raise # name不存在如果没有，直接返回网络错误
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+            # _hash = request.POST['hash']
+            # w = request.POST['w']
+            # h = request.POST['h']
+            # duration = request.POST['duration']
+            # fsize = request.POST['fsize']
+            # vw = request.POST['vw']
+            # vh = request.POST['vh']
+
 
 ## 我的SELF
 # 根据标签获取图片
