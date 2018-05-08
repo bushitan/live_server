@@ -8,7 +8,8 @@ QINIU_ACCESS_KEY = 'bK5xWj0a-TBIljlxHYOHuQib9HYF_9Ft-HtP8tEb'
 QINIU_SECRET_KEY = '56lucORYc45sF5eDqNk63mLXsQ78n4RrubIrjtE0'
 QINIU_BUCKET_NAME = 'clickz'
 QINIU_HOST = 'http://image.12xiong.top/'
-QINIU_CALLBACK_URL = "https://www.12xiong.top/day365/lite/upload/callback/"
+# QINIU_CALLBACK_URL = "https://www.12xiong.top/day365/lite/upload/callback/"
+QINIU_CALLBACK_URL = "https://www.12xiong.top/ppt/self/upload/callback/"
 QINIU_CALLBACK_BODY = "key=$(key)&hash=$(etag)&w=$(imageInfo.width)&h=$(imageInfo.height)&duration=$(avinfo.video.duration)&fsize=$(fsize)&vw=$(avinfo.video.width)&vh=$(avinfo.video.height)"
 QINIU_CALLBACK_HOST = "120.27.97.33"
 QINIU_FSIZE_LIMIT = 6815744
