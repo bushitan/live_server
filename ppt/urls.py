@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^file/get_list/$', FileGetList.as_view()), # 获取当前房间
 
 
+    url(r'^self/timestamp/$', SelfTimestamp.as_view()), # 获取当前房间
     url(r'^self/add/tag/$', SelfAddTag.as_view()), # 获取当前房间
     url(r'^self/get/tag/$', SelfGetTag.as_view()), # 获取当前房间
     url(r'^self/get/file/$', SelfGetFile.as_view()), # 获取当前房间

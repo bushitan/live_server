@@ -11,6 +11,8 @@ action_news = ActionTag()
 action_file = ActionFile()
 action_team = ActionTeam()
 
+import time
+import datetime
 
 # 获取故事列表
 class FileGetList( ListView):
@@ -27,6 +29,23 @@ class FileGetList( ListView):
             return MESSAGE_RESPONSE_SUCCESS(_dict)
 
 
+## 我的SELF
+# 根据标签获取图片
+class SelfTimestamp( ListView):
+    def __init__(self):
+        super(SelfTimestamp,self).__init__()
+    def get(self, request, *args, **kwargs):
+        # try:
+            dtime = datetime.datetime.now()+datetime.timedelta(minutes=20)
+            unix = int(time.mktime(dtime.timetuple()))
+            unix_hex = format(unix, 'x')
+            # print format(3735928559, 'x')
+            # print format(unix, 'x')
+
+            _dict = {
+                'unix':unix_hex,
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
 
 ## 我的SELF
 # 根据标签获取图片
