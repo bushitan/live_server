@@ -11,7 +11,11 @@ urlpatterns = [
     url(r'^file/get_list/$', FileGetList.as_view()), # 获取当前房间
 
 
-    url(r'^self/timestamp/$', SelfTimestamp.as_view()), # 获取当前房间
+    url(r'^room/add/$', RoomAdd.as_view()), # 获取当前房间
+    url(r'^room/delete/$', RoomDelete.as_view()), # 获取当前房间
+    url(r'^room/check/$', RoomCheck.as_view()), # 获取当前房间
+
+
     url(r'^self/add/tag/$', SelfAddTag.as_view()), # 获取当前房间
     url(r'^self/get/tag/$', SelfGetTag.as_view()), # 获取当前房间
     url(r'^self/get/file/$', SelfGetFile.as_view()), # 获取当前房间
@@ -24,6 +28,7 @@ urlpatterns = [
     url(r'^team/join/$', TeamJoin.as_view()), # 获取当前房间
     url(r'^team/get/roster_tag/$', TeamGetRosterTag.as_view()), # 获取当前房间
     url(r'^team/get/roster/$', TeamGetRoster.as_view()), # 获取当前房间
+
 
 
     # url(r'^room/create/$', RoomCreate.as_view()), # 获取当前房间

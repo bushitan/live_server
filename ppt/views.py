@@ -6,10 +6,12 @@ from action.online import *
 from action.tag import *
 from action.file import *
 from action.team import *
+from action.room import *
 action_online = ActionOnline()
 action_news = ActionTag()
 action_file = ActionFile()
 action_team = ActionTeam()
+action_room = ActionRoom()
 
 import time
 import datetime
@@ -29,23 +31,50 @@ class FileGetList( ListView):
             return MESSAGE_RESPONSE_SUCCESS(_dict)
 
 
-## 我的SELF
-# 根据标签获取图片
-class SelfTimestamp( ListView):
+
+# 创建房间
+class RoomAdd( ListView):
     def __init__(self):
-        super(SelfTimestamp,self).__init__()
+        super(RoomAdd,self).__init__()
     def get(self, request, *args, **kwargs):
         # try:
-            dtime = datetime.datetime.now()+datetime.timedelta(minutes=20)
-            unix = int(time.mktime(dtime.timetuple()))
-            unix_hex = format(unix, 'x')
-            # print format(3735928559, 'x')
-            # print format(unix, 'x')
+            _session = request.GET.get('session',"")
+            _config_dict = action_room.Add(_session)
 
             _dict = {
-                'unix':unix_hex,
+                'config_dict':_config_dict,
             }
             return MESSAGE_RESPONSE_SUCCESS(_dict)
+# 注销房间
+class RoomDelete( ListView):
+    def __init__(self):
+        super(RoomDelete,self).__init__()
+    def get(self, request, *args, **kwargs):
+        # try:
+            _session = request.GET.get('session',"")
+            action_room.Delete(_session)
+            _dict = {
+                'msg':"删除成功",
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+# 检测房间是否存在
+class RoomCheck (ListView):
+    def __init__(self):
+        super(RoomCheck,self).__init__()
+    def get(self, request, *args, **kwargs):
+        # try:
+        #     _session = request.GET.get('session',"")
+            _host_name = request.GET.get('host_name',"")
+            _check_dict = action_room.Check(_host_name)
+            _dict = {
+                'check_dict':_check_dict,
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+
+
+
+## 我的SELF
 
 ## 我的SELF
 # 根据标签获取图片
