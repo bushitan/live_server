@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'order',
     'pvp',
     'ppt',
+    'xx_mgr',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -144,9 +145,15 @@ SUIT_CONFIG = {
                 'ppt.PPTRoster',
             )
         },
+        {'app': 'xx_mgr', 'label': u'麦格瑞官网', 'icon': 'icon-fire',
+            'models': (
+                'xx_mgr.MGRTag',
+                'xx_mgr.MGRArticle',
+            )
+        },
     ),
     # misc
-    'LIST_PER_PAGE': 15 #每页数量
+    'LIST_PER_PAGE': 100 #每页数量
 }
 
 
@@ -194,7 +201,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'zh_CN'
 TIME_ZONE = 'Asia/Shanghai'
-
+DATE_FORMAT = 'Y-m-d'
 USE_I18N = True
 
 USE_L10N = True
