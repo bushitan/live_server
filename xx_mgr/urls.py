@@ -9,6 +9,7 @@ from views import *
 urlpatterns = [
 
     url(r'^ym/index/$', YMIndexView.as_view()),
+    url(r'^ym/country/(?P<nav_index>\w+)/(?P<pid>\w+)/$', YMCountryView.as_view()),
 
 
     # url(r'^tag/delete/$', TagAdd.as_view()),

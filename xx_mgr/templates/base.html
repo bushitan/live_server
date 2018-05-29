@@ -126,7 +126,14 @@
                         {% else %}
                             <li class="">
                         {% endif %}
-                            <a href="/Front/YiMing">{{ nav.name }}</a>
+
+                        {% if forloop.first %}
+                              <a href="/live/xx_mgr/ym/index/">{{ nav.name }}</a>
+                        {% elif forloop.last %}
+                             <a href="/live/xx_mgr/ym/last/">{{ nav.name }}</a>
+                        {% else %}
+                             <a href="/live/xx_mgr/ym/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
+                        {% endif %}
                         </li>
                     {%  endfor %}
 

@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{%block main%}
+
+
+
+
+
+    <div name="ymgj_main" class="container container_24 tplArea ymgj_main"><div class="grid grid_17"><div class="widget widget_100_65 standardWidget" data-title="移民推广" href="/ymtg/" target="_blank"><div class="wBody">
+
+
+
+<div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule">
+	<div class="ImageDisplayBox imageDisplay_100" style="height: 100px; position: relative;">
+
+			<a style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1;" href="/ymtg/96.htm" target="_blank">
+
+			<img src="{{ ad.title }}" data-original="/_m/cache/29/e3/29e372c0ef0794a55aaef23545f3580c.jpg" style="width: 670px; height: 100px; margin: 0px; display: inline;" alt="移民推广">
+
+			</a>
+
+	</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	function init(){
+		var box = $(".imageDisplay_100");
+		box.each(function(){
+			if(this.initCycle)
+				return;
+			this.initCycle = true;
+
+			var box = $(this);
+			var wrap = box.closest('.ImageDisplayBoxWrap');
+
+
+			box.cycle({
+
+				before: function(curr, next, opts) {
+					var img = $(next).children('img');
+
+					var src = img.data("data-original");
+					if(src) {
+						img.attr("src", src);
+						img.removeData("data-original");
+					}
+				},
+				timeout: 5000,
+				pause: 1,
+				fx: "fade"
+			});
+		});
+	}
+	ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle/jquery.cycle.all.js"]}, init);
+});
+</script></div></div></div><div class="grid grid_7"><div class="customContent"><img src="http://www.5migrate.com/_m/uploads/u/1/2017-01-21_002551.jpg" alt="" width="260" height="100"></div></div><div class="separator clear"></div><div class="grid grid_10 neiye"><div class="widget widget_247_54 standardWidget"><div class="wHeader">
+<h2 class="caption">{{ info_tag.name }}</h2>
+
+<a class="more" href="/mgym/">更多...</a>
+</div><div class="wBody">
+
+
+<ul class="dateList dateList_ArticleModule">
+
+    {% for article in info_article_list %}
+
+        <li><a href="/mgym/88.htm" target="_blank">{{ article.title|slice:"10" }}</a><span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
+    {% endfor %}
+
+</ul></div></div></div>
+
+
+<div name="ymgj_main" class="container container_24 tplArea ymgj_main">
+
+        <div class="grid grid_15">
+            <div class="widgetSet gsgk ui-sortable-handle">
+                <ul class="setHeader">
+                    {% for tag in detail_tag_list %}
+                         {% if forloop.first %}
+                            <li class="firstTab current">
+                         {% elif  forloop.last %}
+                             <li class="lastTab">
+                         {% else %}
+                            <li>
+                         {% endif %}
+                            <a>{{ tag.name }}</a>
+                         </li>
+                    {% endfor %}
+                </ul>
+                <div class="setBody">
+
+                     {% for article in detail_article_list %}
+                     <div class="widget widget_564_214 standardWidget ui-sortable-handle gsgn current">
+                        <div class="wHeader">
+{#                                            <h2 class="caption">焦点新闻</h2>#}
+                            <a class="more" href="菜单地址">更多...</a>
+                        </div>
+                        <div class="wBody">
+                            <ul class="summaryList summaryList_ArticleModule">
+                                <li>
+                                    <div class="imgBox">
+                                        <a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">
+
+                                            <img src="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" data-original="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" style="width: 250px; height: 250px; display: inline;">
+                                        </a>
+                                    </div>
+                                    <a class="title" href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">{{ article.title }}</a>
+                                    <div class="summary">
+                                       {{ article.subtitle }}
+                                        <span class="more"><a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[详细]</a></span> <span class="more"><a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[更多]</a></span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+{#        <div class="grid grid_14 neiye"><div class="widgetSet gsgk ui-sortable-handle"><ul class="setHeader"><li class="firstTab current"><a href="/EB1/">EB-1杰出人才移民</a></li><li><a href="/EB5/">EB-5投资移民</a></li><li><a href="/qzsq/">签证申请</a></li><li class="lastTab"><a href="/ymzx/">移民咨询</a></li></ul><div class="setBody"><div class="widget widget_99_66 standardWidget current"><div class="wHeader">#}
+{#<h2 class="caption">EB-1杰出人才移民</h2>#}
+{##}
+{#<a class="more" href="/EB1/">更多...</a>#}
+{#</div><div class="wBody">#}
+{##}
+{##}
+{##}
+{##}
+{#<ul class="summaryList summaryList_ArticleModule">#}
+{##}
+{#	<li>#}
+{##}
+{#		<div class="imgBox">#}
+{#			<a href="/EB1/104.htm" target="_blank">#}
+{##}
+{#			<img src="/_m/cache/54/90/549025ad4b28a63b980c8c98612c3aba.jpg" data-original="http://www.5migrate.com/_m/cache/54/90/549025ad4b28a63b980c8c98612c3aba.jpg" style="width: 250px; height: 250px; margin: 0px; display: inline;">#}
+{##}
+{#			</a>#}
+{#		</div>#}
+{##}
+{##}
+{#		<a class="title" href="/EB1/104.htm" target="_blank">你了解纽约的发展历史吗</a>#}
+{##}
+{##}
+{#		<div class="summary">#}
+{#			纽约的历史较短，只有300多年。最早的居民点在曼哈顿岛的南端，原是印第安人的住地。#}
+{#			<span class="more"><a href="/EB1/104.htm" target="_blank">[详细]</a></span>#}
+{#		</div>#}
+{##}
+{#	</li>#}
+{##}
+{#</ul></div></div><div class="widget widget_98_67 standardWidget"><div class="wHeader">#}
+{#<h2 class="caption">EB-5投资移民</h2>#}
+{##}
+{#<a class="more" href="/EB5/">更多...</a>#}
+{#</div><div class="wBody">#}
+{##}
+{##}
+{##}
+{##}
+{#<ul class="summaryList summaryList_ArticleModule">#}
+{##}
+{#	<li>#}
+{##}
+{#		<div class="imgBox">#}
+{#			<a href="/EB5/112.htm" target="_blank">#}
+{##}
+{#			<img src="/static/_Client/Images/blank.png" data-original="/static/_Client/Images/noimage.jpg" style="width:250px; height:250px;">#}
+{##}
+{#			</a>#}
+{#		</div>#}
+{##}
+{##}
+{#		<a class="title" href="/EB5/112.htm" target="_blank">联合国总部大厦旅游攻略</a>#}
+{##}
+{##}
+{#		<div class="summary">#}
+{#			联合国总部对于许多人来说都神秘的，那原本就应该是一个秘密的地方大家一定想不到居然是对外免费开放的景点。联合国是请允许游客观光的，根据先到先得的原则可以免费领取门票，如果是散客的可以直接领取#}
+{#			<span class="more"><a href="/EB5/112.htm" target="_blank">[详细]</a></span>#}
+{#		</div>#}
+{##}
+{#	</li>#}
+{##}
+{#</ul></div></div><div class="widget widget_97_68 standardWidget"><div class="wHeader">#}
+{#<h2 class="caption">签证申请</h2>#}
+{##}
+{#<a class="more" href="/qzsq/">更多...</a>#}
+{#</div><div class="wBody">#}
+{##}
+{##}
+{##}
+{##}
+{#<ul class="summaryList summaryList_ArticleModule">#}
+{##}
+{#	<li>#}
+{##}
+{#		<div class="imgBox">#}
+{#			<a href="/qzsq/120.htm" target="_blank">#}
+{##}
+{#			<img src="/static/_Client/Images/blank.png" data-original="/static/_Client/Images/noimage.jpg" style="width:250px; height:250px;">#}
+{##}
+{#			</a>#}
+{#		</div>#}
+{##}
+{##}
+{#		<a class="title" href="/qzsq/120.htm" target="_blank">美国签证知识普及</a>#}
+{##}
+{##}
+{#		<div class="summary">#}
+{##}
+{#			<span class="more"><a href="/qzsq/120.htm" target="_blank">[详细]</a></span>#}
+{#		</div>#}
+{##}
+{#	</li>#}
+{##}
+{#</ul></div></div><div class="widget widget_101_30 standardWidget"><div class="wHeader">#}
+{#<h2 class="caption">移民咨询</h2>#}
+{##}
+{#<a class="more" href="/ymzx/">更多...</a>#}
+{#</div><div class="wBody">#}
+{##}
+{##}
+{##}
+{##}
+{#<ul class="summaryList summaryList_ArticleModule">#}
+{##}
+{#	<li>#}
+{##}
+{#		<div class="imgBox">#}
+{#			<a href="/ymzx/53.htm" target="_blank">#}
+{##}
+{#			<img src="/static/_Client/Images/blank.png" data-original="/_m/cache/8e/1c/8e1c9c6801b209acf105baa364a417ca.jpg" style="width:250px; height:200px; margin:25px 0px 25px 0px;">#}
+{##}
+{#			</a>#}
+{#		</div>#}
+{##}
+{##}
+{#		<a class="title" href="/ymzx/53.htm" target="_blank" title="澳洲10年往返签正式实施啦！澳洲留学探亲好利器！">澳洲10年往返签正式实施啦...</a>#}
+{##}
+{##}
+{#		<div class="summary">#}
+{#			今年二月份，外交部长Bishop曾与中国外长王毅共见记者时表示，澳大利亚正在开展针对中国游客发放十年有效签证的试点工作，并敦促尽快审批发放中国游客签证，以吸引更多中国游客赴澳旅游。#}
+{#就在这两天，澳洲最权威的主流媒体之一SBS报道了最新消息，澳洲联邦移民部已正式通知澳洲参议院委员会：#}
+{#			<span class="more"><a href="/ymzx/53.htm" target="_blank">[详细]</a></span>#}
+{#		</div>#}
+{##}
+{#	</li>#}
+{##}
+{#</ul></div></div></div></div></div><div class="separator clear"></div></div>#}
+
+
+{% endblock %}
