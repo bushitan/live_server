@@ -4,6 +4,38 @@ from models import *
 from live_server.settings import *
 from lib.admin_config import *
 
+
+
+from django.utils.translation import gettext_lazy as _
+class TagFilter(admin.SimpleListFilter):
+	title = _('主栏目')
+	parameter_name = 'father'
+	def lookups(self, request, model_admin):
+		# 查行业大类的标签名
+		# _father_tag = Tag.objects.filter(is_main = YES)
+
+		_father_tag = MGRTag.objects.filter(father = None)
+		_tup_list = ()
+		for f in _father_tag:
+			_key = f.id
+			_value = str( f.name_admin.encode('UTF-8') )
+			_tup = ( (str(_key),_(_value)),)
+			_tup_list = _tup_list + _tup
+		return _tup_list
+
+	def queryset(self, request, queryset):
+		if self.value() != None:
+			return queryset.filter(father =  self.value() )
+		else :
+			return queryset
+
+class ArticleFilter(TagFilter):
+	def queryset(self, request, queryset):
+		if self.value() != None:
+			return queryset.filter(tag__father =  self.value() )
+		else :
+			return queryset
+
 class MGRTagAdmin(AppAdmin):
 
 	# fieldsets = ('web_site',"father",)
@@ -16,7 +48,7 @@ class MGRTagAdmin(AppAdmin):
 		}),
     )
 	list_editable = ('web_site',"father","name","name_admin","serial","pid",)
-	list_filter = ('web_site',"father",)
+	list_filter = ('web_site',TagFilter,"father",)
 
 admin.site.register(MGRTag,MGRTagAdmin)
 
@@ -44,9 +76,15 @@ class MGRArticleAdmin(AppAdmin):
 			'fields': ['summary',"source",'content',]
 		}),
     )
+
 	# list_editable = ('tag',)
-	list_filter = ('tag',)
+	list_filter = (ArticleFilter,'tag',)
 	raw_id_fields = ('tag',)
+
+	# def formfield_for_foreignkey(self, db_field, request, **kwargs):
+	# 	if db_field.name == "tag":
+	# 		kwargs["queryset"] = MGRTag.objects.filter(father = None)
+	# 		return super(MGRArticleAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 	class Media:
 		js = ( STATIC_URL + 'tinymce/tinymce.min.js',
 			   STATIC_URL + 'tinymce/textareas.js')

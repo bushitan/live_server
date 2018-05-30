@@ -1,0 +1,282 @@
+{% extends "lx_base.html" %}
+
+{%block main%}
+<div name="main" class="container container_24 tplArea main"><div class="grid grid_17"><div class="widget widget_172_91 standardWidget" data-title="留学推广" href="/lxtg/" target="_blank"><div class="wBody">
+
+{#    广告图#}
+<div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule">
+	<div class="ImageDisplayBox imageDisplay_172" style="height: 100px; position: relative;">
+        <a style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1;" href="/lxtg/260.htm" target="_blank">
+            <img src="{{ one_article.title }}" data-original="{{ one_article.title }}" style="width: 670px; height: 100px; margin: 0px; display: inline;" alt="推广">
+        </a>
+	</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	function init(){
+		var box = $(".imageDisplay_172");
+		box.each(function(){
+			if(this.initCycle)
+				return;
+			this.initCycle = true;
+
+			var box = $(this);
+			var wrap = box.closest('.ImageDisplayBoxWrap');
+
+
+			box.cycle({
+
+				before: function(curr, next, opts) {
+					var img = $(next).children('img');
+
+					var src = img.data("data-original");
+					if(src) {
+						img.attr("src", src);
+						img.removeData("data-original");
+					}
+				},
+				timeout: 5000,
+				pause: 1,
+				fx: "fade"
+			});
+		});
+	}
+	ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle/jquery.cycle.all.js"]}, init);
+});
+</script></div></div></div><div class="grid grid_7"><div class="customContent">
+{#    2 logo#}
+    <img src="{{ two_article.title }}" alt="" width="260" height="100">
+</div></div><div class="separator clear"></div><div class="grid grid_8"><div class="widget widget_327_156 standardWidget lxzx"><div class="wHeader">
+<h2 class="caption">
+<a href="/yglxdt1/" target="_blank">英国留学地图</a>
+</h2>
+</div><div class="xx_map">
+    <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule ">
+	<div class="ImageDisplayBox imageDisplay_327" style="height:550px; position: relative;">
+        <p><iframe class="ueditor_baidumap" src="http://www.lwdweb.top:27230/Content/admin/js/ueditor/dialogs/map/show.html#center={{ three_article.title }},{{ three_article.subtitle }}&amp;zoom=18&amp;width=310&amp;height=565&amp;markers={{ three_article.title }},{{ three_article.subtitle }}&amp;markerStyles=l,A" frameborder="0" width="310" height="565"></iframe></p>
+	</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	function init(){
+		var box = $(".imageDisplay_327");
+		box.each(function(){
+			if(this.initCycle)
+				return;
+			this.initCycle = true;
+
+			var box = $(this);
+			var wrap = box.closest('.ImageDisplayBoxWrap');
+
+
+			box.cycle({
+
+				before: function(curr, next, opts) {
+					var img = $(next).children('img');
+
+					var src = img.data("data-original");
+					if(src) {
+						img.attr("src", src);
+						img.removeData("data-original");
+					}
+				},
+				timeout: 5000,
+				pause: 1,
+				fx: "fade"
+			});
+		});
+	}
+	ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle/jquery.cycle.all.js"]}, init);
+});
+</script></div></div></div>
+
+    <style>
+{#        地图高度#}
+        .xx_map{
+             border: 3px solid #e5e5e5;
+            background-color: #FFF;
+             height: 565px;
+        }
+{#        .xx_map_border{border: 3px solid #e5e5e5; padding: 5px}#}
+
+        .xx_mark{
+            font-size: 14px;
+            font-weight: bolder;
+            margin: 0 15px;
+            width: 30px !important;
+
+        }
+{#        隐藏内容#}
+        .tablea{
+            height: 150px;
+            overflow: hidden;
+        }
+        .box{
+	        display:none
+        }
+{#        .hover {#}
+{#            background:#eee;#}
+{#        }#}
+       .widgetSet ul.setHeader li {
+            padding: 0 10px !important;
+           font-size: 10px;
+       }
+
+        .xx_know{
+{#            display: flex;#}
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap:wrap ;
+            padding: 5px;
+{#             flex-direction:row;#}
+        }
+        .xx_know div{
+            width: 120px;
+            height: 80px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            font-size: 15px;
+            background: #E5E5E5;
+            color: #666;
+            border-bottom: 1px solid #ccc;
+        }
+
+
+    </style>
+    <script>
+        $(function(){
+              $(".tablea").find(".box:first").show();    //为每个BOX的第一个元素显示
+              $("#oranger li").on("mouseover",function(){ //给a标签添加事件
+                  var index=$(this).index();  //获取当前a标签的个数
+                  console.log(index)
+{#                 $(this).parent().next().find(".box").hide().eq(index).show(); //返回上一层，在下面查找css名为box隐藏，然后选中的显示#}
+                  $(this).parent().parent().next().find(".box").hide().eq(index).show();
+                  $(this).addClass("current").siblings().removeClass("current"); //a标签显示，同辈元素隐藏
+              })
+        })
+    </script>
+
+   <div class="grid grid_16">
+        <div class="widgetSet lxbjj ui-sortable-handle ">
+            <ul class="setHeader" >
+                <span class="xx_mark">&nbsp;中小学&nbsp;</span>
+                <span id="oranger">
+                    <li class="firstTab">院校列表</li>
+                    <li class="">申请时间规划表</li>
+                    <li class="lastTab current">申请攻略</li>
+                </span>
+            </ul>
+            <div class="setBody tablea">
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   <div class="grid grid_16">
+        <div class="widgetSet lxbjj ui-sortable-handle ">
+            <ul class="setHeader" >
+                <span class="xx_mark">&nbsp;&nbsp;&nbsp;本科&nbsp;&nbsp;&nbsp;</span>
+                <span id="oranger">
+                    <li class="firstTab">专业解析</li>
+                    <li class="">留学、移民方案</li>
+                    <li class="firstTab">院校列表</li>
+                    <li class="">申请时间规划表</li>
+                    <li class="lastTab current">申请攻略</li>
+                </span>
+            </ul>
+            <div class="setBody tablea">
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   <div class="grid grid_16">
+        <div class="widgetSet lxbjj ui-sortable-handle ">
+            <ul class="setHeader" >
+                <span class="xx_mark">&nbsp;&nbsp;&nbsp;硕士&nbsp;&nbsp;&nbsp;</span>
+                <span id="oranger">
+                    <li class="firstTab">专业解析</li>
+                    <li class="">留学、移民方案</li>
+                    <li class="firstTab">院校列表</li>
+                    <li class="">申请时间规划表</li>
+                    <li class="lastTab current">申请攻略</li>
+                </span>
+            </ul>
+            <div class="setBody tablea">
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+                <div class="widgetContainer box" data-name="widgetframe">
+                    <ul class="dateList dateList_ArticleModule  "  >
+                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#   <div class="grid grid_16" >#}
+{#        <div class="widgetSet lxbjj ui-sortable-handle ">#}
+{#            <ul class="setHeader" >#}
+{#                <span class="xx_mark">我想了解</span>#}
+{#            </ul>#}
+{#                <div class="xx_know"  >#}
+{#                    <div>1</div>#}
+{#                    <div>1</div>#}
+{#                    <div>1</div>#}
+{#                    <div>1</div>#}
+{#                    <div>1</div>#}
+{#                </div>#}
+{#        </div>#}
+{#    </div>#}
+
+</div>
+
+
+
+
+{% endblock %}

@@ -1,14 +1,13 @@
-
+﻿
 
 
 
 <!DOCTYPE html>
 
-<html lang="zh-cn">
+<html> 
 
 
 <head>
-    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title> 我要留学 - 广西南宁麦格瑞出国咨询有限公司</title>
 
@@ -22,14 +21,15 @@
     <link href="http://www.lwdweb.top:27230/Content/front/css/common.css" rel="stylesheet" media="all" />
     <link href="http://www.lwdweb.top:27230/Content/front/css/base.css" rel="stylesheet" media="all" />
     <link href="http://www.lwdweb.top:27230/Content/front/css/c.css" rel="stylesheet" media="all" />
- 
+
+    <link href="http://www.lwdweb.top:27230/Content/front/css/xx.css" rel="stylesheet" />
     
-    <link href="http://www.lwdweb.top:27230/Content/front/css/yiming/c.css" rel="stylesheet" />
-    <link href="http://www.lwdweb.top:27230/Content/front/css/css(1).css" rel="stylesheet" />
-
+    
+    <link href="http://www.lwdweb.top:27230/Content/front/css/liuxue/c.css" rel="stylesheet" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/liuxue/c(1).css" rel="stylesheet" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/liuxue/css(1).css" rel="stylesheet" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/liuxue/css.css" rel="stylesheet" />
     <link href="http://www.lwdweb.top:27230/Content/front/css/superfish.css" rel="stylesheet" />
-
-
 
     <script src="http://www.lwdweb.top:27230/Content/front/js/jquery.js"></script>
     <script src="http://www.lwdweb.top:27230/Content/front/js/LAB.min.js"></script>
@@ -90,37 +90,38 @@
 
 
 
+<!--导航菜单 开始标志-->
 
 
-<!--导航栏开始-->
 
 
 
 <div class="container container_24 mainbav">
     <div class="grid grid_24 menu">
         <div class="grid grid_3 alpha">
-            <div class="widget widget_41_28 countries" data-title="移民国家">
-                <ul class="sf-menu navigationMenu navigationMenu_41 sf-js-enabled sf-shadow">
+            <div class="widget widget_3_3 ui-sortable-handle countries" data-title="留学国家">
+                <ul class="sf-menu navigationMenu navigationMenu_3 sf-js-enabled sf-shadow">
+
                     <li>
-                        <a href="/Front/LiuXue">我要留学</a>
+                        <a href="/Front/YiMing">我要移民</a>
+
                     </li>
 
                 </ul>
                 <script type="text/javascript">
                     (function ($) {
                         $(function () {
-                            $('ul.navigationMenu_41').superfish();
+                            $('ul.navigationMenu_3').superfish();
                         });
                     })(jQuery);
                 </script>
                 <div class="clear"></div>
             </div>
-        </div>
-        <div class="grid grid_21 omega">
-            <div class="widget widget_40_27 submenu" data-title="移民主导航">
-                <ul class="sf-menu navigationMenu navigationMenu_40 sf-js-enabled sf-shadow">
+        </div><div class="grid grid_21 omega">
+            <div class="widget widget_4_1 submenu ui-sortable-handle" data-title="主导航">
+                <ul class="sf-menu navigationMenu navigationMenu_4 sf-js-enabled sf-shadow">
 
-                    {%  for nav in nav_list %}
+               {%  for nav in nav_list %}
                         {% if forloop.counter0 == nav_index %}
                              <li class="current">
                         {% else %}
@@ -128,43 +129,51 @@
                         {% endif %}
 
                         {% if forloop.first %}
-                              <a href="/live/xx_mgr/ym/index/">{{ nav.name }}</a>
+                              <a href="/live/xx_mgr/lx/index/">{{ nav.name }}</a>
                         {% elif forloop.last %}
-                             <a href="/live/xx_mgr/ym/last/">{{ nav.name }}</a>
+                             <a href="/live/xx_mgr/lx/last/">{{ nav.name }}</a>
                         {% else %}
-                             <a href="/live/xx_mgr/ym/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
+                             <a href="/live/xx_mgr/lx/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
                         {% endif %}
                         </li>
                     {%  endfor %}
 
 {#                <li class="current">#}
-{#                    <a href="/Front/YiMing">首页</a>#}
+{#                    <a href="/Front/LiuXue">首页</a>#}
 {##}
 {#                </li>#}
 {##}
 {#                <li>#}
-{#                    <a href="/Front/MenuYiMing?menuID=2456bf198d3147229d5daeb11b9a2c92">美国移民</a>#}
+{#                    <a href="/Front/MenuLiuXue?MenuID=bc61f8d968ed419c86385259aa232062">美国留学</a>#}
 {##}
 {#                </li>#}
 {#                <li>#}
-{#                    <a href="/Front/MenuYiMing?menuID=22424d8a2ae744c0974b30b5c88f1ed9">澳洲移民</a>#}
+{#                    <a href="/Front/MenuLiuXue?MenuID=a246a5cecf0441cc889a2bdef08d8f3d">英国留学</a>#}
 {##}
 {#                </li>#}
 {#                <li>#}
-{#                    <a href="/Front/MenuYiMing?menuID=39f74ba913aa4d1abcee505077a6507b">加拿大移民</a>#}
+{#                    <a href="/Front/MenuLiuXue?MenuID=a371d81f9d5248be93e7896b1545aaad">加拿大留学</a>#}
 {##}
 {#                </li>#}
 {#                <li>#}
-{#                    <a href="/Front/MenuYiMing?menuID=d9c647f01f984b94a25cdd22a2d47ec6">新西兰移民</a>#}
+{#                    <a href="/Front/MenuLiuXue?MenuID=8eb3b8ff2a404cedbc996a677f21e4b3">欧亚留学</a>#}
 {##}
 {#                </li>#}
 {#                <li>#}
-{#                    <a href="/Front/MenuYiMing?menuID=bd1190a62c504fedbfccf594e6f92fff">欧洲移民</a>#}
+{#                    <a href="/Front/MenuLiuXue?MenuID=436cb9f06f7c45f39ab19b60491f1fdb">澳新留学</a>#}
 {##}
 {#                </li>#}
+{#                <li>#}
+{#                    <a href="/Front/MenuLiuXue?MenuID=b9a5012e253c4ba7bf75d4b3adf1d8b8">海外游学</a>#}
+{##}
+{#                </li>#}
+{#                    <li>#}
+{#                        <a href="/Front/SuccessCase?type=2">成功案例</a>#}
+{##}
+{#                    </li>#}
 {##}
 {#                    <li>#}
-{#                        <a href="/Front/AboutUs?type=1">关于我们</a>#}
+{#                        <a href="/Front/AboutUs?type=2">关于我们</a>#}
 {##}
 {#                    </li>#}
 
@@ -172,7 +181,7 @@
                 <script type="text/javascript">
                     (function ($) {
                         $(function () {
-                            $('ul.navigationMenu_40').superfish();
+                            $('ul.navigationMenu_4').superfish();
                         });
                     })(jQuery);
                 </script>
@@ -181,23 +190,13 @@
         </div>
     </div>
 </div>
-
- {%block main%} {% endblock %}
-
-{#    <div>#}
-{#        <img  src="http://img.12xiong.top/xx_mgr/footer.png" />#}
-{#    </div>#}
-<!--导航栏结束-->
-
-
+<!--导航菜单 结束标志-->
 <!--轮播图开始-->
 
 
 
 
-<!--轮播图结束-->
-
-
+ {%block main%} {% endblock %}
 
 
 

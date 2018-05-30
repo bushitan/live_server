@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> 我要留学 - 广西南宁麦格瑞出国咨询有限公司</title>
+
+
+    <meta name="keywords" content="广西麦格瑞,麦格瑞出国,广西留学移民,广西出国,南宁出国">
+    
+    <link href="http://www.lwdweb.top:27230/Content/front/css/reset.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/text.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/960_24_col.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/gsreset.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/common.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/base.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/c.css" rel="stylesheet" media="all" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/css.css" rel="stylesheet" media="all" />
+
+    <link href="http://www.lwdweb.top:27230/Content/front/css/xx.css" rel="stylesheet" />
+
+    
+    <link href="http://www.lwdweb.top:27230/Content/front/css/yiming/c.css" rel="stylesheet" />
+    <link href="http://www.lwdweb.top:27230/Content/front/css/css(1).css" rel="stylesheet" />
+
+    <link href="http://www.lwdweb.top:27230/Content/front/css/superfish.css" rel="stylesheet" />
+
+
+
+    <script src="http://www.lwdweb.top:27230/Content/front/js/jquery.js"></script>
+    <script src="http://www.lwdweb.top:27230/Content/front/js/LAB.min.js"></script>
+    <script src="http://www.lwdweb.top:27230/Content/front/js/ensureMedia.js"></script>
+    <script src="http://www.lwdweb.top:27230/Content/front/js/jquery.cookie.js"></script>
+    <script src="http://www.lwdweb.top:27230/Content/front/js/common.js"></script>
+    <script src="http://www.lwdweb.top:27230/Content/front/js/base.js"></script>
+    
+    <script src="http://www.lwdweb.top:27230/Content/front/js/widgetSet.js"></script>
+    <script src="http://www.lwdweb.top:27230/Content/front/js/superfish.js"></script>
+   
+</head>
+
+<body>
+    <div class="container container_24 top_lj">
+        <div class="grid grid_24 top_1">
+            <div class="customContent">您好，欢迎来到E留学网官方网站！！！</div>
+        </div>
+    </div>
+    <div class="container container_24 nav_bg">
+        <div class="grid grid_24 nav">
+            <div class="grid grid_6 alpha logo">
+                <div class="customContent">
+                    <a href="http://www.5migrate.com/">
+                        <img src="http://www.lwdweb.top:27230/Content/front/images/temp/LOGO1.png" alt="" width="220" height="80">
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid_10">
+                <div class="widget widget_74_30" data-title="移民资讯" href="/ymzx/">
+                    <form method="get" action="/ymzx/" class="searchForm">
+
+                        <ul class="fieldlist">
+
+                            <li>
+
+                                <label for="id_q">全站搜索</label>
+                                <input id="id_q" name="q" type="text">
+                            </li>
+
+                        </ul>
+                        <div class="toolbar">
+                            <input type="submit" value="搜索">
+                        </div>
+                    </form>
+
+                    <script type="text/javascript">
+                        $("#id_q").prev().text("全站搜索");
+                    </script>
+                </div>
+            </div>
+            <div class="grid grid_8 omega phone"></div>
+        </div>
+    </div>
+    
+
+
+
+
+<!--导航栏开始-->
+
+
+
+<div class="container container_24 mainbav">
+    <div class="grid grid_24 menu">
+        <div class="grid grid_3 alpha">
+            <div class="widget widget_41_28 countries" data-title="移民国家">
+                <ul class="sf-menu navigationMenu navigationMenu_41 sf-js-enabled sf-shadow">
+                    <li>
+                        <a href="/Front/LiuXue">我要留学</a>
+                    </li>
+
+                </ul>
+                <script type="text/javascript">
+                    (function ($) {
+                        $(function () {
+                            $('ul.navigationMenu_41').superfish();
+                        });
+                    })(jQuery);
+                </script>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="grid grid_21 omega">
+            <div class="widget widget_40_27 submenu" data-title="移民主导航">
+                <ul class="sf-menu navigationMenu navigationMenu_40 sf-js-enabled sf-shadow">
+
+                    {%  for nav in nav_list %}
+                        {% if forloop.counter0 == nav_index %}
+                             <li class="current">
+                        {% else %}
+                            <li class="">
+                        {% endif %}
+
+                        {% if forloop.first %}
+                              <a href="/live/xx_mgr/ym/index/">{{ nav.name }}</a>
+                        {% elif forloop.last %}
+                             <a href="/live/xx_mgr/ym/last/">{{ nav.name }}</a>
+                        {% else %}
+                             <a href="/live/xx_mgr/ym/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
+                        {% endif %}
+                        </li>
+                    {%  endfor %}
+
+{#                <li class="current">#}
+{#                    <a href="/Front/YiMing">首页</a>#}
+{##}
+{#                </li>#}
+{##}
+{#                <li>#}
+{#                    <a href="/Front/MenuYiMing?menuID=2456bf198d3147229d5daeb11b9a2c92">美国移民</a>#}
+{##}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="/Front/MenuYiMing?menuID=22424d8a2ae744c0974b30b5c88f1ed9">澳洲移民</a>#}
+{##}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="/Front/MenuYiMing?menuID=39f74ba913aa4d1abcee505077a6507b">加拿大移民</a>#}
+{##}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="/Front/MenuYiMing?menuID=d9c647f01f984b94a25cdd22a2d47ec6">新西兰移民</a>#}
+{##}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="/Front/MenuYiMing?menuID=bd1190a62c504fedbfccf594e6f92fff">欧洲移民</a>#}
+{##}
+{#                </li>#}
+{##}
+{#                    <li>#}
+{#                        <a href="/Front/AboutUs?type=1">关于我们</a>#}
+{##}
+{#                    </li>#}
+
+                </ul>
+                <script type="text/javascript">
+                    (function ($) {
+                        $(function () {
+                            $('ul.navigationMenu_40').superfish();
+                        });
+                    })(jQuery);
+                </script>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ {%block main%} {% endblock %}
+
+{#    <div>#}
+{#        <img  src="http://img.12xiong.top/xx_mgr/footer.png" />#}
+{#    </div>#}
+<!--导航栏结束-->
+
+
+<!--轮播图开始-->
+
+
+
+
+<!--轮播图结束-->
+
+
+
+
+
+
+    <div name="ymgj_main" class="container container_24 tplArea ymgj_main">
+        <div class="grid grid_24 tubiao">
+            <div class="widget widget_54_15" data-title="图标">
+                <style type="text/css">
+                    #apDiv1 {
+                        position: relative;
+                        width: 960px;
+                        height: 200px;
+                    }
+
+                    #apDiv2 {
+                        position: absolute;
+                        background: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png) no-repeat 0px -0px;
+                        width: 180px;
+                        height: 180px;
+                        z-index: 1;
+                        left: 12px;
+                        top: 9px;
+                        background-image: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png);
+                    }
+
+                    #apDiv3 {
+                        position: absolute;
+                        background: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png) no-repeat 0px -200px;
+                        width: 180px;
+                        height: 180px;
+                        z-index: 1;
+                        left: 200px;
+                        top: 9px;
+                        background-image: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png);
+                    }
+
+                    #apDiv4 {
+                        position: absolute;
+                        background: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png) no-repeat 0px -400px;
+                        width: 180px;
+                        height: 180px;
+                        z-index: 1;
+                        left: 388px;
+                        top: 9px;
+                        background-image: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png);
+                    }
+
+                    #apDiv5 {
+                        position: absolute;
+                        background: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png) no-repeat 0px -600px;
+                        width: 180px;
+                        height: 180px;
+                        z-index: 1;
+                        left: 578px;
+                        top: 9px;
+                        background-image: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png);
+                    }
+
+                    #apDiv6 {
+                        position: absolute;
+                        background: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png) no-repeat 0px -802px;
+                        width: 180px;
+                        height: 180px;
+                        z-index: 1;
+                        left: 767px;
+                        top: 9px;
+                        background-image: url(http://www.lwdweb.top:27230/Content/front/images/bgghhh.png);
+                    }
+                </style>
+
+
+                <div id="apDiv1">
+
+                    <a href="#"><div id="apDiv2"></div></a>
+
+                    <a href="#"><div id="apDiv3"></div></a>
+
+                    <a href="#"><div id="apDiv4"></div></a>
+
+                    <a href="#"><div id="apDiv5"></div></a>
+
+                    <a href="#"><div id="apDiv6"></div></a>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <!--底部菜单 开始-->
+
+        <div class="container container_24 footer">
+            <div class="grid grid_24 foot">
+                <div class="widget widget_42_4" data-title="页面块">
+                    <div style="text-align: center;">
+                        <span style="font-size: small;">Copyright © 2016-2018&nbsp;My Great&nbsp;Overseas Consultancy Co., Ltd. All rights reserved. </span>
+                        <br><span style="font-size: small;">麦格瑞出国咨询有限公司版权所有&nbsp;&nbsp;&nbsp; 备案号：桂ICP备16006260号-1 </span>
+                        <br><span style="font-size: small;">
+                            电话：0771-5804101（南宁）0779-3996693
+                            <span style="font-size: small;">（北海）</span>
+                            邮箱：<span style="color: #ffffff;">enquiry@5migrate.com</span>
+                        </span>
+                        <br>
+                        <span style="font-size: small;">地址：广西南宁市青秀区航洋国际C座1518 邮编：530022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--底部菜单 结束-->
+        <!--联系人开始按钮-->
+        <div class="container container_24">
+            <div class="grid grid_24">
+                <div class="widget widget_86_61" data-title="页面块">
+                    <style type="text/css">
+                        html, body {
+                            font-size: 12px;
+                            font-family: "微软雅黑";
+                            outline: none;
+                            color: #666;
+                            background: #fff;
+                        }
+
+                        ul, ol {
+                            list-style: none;
+                        }
+
+                        img {
+                            border: none;
+                            outline: none;
+                        }
+
+                        a {
+                            color: #666;
+                            text-decoration: none;
+                            outline: none;
+                        }
+
+                            a:hover {
+                                color: #e8431f;
+                            }
+
+                        /*浮动客服*/
+                        #floatDivBoxs {
+                            width: 170px;
+                            background: #fff;
+                            position: fixed;
+                            top: 180px;
+                            right: 0;
+                            z-index: 999;
+                        }
+
+                            #floatDivBoxs .floatDtt {
+                                width: 100%;
+                                height: 45px;
+                                line-height: 45px;
+                                background: #f08326;
+                                color: #fff;
+                                font-size: 18px;
+                                text-indent: 22px;
+                                position: relative;
+                            }
+
+                        .floatDtt_a {
+                            width: 100%;
+                            height: 45px;
+                            line-height: 45px;
+                            background: url(http://www.lwdweb.top:27230/Content/front/images/temp/fixCont.jpg) no-repeat 0px -2px;
+                            color: #fff;
+                            font-size: 18px;
+                            text-indent: 50px;
+                            position: relative;
+                        }
+
+                            .floatDtt_a a {
+                                color: #fff;
+                            }
+
+                        #floatDivBoxs .floatDqq {
+                            padding: 0 0px;
+                        }
+
+                            #floatDivBoxs .floatDqq li {
+                                height: 45px;
+                                line-height: 45px;
+                                font-size: 15px;
+                                border-bottom: 1px solid #e3e3e3;
+                                padding: 0 0 0 50px;
+                            }
+
+                        #floatDivBoxs .floatDtxt {
+                            font-size: 18px;
+                            color: #fff;
+                            padding: 12px 14px;
+                            background: #f08326;
+                        }
+
+                        #floatDivBoxs .floatDtel {
+                            padding: 0 0 15px 10px;
+                            font-size: 19px;
+                            font-family: "微软雅黑";
+                            color: #F00;
+                        }
+
+                            #floatDivBoxs .floatDtel img {
+                                display: block;
+                            }
+
+                        #floatDivBoxs .floatDbg {
+                            width: 100%;
+                            height: 20px;
+                            background: url(http://www.lwdweb.top:27230/Content/front/images/temp/online_botbg.jpg) no-repeat;
+                            box-shadow: -2px 0 3px rgba(0,0,0,0.25);
+                        }
+
+                        .floatShadow {
+                            background: #fff;
+                            box-shadow: -2px 0 3px rgba(0,0,0,0.25);
+                            margin-top: 0px;
+                        }
+
+                        #rightArrow {
+                            width: 50px;
+                            height: 45px;
+                            background: url(http://www.lwdweb.top:27230/Content/front/images/temp/online_arrow.jpg) no-repeat;
+                            position: fixed;
+                            top: 180px;
+                            right: 170px;
+                            z-index: 999;
+                        }
+
+                            #rightArrow a {
+                                display: block;
+                                height: 45px;
+                            }
+                    </style>
+
+                    <div id="rightArrow"><a href="javascript:;" title="在线客户"></a></div>
+                    <div id="floatDivBoxs">
+                        <div class="floatDtt">在线客服</div>
+                        <div class="floatShadow">
+                            <ul class="floatDqq">
+                                <li style="padding-left:0px;"><a target="_blank" href="tencent://message/?uin=2500029234&amp;Site=sc.chinaz.com&amp;Menu=yes"><img src="http://www.lwdweb.top:27230/Content/front/images/temp/qq.png" align="absmiddle">&nbsp;&nbsp;在线客服1号</a></li>
+                                <li style="padding-left:0px;"><a target="_blank" href="tencent://message/?uin=1132412184&amp;Site=sc.chinaz.com&amp;Menu=yes"><img src="http://www.lwdweb.top:27230/Content/front/images/temp/qq.png" align="absmiddle">&nbsp;&nbsp;在线客服2号</a></li>
+                                <li style="padding-left:0px;"><a target="_blank" href="tencent://message/?uin=2109269677&amp;Site=sc.chinaz.com&amp;Menu=yes"><img src="http://www.lwdweb.top:27230/Content/front/images/temp/qq.png" align="absmiddle">&nbsp;&nbsp;在线客服3号</a></li>
+                            </ul>
+                            <div class="floatDtxt">热线电话</div>
+                            <div class="floatDtel"><br>0771- 5804101<br>0779- 3996693</div>
+                            <div style="text-align:center;padding:10PX 0 5px 0;background:#EBEBEB;">
+                                <img src="http://www.lwdweb.top:27230/Content/front/images/temp/wap_ico.jpg"><br>
+                                微信公众账号
+                            </div>
+                        </div>
+                        <div class="floatDtt_a"><a href="http://www.5migrate.com/">返回主页</a></div>
+                        <div class="floatDbg"></div>
+                    </div>
+
+                    <script type="text/javascript">
+                        var flag = 1;
+                        $('#rightArrow').click(function () {
+                            if (flag == 1) {
+                                $("#floatDivBoxs").animate({ right: '-175px' }, 300);
+                                $(this).animate({ right: '-5px' }, 300);
+                                $(this).css('background-position', '-50px 0');
+                                flag = 0;
+                            } else {
+                                $("#floatDivBoxs").animate({ right: '0' }, 300);
+                                $(this).animate({ right: '170px' }, 300);
+                                $(this).css('background-position', '0px 0');
+                                flag = 1;
+                            }
+                        });
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <!--结束联系人菜单按钮-->
+</body>
+</html>

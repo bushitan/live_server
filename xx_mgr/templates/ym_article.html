@@ -1,0 +1,67 @@
+{% extends "ym_base.html" %}
+
+{%block main%}
+    <style>
+    .wHeader {
+        overflow: auto;
+        zoom: 1;
+        background: url("") !important;
+        background-color: #d9580b !important;
+        height: 55px;
+        border-bottom: none;
+    }
+    </style>
+<div name="ymgj_main" class="container container_24 tplArea ymgj_main">
+    <div class="widget widget__30 contentpage" data-title="移民资讯" href="/ymzx/">
+
+
+
+
+
+<div class="article">
+	<h1 class="title">{{ article.title }}</h1>
+
+	<div class="info">
+
+
+		<div class="infoItem">{{ article.issue_time|date:"Y/m/d" }}</div>
+        <div class="infoItem">阅读次数:{{ article.click_rate }}</div>
+		<div class="tools">
+			阅读字体
+			【
+			<a href="javascript:SetReadArticleFontSize('16px');">大</a>
+			<a href="javascript:SetReadArticleFontSize('14px');">中</a>
+			<a href="javascript:SetReadArticleFontSize('12px');">小</a>
+			】
+		</div>
+	</div>
+	<div class="content">
+        {% autoescape off %}
+            {{ article.content }}
+        {% endautoescape %}
+
+	</div>
+
+{#	<div class="expandRead">#}
+{##}
+{#		<div class="next">下一篇: <a href="/ymzx/52.htm">美国大选结果出炉 川普胜任 留学生们该哭该笑？</a></div>#}
+{#	</div>#}
+
+	<ul class="toolbar">
+		<li><a href="javascript:history.go(-1);">返回</a></li>
+		<li><a href="javascript:window.close();">关闭</a></li>
+{#		<li><a href="javascript:window.print();">打印</a></li>#}
+	</ul>
+</div>
+<script type="text/javascript">
+function SetReadArticleFontSize(size){
+	jQuery(".article .content").css('font-size', size);
+}
+</script>
+
+
+
+</div>
+</div>
+
+{% endblock %}
