@@ -1,0 +1,40 @@
+{% extends "ym_base.html" %}
+
+{%block main%}
+    <style>
+    .wHeader {
+        overflow: auto;
+        zoom: 1;
+        background: url("") !important;
+        background-color: #d9580b !important;
+        height: 55px;
+        border-bottom: none;
+    }
+    </style>
+<div name="ymgj_main" class="container container_24 tplArea ymgj_main">
+    <div class="grid ">
+            <div class="widget widget_47_30 standardWidget ui-sortable-handle lxzx">
+                <div class="wHeader">
+                    <h2 class="caption">移民资讯</h2>
+
+{#                    <a class="more" href="/Front/YimingMenuDetail?menuID=6a6b7079a1c8481eb02211d8e389f140&amp;modelID=a1a3f3d6ce934abbbcb2dfdaaec0c38f&amp;rootMenuID=">更多...</a>#}
+                </div>
+                <div class="wBody">
+                      <ul class="dateList dateList_ArticleModule">
+                            {% for article in article_list %}
+                               <li>
+                                    <a href="/Front/YiMingNewsDetail?NewsID=2b0e4a3bcbf24140aee2bef7a7584b45&amp;type=1&amp;menuID=6a6b7079a1c8481eb02211d8e389f140&amp;modelName=移民资讯" target="_blank" title="澳洲10年往返签正式实施啦！澳洲留学探亲好利器！">
+                                        {{ article.title|slice:"15" }}
+                                    </a>
+                                    <span>{{ article.issue_time|date:"Y/m/d" }}</span>
+                                </li>
+                          {% endfor %}
+
+
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
