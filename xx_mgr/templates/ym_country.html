@@ -3,7 +3,32 @@
 {%block main%}
 
 
-
+<style>
+    .tplArea .neiye {
+    margin-top: 0px;
+}
+.neiye .standardWidget .wHeader {
+    overflow: auto;
+    zoom: 1;
+    background: url(http://img.12xiong.top/xx_mgr/ym_bg.png) no-repeat 0px -1152px;
+    height: 45px;
+    width: 470px;
+    border-bottom: 1px solid #ccc;}
+.neiye .wHeader .caption {
+    display: block;
+    float: left;
+    font-family: "å¾®è½¯é›…é»‘";
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 8px 0px 45px;
+    margin: 0;
+    color: #fff;
+}
+.neiye .standardWidget .wHeader .more {
+    padding: 15px 10px 10px 0;
+    color: #fff;
+}
+</style>
 
 
     <div name="ymgj_main" class="container container_24 tplArea ymgj_main"><div class="grid grid_17"><div class="widget widget_100_65 standardWidget" data-title="移民推广" href="/ymtg/" target="_blank"><div class="wBody">
@@ -53,11 +78,14 @@ $(function() {
 	}
 	ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle/jquery.cycle.all.js"]}, init);
 });
-</script></div></div></div><div class="grid grid_7"><div class="customContent"><img src="http://www.5migrate.com/_m/uploads/u/1/2017-01-21_002551.jpg" alt="" width="260" height="100"></div></div><div class="separator clear"></div><div class="grid grid_10 neiye"><div class="widget widget_247_54 standardWidget"><div class="wHeader">
-<h2 class="caption">{{ info_tag.name }}</h2>
+</script></div></div></div><div class="grid grid_7"><div class="customContent"><img src="http://www.5migrate.com/_m/uploads/u/1/2017-01-21_002551.jpg" alt="" width="260" height="100"></div></div><div class="separator clear"></div>
 
-<a class="more" href="/mgym/">更多...</a>
-</div><div class="wBody">
+    <div class="grid grid_10 neiye">
+        <div class="widget widget_247_54 standardWidget"><div class="wHeader">
+            <h2 class="caption">{{ info_tag.name }}</h2>
+            <a class="more" href="/mgym/">更多...</a>
+    </div>
+            <div class="wBody">
 
 
 <ul class="dateList dateList_ArticleModule">
@@ -69,10 +97,7 @@ $(function() {
 
 </ul></div></div></div>
 
-
-<div name="ymgj_main" class="container container_24 tplArea ymgj_main">
-
-        <div class="grid grid_15">
+        <div class="grid grid_14">
             <div class="widgetSet gsgk ui-sortable-handle">
                 <ul class="setHeader">
                     {% for tag in detail_tag_list %}
@@ -120,7 +145,7 @@ $(function() {
         </div>
 
 
-        </div>
+{#        </div>#}
 
 
 

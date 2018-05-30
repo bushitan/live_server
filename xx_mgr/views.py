@@ -9,6 +9,27 @@ import logging
 from action.page import *
 action_page = ActionPage()
 
+
+
+
+# 移民国家子项
+class Main(ListView):
+	template_name = 'main.html'
+	# context_object_name = 'article_list'
+	def get_context_data(self, **kwargs):
+		return super(Main, self).get_context_data(**kwargs)
+
+	def get_queryset(self):
+		pass
+
+
+
+
+
+
+
+
+
 class BaseMixin(object):
 	def get_context_data(self, *args, **kwargs):
 		# kwargs['nav_list'] = action_page.GetNav(self)
@@ -20,6 +41,8 @@ class YMBase(BaseMixin):
 		kwargs['nav_list'] = action_page.GetNav(1)
 		context = super(YMBase, self).get_context_data(**kwargs)
 		return context
+
+
 
 class YMIndexView(YMBase, ListView):
 	template_name = 'ym_index.html'
@@ -94,18 +117,15 @@ class YMCountryView(YMBase, ListView):
 		# print country_id
 		return super(YMCountryView, self).get(request, *args, **kwargs)
 
-class YMCoverView(YMBase, ListView):
-	template_name = 'ym_cover.html'
+
+class YMAboutMeView(YMBase, ListView):
+	template_name = 'ym_about_me.html'
 	# context_object_name = 'article_list'
 	def get_context_data(self, **kwargs):
 		kwargs['nav_index'] = int(self.nav_index)
-
-		kwargs['article_list'] = action_page.GetArticleListByTagID(self.tag_id)
-		# tag,article = action_page.GetYMCountryAd()
-		# kwargs['ad'] = article
-		# kwargs['info_tag'],kwargs['info_article_list'] = action_page.GetYMCountryInfo()
-		# kwargs['detail_tag_list'],kwargs['detail_article_list'] = action_page.GetYMCountryDetail()
-		return super(YMCoverView, self).get_context_data(**kwargs)
+		# kwargs['article'] = action_page.GetArticleByID(self.article_id)
+		# print kwargs['article']
+		return super(YMAboutMeView, self).get_context_data(**kwargs)
 
 	def get_queryset(self):
 		tag_list = action_page.GetYMIndex()
@@ -114,8 +134,27 @@ class YMCoverView(YMBase, ListView):
 
 	def get(self, request, *args, **kwargs):
 		self.nav_index = self.kwargs.get('nav_index')
+		self.article_id = self.kwargs.get('article_id')
+		return super(YMAboutMeView, self).get(request, *args, **kwargs)
+
+
+
+############################文章#########################
+
+
+class YMCoverView(YMBase, ListView):
+	template_name = 'ym_cover.html'
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = int(self.nav_index)
+		kwargs['tag'] ,kwargs['article_list'] = action_page.GetArticleListByTagID(self.tag_id)
+		return super(YMCoverView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
 		self.tag_id = self.kwargs.get('tag_id')
 		return super(YMCoverView, self).get(request, *args, **kwargs)
+
 
 
 class YMArticleView(YMBase, ListView):
@@ -124,39 +163,42 @@ class YMArticleView(YMBase, ListView):
 	def get_context_data(self, **kwargs):
 		kwargs['nav_index'] = int(self.nav_index)
 		kwargs['article'] = action_page.GetArticleByID(self.article_id)
-		print kwargs['article']
 		return super(YMArticleView, self).get_context_data(**kwargs)
-
 	def get_queryset(self):
-		tag_list = action_page.GetYMIndex()
-		print tag_list
-		return tag_list
-
+		pass
 	def get(self, request, *args, **kwargs):
 		self.nav_index = self.kwargs.get('nav_index')
 		self.article_id = self.kwargs.get('article_id')
 		return super(YMArticleView, self).get(request, *args, **kwargs)
 
 
-class AboutMeView(YMBase, ListView):
-	template_name = 'about_me.html'
+class LXCoverView(YMBase, ListView):
+	template_name = 'lx_cover.html'
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = int(self.nav_index)
+		kwargs['tag'] ,kwargs['article_list'] = action_page.GetArticleListByTagID(self.tag_id)
+		return super(LXCoverView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.tag_id = self.kwargs.get('tag_id')
+		return super(LXCoverView, self).get(request, *args, **kwargs)
+
+
+class LXArticleView(YMBase, ListView):
+	template_name = 'lx_article.html'
 	# context_object_name = 'article_list'
 	def get_context_data(self, **kwargs):
 		kwargs['nav_index'] = int(self.nav_index)
-		# kwargs['article'] = action_page.GetArticleByID(self.article_id)
-		# print kwargs['article']
-		return super(AboutMeView, self).get_context_data(**kwargs)
-
+		kwargs['article'] = action_page.GetArticleByID(self.article_id)
+		return super(LXArticleView, self).get_context_data(**kwargs)
 	def get_queryset(self):
-		tag_list = action_page.GetYMIndex()
-		print tag_list
-		return tag_list
-
+		pass
 	def get(self, request, *args, **kwargs):
 		self.nav_index = self.kwargs.get('nav_index')
 		self.article_id = self.kwargs.get('article_id')
-		return super(AboutMeView, self).get(request, *args, **kwargs)
-
+		return super(LXArticleView, self).get(request, *args, **kwargs)
 
 
 
@@ -275,10 +317,7 @@ class LXStudyView(LXBase, ListView):
 	def get_context_data(self, **kwargs):
 		kwargs['nav_index'] = 6
 
-		# kwargs['one_tag'],kwargs['one_article']  = action_page.getOnly(self.pid,1)
-		# print kwargs['one_article']
-		# kwargs['two_tag'], kwargs['two_article']  = action_page.getOnly(self.pid,2)
-		# kwargs['three_tag'], kwargs['three_article']  = action_page.getOnly(self.pid,3)
+		kwargs['tag'],kwargs['article_list']  = action_page.queryOnly(None,27,50)
 
 		return super(LXStudyView, self).get_context_data(**kwargs)
 
@@ -297,10 +336,8 @@ class LXSuccessView(LXBase, ListView):
 
 	def get_context_data(self, **kwargs):
 		kwargs['nav_index'] = 7
-		# kwargs['one_tag'],kwargs['one_article']  = action_page.getOnly(self.pid,1)
-		# print kwargs['one_article']
-		# kwargs['two_tag'], kwargs['two_article']  = action_page.getOnly(self.pid,2)
-		# kwargs['three_tag'], kwargs['three_article']  = action_page.getOnly(self.pid,3)
+
+		kwargs['tag'],kwargs['article_list']  = action_page.queryOnly(None,28,50)
 
 		return super(LXSuccessView, self).get_context_data(**kwargs)
 
@@ -312,6 +349,24 @@ class LXSuccessView(LXBase, ListView):
 
 
 
+class LXAboutMeView(YMBase, ListView):
+	template_name = 'lx_about_me.html'
+	# context_object_name = 'article_list'
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = int(self.nav_index)
+		# kwargs['article'] = action_page.GetArticleByID(self.article_id)
+		# print kwargs['article']
+		return super(LXAboutMeView, self).get_context_data(**kwargs)
+
+	def get_queryset(self):
+		tag_list = action_page.GetYMIndex()
+		print tag_list
+		return tag_list
+
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.article_id = self.kwargs.get('article_id')
+		return super(LXAboutMeView, self).get(request, *args, **kwargs)
 
 
 
@@ -320,12 +375,55 @@ class LXSuccessView(LXBase, ListView):
 
 
 
+from models import MGRImage
+from django.core.exceptions import PermissionDenied
+import base64
 
+class UploadImage(YMBase, ListView):
 
+	def post(self, request, *args, **kwargs):
+		print 347283574937894
+		if not request.user.is_authenticated():
+			logger.error(u'[UserControl]用户未登陆')
+			raise PermissionDenied
 
+		# data = request.POST['img']
+		data = request.FILES.get('img')
+		adminIMG = MGRImage()
+		adminIMG.name = data.name
+		adminIMG.local_path = data
+		adminIMG.save()
+		return HttpResponse(
+			 "<script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>" % adminIMG.url)
 
+		# # print 111111,data
+		# print 222,data
+        #
+		# if not data:
+		# 	logger.error(
+		# 		u'[UserControl]用户上传头像为空:[%s]'.format(
+		# 			request.user.username
+		# 		)
+		# 	)
+		# 	return HttpResponse(u"上传头像错误", status=500)
+        #
+		# imgData = base64.b64decode(data)
 
-
+		# filename = "tx_100x100_{}.jpg".format(request.user.id)
+		# filedir = "vmaig_auth/static/tx/"
+		# if not os.path.exists(filedir):
+		# 	os.makedirs(filedir)
+        #
+		# path = filedir + filename
+        #
+		# file = open(path, "wb+")
+		# file.write(imgData)
+		# file.flush()
+		# file.close()
+        #
+		# # out.save(path)
+        #
+		# return HttpResponse(u"上传头像成功!\n(注意有10分钟缓存)")
 
 
 

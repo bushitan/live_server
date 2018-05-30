@@ -149,6 +149,8 @@ SUIT_CONFIG = {
             'models': (
                 'xx_mgr.MGRTag',
                 'xx_mgr.MGRArticle',
+                'xx_mgr.MGRImage',
+                'xx_mgr.MGRKeyWord',
             )
         },
     ),
@@ -215,6 +217,8 @@ USE_TZ = False #计算机所在地时间#
 
 STATIC_URL = '/live/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/upload/')
 # AUTH_USER_MODEL = "lite.AdminUser"
 
 

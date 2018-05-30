@@ -99,7 +99,7 @@
             <div class="widget widget_41_28 countries" data-title="移民国家">
                 <ul class="sf-menu navigationMenu navigationMenu_41 sf-js-enabled sf-shadow">
                     <li>
-                        <a href="/Front/LiuXue">我要留学</a>
+                        <a href="/live/xx_mgr/lx/index/">我要留学</a>
                     </li>
 
                 </ul>
@@ -126,13 +126,19 @@
 
                         {% if forloop.first %}
                               <a href="/live/xx_mgr/ym/index/">{{ nav.name }}</a>
-                        {% elif forloop.last %}
-                             <a href="/live/xx_mgr/ym/last/">{{ nav.name }}</a>
                         {% else %}
                              <a href="/live/xx_mgr/ym/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
                         {% endif %}
                         </li>
                     {%  endfor %}
+
+                    {% if 6 == nav_index %}
+                         <li class="current">
+                    {% else %}
+                        <li class="">
+                    {% endif %}
+                        <a href="/live/xx_mgr/ym/about_me/6">关于我们</a>
+                    </li>
 
 {#                <li class="current">#}
 {#                    <a href="/Front/YiMing">首页</a>#}

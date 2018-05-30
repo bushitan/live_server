@@ -7,6 +7,7 @@ from lite.models import *
 WEB_SITE =  {
 	0:u"留学",
 	1:u"移民",
+	2:u"公共",
 }
 IS_NAVIGATION = {
 	YES:u"导航",
@@ -40,6 +41,17 @@ LX_KNOW = {
 }
 
 #7 图片库
+class MGRKeyWord(AppBase):
+	key_word =  models.CharField(max_length=100, verbose_name=u'关键字名称',default="",null=True,blank=True)
+	class Meta:
+		verbose_name_plural = verbose_name = u'关键字'
+		ordering = ['-serial']
+
+	def __unicode__(self):
+		return '%s' % (self.name_admin)
+
+
+#7 图片库
 class MGRTag(AppBase):
 	web_site = models.IntegerField(u'所属网站',default=0,choices=WEB_SITE.items(),)
 	father = models.ForeignKey( "self", verbose_name=u'父类栏目',null=True,blank=True)
@@ -54,6 +66,7 @@ class MGRTag(AppBase):
 #8 文章库
 class MGRArticle(AppBase):
 	tag = models.ForeignKey( MGRTag, verbose_name=u'所属栏目',null=True,blank=True)
+	cover = models.ForeignKey( "MGRImage", verbose_name=u'封面',null=True,blank=True)
 	lx_item = models.IntegerField(u'子栏目',choices=LX_ITEM.items(),null=True,blank=True)
 	lx_know = models.IntegerField(u'我想了解',choices=LX_KNOW.items(),null=True,blank=True)
 
@@ -77,3 +90,51 @@ class MGRArticle(AppBase):
 
 	def __unicode__(self):
 			return self.title
+
+
+#7 图片库
+class MGRImage(AppBase):
+	url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
+	local_path = models.ImageField(u'图标',upload_to='static/img/',default="",null=True,blank=True)
+	class Meta:
+		verbose_name_plural = verbose_name = u'图库'
+	def __unicode__(self):
+		return '%s' % (self.id)
+
+	def save(self):
+		#ID 为空，新增图片
+		if self.id is None:
+			super(MGRImage, self).save() #先保存一遍
+			QNUploadImage(self)
+
+		#未保存前，获取原来的地址
+		m = MGRImage.objects.get(id = self.id)
+		_old_path = m.local_path.path if m.local_path != "" else ""
+		super(MGRImage, self).save()
+
+		#保存后，获取新地址
+		_new_path = self.local_path.path if self.local_path !="" else ""
+		print "3:",_new_path
+
+		#地址没变化，直接保存
+		if  _old_path == _new_path:
+			return
+		else:
+			QNUploadImage(self)
+
+#更新图片
+def QNUploadImage(self):
+	#获取本地地址
+	_local_path = self.local_path.path
+	_now = datetime.datetime.now()
+	_name = "xx_mgr_" + str(self.id) + "_" + _now.strftime("%Y_%m_%d_%H_%M_%S") # 拼接名字
+	_style = _local_path.split(".")[-1] # 拼接类别
+	_file_name = _name + "." + _style # 拼接图片名字
+	self.url =  "http://img.12xiong.top/" + _file_name #存储的链接
+	self.name = _file_name
+	# #上传七牛
+	_qiniu = QiNiu()
+	print self.local_path.url
+	print self.local_path.name
+	_qiniu.put( "" , _file_name , _local_path )
+	super(MGRImage, self).save()

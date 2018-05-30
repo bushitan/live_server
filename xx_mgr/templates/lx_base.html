@@ -30,6 +30,9 @@
     <link href="http://www.lwdweb.top:27230/Content/front/css/liuxue/css(1).css" rel="stylesheet" />
     <link href="http://www.lwdweb.top:27230/Content/front/css/liuxue/css.css" rel="stylesheet" />
     <link href="http://www.lwdweb.top:27230/Content/front/css/superfish.css" rel="stylesheet" />
+{#    <link href="http://www.5migrate.com/_m/cmspages/Page/9/c.css" rel="stylesheet" />#}
+
+
 
     <script src="http://www.lwdweb.top:27230/Content/front/js/jquery.js"></script>
     <script src="http://www.lwdweb.top:27230/Content/front/js/LAB.min.js"></script>
@@ -103,7 +106,7 @@
                 <ul class="sf-menu navigationMenu navigationMenu_3 sf-js-enabled sf-shadow">
 
                     <li>
-                        <a href="/Front/YiMing">我要移民</a>
+                        <a href="/live/xx_mgr/ym/index/">我要移民</a>
 
                     </li>
 
@@ -122,21 +125,44 @@
                 <ul class="sf-menu navigationMenu navigationMenu_4 sf-js-enabled sf-shadow">
 
                {%  for nav in nav_list %}
-                        {% if forloop.counter0 == nav_index %}
-                             <li class="current">
-                        {% else %}
-                            <li class="">
-                        {% endif %}
+                    {% if forloop.counter0 == nav_index %}
+                         <li class="current">
+                    {% else %}
+                        <li class="">
+                    {% endif %}
 
-                        {% if forloop.first %}
-                              <a href="/live/xx_mgr/lx/index/">{{ nav.name }}</a>
-                        {% elif forloop.last %}
-                             <a href="/live/xx_mgr/lx/last/">{{ nav.name }}</a>
-                        {% else %}
-                             <a href="/live/xx_mgr/lx/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
-                        {% endif %}
-                        </li>
-                    {%  endfor %}
+                    {% if forloop.first %}
+                          <a href="/live/xx_mgr/lx/index/">{{ nav.name }}</a>
+                    {% else %}
+                         <a href="/live/xx_mgr/lx/country/{{ forloop.counter0 }}/{{ nav.pid }}">{{ nav.name }}</a>
+                    {% endif %}
+                    </li>
+                {%  endfor %}
+
+                    {% if 6 == nav_index %}
+                         <li class="current">
+                    {% else %}
+                        <li class="">
+                    {% endif %}
+                        <a href="/live/xx_mgr/lx/study/6">海外游学</a>
+                    </li>
+
+                    {% if 7 == nav_index %}
+                         <li class="current">
+                    {% else %}
+                        <li class="">
+                    {% endif %}
+                        <a href="/live/xx_mgr/lx/success/7">成功案例</a>
+                    </li>
+
+
+                    {% if 8 == nav_index %}
+                         <li class="current">
+                    {% else %}
+                        <li class="">
+                    {% endif %}
+                        <a href="/live/xx_mgr/lx/about_me/8">关于我们</a>
+                    </li>
 
 {#                <li class="current">#}
 {#                    <a href="/Front/LiuXue">首页</a>#}

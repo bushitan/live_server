@@ -59,7 +59,11 @@ class ActionPage():
 
 
 	def getOnly(self,father_pid,pid):
+		if  self.query_tag.IsExists(father__pid = father_pid,pid = pid):
+			return {},{}
+		print father_pid,pid
 		_tag = self.query_tag.GetQuery(father__pid = father_pid,pid = pid)
+		print _tag
 		_article = {}
 		if  self.query_article.IsExists(tag = _tag):
 			_article = self.query_article.GetQuery(tag = _tag)
@@ -82,8 +86,9 @@ class ActionPage():
 
 
 	def GetArticleListByTagID(self,tag_id):
+		_tag = self.query_tag.GetQuery(id = tag_id)
 		_article_list = self.query_article.FilterQuery(tag = tag_id)
-		return _article_list
+		return _tag,_article_list
 
 
 	def GetArticleByID(self,article_id):

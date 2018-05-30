@@ -54,11 +54,15 @@ admin.site.register(MGRTag,MGRTagAdmin)
 
 class MGRArticleAdmin(AppAdmin):
 
-	list_display = ("id","is_show",'tag',"title","subtitle")
+	list_display = ("id","cover_pre","is_show",'tag',"title","subtitle")
 	# list_display = ("id","style","title","is_top","is_show","is_alive","serial","issue_time",)
 	suit_form_tabs = (('content', u'文章内容编辑'),)
 	# raw_id_fields = ('room',)
 	fieldsets = (
+		(u"封面", {
+			'classes': ('suit-tab', 'suit-tab-content',),
+			'fields': ['cover_pre','cover',]
+		}),
 		(u"标题", {
 			'classes': ('suit-tab', 'suit-tab-content',),
 			'fields': ['tag','title','subtitle']
@@ -79,15 +83,57 @@ class MGRArticleAdmin(AppAdmin):
 
 	# list_editable = ('tag',)
 	list_filter = (ArticleFilter,'tag',)
-	raw_id_fields = ('tag',)
+	raw_id_fields = ('tag',"cover",)
 
-	# def formfield_for_foreignkey(self, db_field, request, **kwargs):
-	# 	if db_field.name == "tag":
-	# 		kwargs["queryset"] = MGRTag.objects.filter(father = None)
-	# 		return super(MGRArticleAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+	def cover_pre(self, obj):
+			if obj.cover is not None:
+				html = u'<img src="%s" style="width:72px;height:48px" />' %(obj.cover.url)
+			else:
+				html = u"未添加封面"
+			return html
+	cover_pre.short_description = u'封面图片预览'
+	cover_pre.allow_tags = True
+	readonly_fields = ['cover_pre',]
+
 	class Media:
 		js = ( STATIC_URL + 'tinymce/tinymce.min.js',
-			   STATIC_URL + 'tinymce/textareas.js')
+			   STATIC_URL + 'tinymce/textareas3.js'
+			   # STATIC_URL + 'textareas3.js'
+			   )
 admin.site.register(MGRArticle,MGRArticleAdmin)
 
 
+class MGRImageAdmin(AppAdmin):
+
+	list_display = ("id","cover_pre","url",'local_path',)
+	# list_display = ("id","style","title","is_top","is_show","is_alive","serial","issue_time",)
+	suit_form_tabs = (('content', u'文章内容编辑'),)
+	# raw_id_fields = ('room',)
+	fieldsets = (
+		(u"标题", {
+			'classes': ('suit-tab', 'suit-tab-content',),
+			'fields': ["cover_pre",'url','local_path']
+		}),
+    )
+	def cover_pre(self, obj):
+		if obj.url is not None:
+			html = u'<img src="%s" style="width:72px;height:48px" />' %(obj.url)
+		else:
+			html = u"未添加封面"
+		return html
+	cover_pre.short_description = u'封面图片预览'
+	cover_pre.allow_tags = True
+	readonly_fields = ['cover_pre',]
+admin.site.register(MGRImage,MGRImageAdmin)
+
+
+class MGRKeyWordAdmin(AppAdmin):
+	list_display = ("id","key_word",'serial')
+	fieldsets = (
+			(u"标题", {
+			'fields': ["key_word",'serial',]
+		}),
+	)
+	list_editable = ('serial',)
+
+admin.site.register(MGRKeyWord,MGRKeyWordAdmin)
