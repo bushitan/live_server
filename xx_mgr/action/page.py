@@ -59,14 +59,14 @@ class ActionPage():
 
 
 	def getOnly(self,father_pid,pid):
-		if  self.query_tag.IsExists(father__pid = father_pid,pid = pid):
+		if  self.query_tag.IsExists(father__pid = father_pid,pid = pid) is False:
 			return {},{}
 		print father_pid,pid
 		_tag = self.query_tag.GetQuery(father__pid = father_pid,pid = pid)
 		print _tag
 		_article = {}
 		if  self.query_article.IsExists(tag = _tag):
-			_article = self.query_article.GetQuery(tag = _tag)
+			_article = self.query_article.FilterQuery(tag = _tag)[0]
 		return _tag,_article
 
 	def queryOnly(self,father_pid,pid,range):
@@ -78,7 +78,7 @@ class ActionPage():
 		one_article_list = []
 		for tag in one_tag_list:
 			if  self.query_article.IsExists(tag = tag) is True:
-				one_article_list.append( self.query_article.GetQuery(tag = tag) )
+				one_article_list.append( self.query_article.FilterQuery(tag = tag)[0] )
 			else:
 				one_article_list.append({})
 		return one_tag_list,one_article_list
@@ -106,5 +106,5 @@ if __name__ == "__main__":
 	django.setup()
 	a = ActionPage()
 	# print a.GetYMIndex()
-	print a.GetYMNav()
+	print a.getOnly(12,1)
 	# a.pvpRoomDict

@@ -23,6 +23,8 @@ tinyMCE.init({
     plugins: ["image"],
     image_advtab: true,
     paste_data_images:true,
+    width: '700',
+    height: '800',
     file_browser_callback: function(field_name, url, type, win) {
         if(type=='image'){
             $('#my_form input').click();

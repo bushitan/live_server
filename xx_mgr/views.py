@@ -39,6 +39,8 @@ class BaseMixin(object):
 class YMBase(BaseMixin):
 	def get_context_data(self, *args, **kwargs):
 		kwargs['nav_list'] = action_page.GetNav(1)
+		kwargs['cover_base_url'] = "/live/xx_mgr/ym/cover"
+		kwargs['article_base_url'] = "/live/xx_mgr/ym/article"
 		context = super(YMBase, self).get_context_data(**kwargs)
 		return context
 
@@ -49,37 +51,37 @@ class YMIndexView(YMBase, ListView):
 	context_object_name = 'article_list'
 
 	def get_context_data(self, **kwargs):
-		# pass
-		# 轮播
-		# kwargs['carousel_page_list'] = Carousel.objects.all()
-		one_tag_list,one_article_list ,two_tag,two_article_list    ,three_tag, three_article_list   ,  four_tag,four_article_list  =  action_page.GetYMIndex()
-		# kwargs['news'] = tag_list[0]
-		# kwargs['tag_list'] = tag_list
-		# kwargs['one_tag_list'] = tag_list
-		# kwargs['nav_list'] = action_page.GetYMNav()
 		kwargs['nav_index'] = 0
 
+		PID_YM_INDEX = 11
+		kwargs['one_tag_list'],kwargs['one_article_list'] = action_page.queryMore(PID_YM_INDEX,1)
+		kwargs['two_tag'],kwargs['two_article_list'] = action_page.queryOnly(PID_YM_INDEX,2,8)
+		kwargs['three_tag'],kwargs['three_article_list'] = action_page.queryOnly(PID_YM_INDEX,3,9)
+		kwargs['four_tag'],kwargs['four_article_list'] = action_page.queryOnly(PID_YM_INDEX,4,8)
 
-
-		kwargs['one_tag_list'] = one_tag_list
-		kwargs['one_article_list'] = one_article_list
-
-		kwargs['two_tag'] = two_tag
-		kwargs['two_article_list'] = two_article_list
-
-		kwargs['three_tag'] = three_tag
-		kwargs['three_article_list'] = three_article_list
-
-		kwargs['four_tag'] = four_tag
-		kwargs['four_article_list'] = four_article_list
+		# one_tag_list,one_article_list ,two_tag,two_article_list    ,three_tag, three_article_list   ,  four_tag,four_article_list  =  action_page.GetYMIndex()
+		#
+		#
+		# kwargs['one_tag_list'] = one_tag_list
+		# kwargs['one_article_list'] = one_article_list
+		#
+		# kwargs['two_tag'] = two_tag
+		# kwargs['two_article_list'] = two_article_list
+		#
+		# kwargs['three_tag'] = three_tag
+		# kwargs['three_article_list'] = three_article_list
+		#
+		# kwargs['four_tag'] = four_tag
+		# kwargs['four_article_list'] = four_article_list
 
 
 		return super(YMIndexView, self).get_context_data(**kwargs)
 
 	def get_queryset(self):
-		tag_list = action_page.GetYMIndex()
-		print tag_list
-		return tag_list
+		pass
+		# tag_list = action_page.GetYMIndex()
+		# print tag_list
+		# return tag_list
 		# action_page.
 		# article_list = Article.objects.filter(status=0)
 		# return article_list
@@ -91,13 +93,15 @@ class YMCountryView(YMBase, ListView):
 	def get_context_data(self, **kwargs):
 		kwargs['nav_index'] = int(self.nav_index)
 
-		print 10
-		tag,article = action_page.GetYMCountryAd()
-		kwargs['ad'] = article
-		print 11
-		kwargs['info_tag'],kwargs['info_article_list'] = action_page.GetYMCountryInfo()
-		print 12
-		kwargs['detail_tag_list'],kwargs['detail_article_list'] = action_page.GetYMCountryDetail()
+		# print 10
+		# tag,article = action_page.GetYMCountryAd()
+		# kwargs['ad'] = article
+		kwargs['one_tag'],kwargs['one_article']  = action_page.getOnly(self.pid,1)
+		kwargs['two_tag'],kwargs['two_article']  = action_page.getOnly(self.pid,2)
+		# print self.pid
+		kwargs['three_tag'],kwargs['three_article_list'] = action_page.queryOnly(self.pid,3,8)
+
+		kwargs['four_tag_list'],kwargs['four_article_list'] = action_page.queryMore(self.pid,4)
 
 		print 13
 		return super(YMCountryView, self).get_context_data(**kwargs)
@@ -128,9 +132,10 @@ class YMAboutMeView(YMBase, ListView):
 		return super(YMAboutMeView, self).get_context_data(**kwargs)
 
 	def get_queryset(self):
-		tag_list = action_page.GetYMIndex()
-		print tag_list
-		return tag_list
+		pass
+		# tag_list = action_page.GetYMIndex()
+		# print tag_list
+		# return tag_list
 
 	def get(self, request, *args, **kwargs):
 		self.nav_index = self.kwargs.get('nav_index')
@@ -172,34 +177,6 @@ class YMArticleView(YMBase, ListView):
 		return super(YMArticleView, self).get(request, *args, **kwargs)
 
 
-class LXCoverView(YMBase, ListView):
-	template_name = 'lx_cover.html'
-	def get_context_data(self, **kwargs):
-		kwargs['nav_index'] = int(self.nav_index)
-		kwargs['tag'] ,kwargs['article_list'] = action_page.GetArticleListByTagID(self.tag_id)
-		return super(LXCoverView, self).get_context_data(**kwargs)
-	def get_queryset(self):
-		pass
-	def get(self, request, *args, **kwargs):
-		self.nav_index = self.kwargs.get('nav_index')
-		self.tag_id = self.kwargs.get('tag_id')
-		return super(LXCoverView, self).get(request, *args, **kwargs)
-
-
-class LXArticleView(YMBase, ListView):
-	template_name = 'lx_article.html'
-	# context_object_name = 'article_list'
-	def get_context_data(self, **kwargs):
-		kwargs['nav_index'] = int(self.nav_index)
-		kwargs['article'] = action_page.GetArticleByID(self.article_id)
-		return super(LXArticleView, self).get_context_data(**kwargs)
-	def get_queryset(self):
-		pass
-	def get(self, request, *args, **kwargs):
-		self.nav_index = self.kwargs.get('nav_index')
-		self.article_id = self.kwargs.get('article_id')
-		return super(LXArticleView, self).get(request, *args, **kwargs)
-
 
 
 
@@ -211,7 +188,10 @@ class LXBase(BaseMixin):
 	def get_context_data(self, *args, **kwargs):
 
 		kwargs['nav_list'] = action_page.GetNav(0)
-		print  11111, kwargs['nav_list']
+
+		kwargs['cover_base_url'] = "/live/xx_mgr/lx/cover"
+		kwargs['article_base_url'] = "/live/xx_mgr/lx/article"
+		# print  11111, kwargs['nav_list']
 		context = super(LXBase, self).get_context_data(**kwargs)
 		return context
 
@@ -220,50 +200,19 @@ class LXIndexView(LXBase, ListView):
 	context_object_name = 'article_list'
 
 	def get_context_data(self, **kwargs):
-		# pass
-		# 轮播
-		# kwargs['carousel_page_list'] = Carousel.objects.all()
-		one_tag_list,one_article_list ,two_tag,two_article_list    ,three_tag, three_article_list   ,  four_tag,four_article_list  =  action_page.GetYMIndex()
-		# kwargs['news'] = tag_list[0]
-		# kwargs['tag_list'] = tag_list
-		# kwargs['one_tag_list'] = tag_list
-		# kwargs['nav_list'] = action_page.GetYMNav()
 		kwargs['nav_index'] = 0
-
-
 		PID_LX_INDEX = 21
 		kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
-
-		# print kwargs['one_tag_list']
-		# kwargs['one_article_list'] = one_article_list
-
 		kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
-		# kwargs['two_tag'] = two_tag
-		# kwargs['two_article_list'] = two_article_list
-
 		kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
-
 		kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
-
-
 		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)
 		kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
-		# kwargs['three_tag'] = three_tag
-		# kwargs['three_article_list'] = three_article_list
-
-		# kwargs['four_tag'] = four_tag
-		# kwargs['four_article_list'] = four_article_list
-
 
 		return super(LXIndexView, self).get_context_data(**kwargs)
 
 	def get_queryset(self):
-		tag_list = action_page.GetYMIndex()
-		# print tag_list
-		return tag_list
-		# action_page.
-		# article_list = Article.objects.filter(status=0)
-		# return article_list
+		pass
 
 
 
@@ -272,41 +221,25 @@ class LXCountryView(LXBase, ListView):
 	context_object_name = 'article_list'
 
 	def get_context_data(self, **kwargs):
-		kwargs['nav_index'] = 0
-
+		kwargs['nav_index'] =  int(self.nav_index)
+		# print kwargs['nav_index']
 		kwargs['one_tag'],kwargs['one_article']  = action_page.getOnly(self.pid,1)
-		print kwargs['one_article']
+		# print kwargs['one_article']
 		kwargs['two_tag'], kwargs['two_article']  = action_page.getOnly(self.pid,2)
 		kwargs['three_tag'], kwargs['three_article']  = action_page.getOnly(self.pid,3)
-		# kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(self.pid,3,8)
-		# kwargs['two_tag'], kwargs['two_article_list']  = action_page.getOnly(self.pid,1)
 
-
-
-		PID_LX_INDEX = 21
-
-
-		# kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
-		#
-		# kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
-		#
-		# kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
-		#
-		# kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
-		#
-		# kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)
-		# kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
-
+		kwargs['four_tag_list'], kwargs['four_article_list']  = action_page.queryMore(self.pid,4)
+		kwargs['five_tag_list'], kwargs['five_article_list']  = action_page.queryMore(self.pid,5)
+		kwargs['six_tag_list'], kwargs['six_article_list']  = action_page.queryMore(self.pid,6)
 
 		return super(LXCountryView, self).get_context_data(**kwargs)
 
 	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
 		self.nav_index = self.kwargs.get('nav_index')
 		self.pid = self.kwargs.get('pid')
-		# print self.pid , "pid"
-		pass
-		# tag_list = action_page.GetYMIndex()
-		# return tag_list
+		return super(LXCountryView, self).get(request, *args, **kwargs)
 
 
 
@@ -359,15 +292,45 @@ class LXAboutMeView(YMBase, ListView):
 		return super(LXAboutMeView, self).get_context_data(**kwargs)
 
 	def get_queryset(self):
-		tag_list = action_page.GetYMIndex()
-		print tag_list
-		return tag_list
+		pass
+		# tag_list = action_page.GetYMIndex()
+		# print tag_list
+		# return tag_list
 
 	def get(self, request, *args, **kwargs):
 		self.nav_index = self.kwargs.get('nav_index')
 		self.article_id = self.kwargs.get('article_id')
 		return super(LXAboutMeView, self).get(request, *args, **kwargs)
 
+
+
+class LXCoverView(LXBase, ListView):
+	template_name = 'lx_cover.html'
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = int(self.nav_index)
+		kwargs['tag'] ,kwargs['article_list'] = action_page.GetArticleListByTagID(self.tag_id)
+		return super(LXCoverView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.tag_id = self.kwargs.get('tag_id')
+		return super(LXCoverView, self).get(request, *args, **kwargs)
+
+
+class LXArticleView(LXBase, ListView):
+	template_name = 'lx_article.html'
+	# context_object_name = 'article_list'
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = int(self.nav_index)
+		kwargs['article'] = action_page.GetArticleByID(self.article_id)
+		return super(LXArticleView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.article_id = self.kwargs.get('article_id')
+		return super(LXArticleView, self).get(request, *args, **kwargs)
 
 
 

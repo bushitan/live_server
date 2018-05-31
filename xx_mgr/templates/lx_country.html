@@ -1,15 +1,17 @@
 {% extends "lx_base.html" %}
 
 {%block main%}
-<div name="main" class="container container_24 tplArea main"><div class="grid grid_17"><div class="widget widget_172_91 standardWidget" data-title="留学推广" href="/lxtg/" target="_blank"><div class="wBody">
-
-{#    广告图#}
-<div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule">
-	<div class="ImageDisplayBox imageDisplay_172" style="height: 100px; position: relative;">
-        <a style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1;" href="/lxtg/260.htm" target="_blank">
-            <img src="{{ one_article.title }}" data-original="{{ one_article.title }}" style="width: 670px; height: 100px; margin: 0px; display: inline;" alt="推广">
-        </a>
-	</div>
+<div name="main" class="container container_24 tplArea main">
+    <div class="grid grid_17">
+        <div class="widget widget_172_91 standardWidget" data-title="留学推广" href="/lxtg/" target="_blank">
+            <div class="wBody">
+            {#    广告图#}
+            <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule">
+                <div class="ImageDisplayBox imageDisplay_172" style="height: 100px; position: relative;">
+                    <a style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1;" href="{{ article_base_url }}/{{ nav_index }}/{{ one_article.id }}/" target="_blank">
+                        <img src="{{ one_article.cover.url }}" data-original="{{ one_article.cover.url }}" style="width: 670px; height: 100px; margin: 0px; display: inline;" alt="推广">
+                    </a>
+                </div>
 </div>
 <script type="text/javascript">
 $(function() {
@@ -45,10 +47,10 @@ $(function() {
 });
 </script></div></div></div><div class="grid grid_7"><div class="customContent">
 {#    2 logo#}
-    <img src="{{ two_article.title }}" alt="" width="260" height="100">
+    <img src="{{ two_article.cover.url }}" alt="" width="260" height="100">
 </div></div><div class="separator clear"></div><div class="grid grid_8"><div class="widget widget_327_156 standardWidget lxzx"><div class="wHeader">
 <h2 class="caption">
-<a href="/yglxdt1/" target="_blank">英国留学地图</a>
+<a target="_blank">{{ three_tag.name }}</a>
 </h2>
 </div><div class="xx_map">
     <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule ">
@@ -164,100 +166,169 @@ $(function() {
             <ul class="setHeader" >
                 <span class="xx_mark">&nbsp;中小学&nbsp;</span>
                 <span id="oranger">
-                    <li class="firstTab">院校列表</li>
-                    <li class="">申请时间规划表</li>
-                    <li class="lastTab current">申请攻略</li>
+                    {% for tag in four_tag_list %}
+                          {% if forloop.first %}
+                            <li class="firstTab current">
+                         {% elif  forloop.last %}
+                             <li class="lastTab">
+                         {% else %}
+                            <li>
+                         {% endif %}
+                            <a href="/live/xx_mgr/lx/cover/{{ nav_index }}/{{ tag.id }}/">{{ tag.name }}</a>
+                         </li>
+                    {% endfor %}
                 </span>
             </ul>
             <div class="setBody tablea">
+
+                {% for article in four_article_list %}
                 <div class="widgetContainer box" data-name="widgetframe">
                     <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                        <li>
+                            <a href="/live/xx_mgr/lx/article/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title|slice:"15" }}</a>
+                            <span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
                     </ul>
                 </div>
-                <div class="widgetContainer box" data-name="widgetframe">
-                    <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
-                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>
-                    </ul>
-                </div>
-                <div class="widgetContainer box" data-name="widgetframe">
-                    <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
-                    </ul>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
 
    <div class="grid grid_16">
         <div class="widgetSet lxbjj ui-sortable-handle ">
             <ul class="setHeader" >
-                <span class="xx_mark">&nbsp;&nbsp;&nbsp;本科&nbsp;&nbsp;&nbsp;</span>
+                <span class="xx_mark">&nbsp;本科&nbsp;</span>
                 <span id="oranger">
-                    <li class="firstTab">专业解析</li>
-                    <li class="">留学、移民方案</li>
-                    <li class="firstTab">院校列表</li>
-                    <li class="">申请时间规划表</li>
-                    <li class="lastTab current">申请攻略</li>
+                    {% for tag in five_tag_list %}
+                          {% if forloop.first %}
+                            <li class="firstTab current">
+                         {% elif  forloop.last %}
+                             <li class="lastTab">
+                         {% else %}
+                            <li>
+                         {% endif %}
+                            <a href="/live/xx_mgr/lx/cover/{{ nav_index }}/{{ tag.id }}/">{{ tag.name }}</a>
+                         </li>
+                    {% endfor %}
                 </span>
             </ul>
             <div class="setBody tablea">
+
+                {% for article in five_article_list %}
                 <div class="widgetContainer box" data-name="widgetframe">
                     <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                        <li>
+                            <a href="/live/xx_mgr/lx/article/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title|slice:"15" }}</a>
+                            <span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
                     </ul>
                 </div>
-                <div class="widgetContainer box" data-name="widgetframe">
-                    <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
-                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>
-                    </ul>
-                </div>
-                <div class="widgetContainer box" data-name="widgetframe">
-                    <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
-                    </ul>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
-
 
    <div class="grid grid_16">
         <div class="widgetSet lxbjj ui-sortable-handle ">
             <ul class="setHeader" >
-                <span class="xx_mark">&nbsp;&nbsp;&nbsp;硕士&nbsp;&nbsp;&nbsp;</span>
+                <span class="xx_mark">&nbsp;硕士&nbsp;</span>
                 <span id="oranger">
-                    <li class="firstTab">专业解析</li>
-                    <li class="">留学、移民方案</li>
-                    <li class="firstTab">院校列表</li>
-                    <li class="">申请时间规划表</li>
-                    <li class="lastTab current">申请攻略</li>
+                    {% for tag in six_tag_list %}
+                          {% if forloop.first %}
+                            <li class="firstTab current">
+                         {% elif  forloop.last %}
+                             <li class="lastTab">
+                         {% else %}
+                            <li>
+                         {% endif %}
+                            <a href="/live/xx_mgr/lx/cover/{{ nav_index }}/{{ tag.id }}/">{{ tag.name }}</a>
+                         </li>
+                    {% endfor %}
                 </span>
             </ul>
             <div class="setBody tablea">
+
+                {% for article in six_article_list %}
                 <div class="widgetContainer box" data-name="widgetframe">
                     <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
+                        <li>
+                            <a href="/live/xx_mgr/lx/article/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title|slice:"15" }}</a>
+                            <span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
                     </ul>
                 </div>
-                <div class="widgetContainer box" data-name="widgetframe">
-                    <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
-                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>
-                    </ul>
-                </div>
-                <div class="widgetContainer box" data-name="widgetframe">
-                    <ul class="dateList dateList_ArticleModule  "  >
-                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>
-                    </ul>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+
+{##}
+{##}
+{#   <div class="grid grid_16">#}
+{#        <div class="widgetSet lxbjj ui-sortable-handle ">#}
+{#            <ul class="setHeader" >#}
+{#                <span class="xx_mark">&nbsp;&nbsp;&nbsp;本科&nbsp;&nbsp;&nbsp;</span>#}
+{#                <span id="oranger">#}
+{#                    <li class="firstTab">专业解析</li>#}
+{#                    <li class="">留学、移民方案</li>#}
+{#                    <li class="firstTab">院校列表</li>#}
+{#                    <li class="">申请时间规划表</li>#}
+{#                    <li class="lastTab current">申请攻略</li>#}
+{#                </span>#}
+{#            </ul>#}
+{#            <div class="setBody tablea">#}
+{#                <div class="widgetContainer box" data-name="widgetframe">#}
+{#                    <ul class="dateList dateList_ArticleModule  "  >#}
+{#                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#                <div class="widgetContainer box" data-name="widgetframe">#}
+{#                    <ul class="dateList dateList_ArticleModule  "  >#}
+{#                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>#}
+{#                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#                <div class="widgetContainer box" data-name="widgetframe">#}
+{#                    <ul class="dateList dateList_ArticleModule  "  >#}
+{#                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#   <div class="grid grid_16">#}
+{#        <div class="widgetSet lxbjj ui-sortable-handle ">#}
+{#            <ul class="setHeader" >#}
+{#                <span class="xx_mark">&nbsp;&nbsp;&nbsp;硕士&nbsp;&nbsp;&nbsp;</span>#}
+{#                <span id="oranger">#}
+{#                    <li class="firstTab">专业解析</li>#}
+{#                    <li class="">留学、移民方案</li>#}
+{#                    <li class="firstTab">院校列表</li>#}
+{#                    <li class="">申请时间规划表</li>#}
+{#                    <li class="lastTab current">申请攻略</li>#}
+{#                </span>#}
+{#            </ul>#}
+{#            <div class="setBody tablea">#}
+{#                <div class="widgetContainer box" data-name="widgetframe">#}
+{#                    <ul class="dateList dateList_ArticleModule  "  >#}
+{#                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#                <div class="widgetContainer box" data-name="widgetframe">#}
+{#                    <ul class="dateList dateList_ArticleModule  "  >#}
+{#                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>#}
+{#                        <li><a href="/ygsqgl/396.htm" target="_blank">英国留学签证的各种雷区</a><span>2017-02-01</span></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#                <div class="widgetContainer box" data-name="widgetframe">#}
+{#                    <ul class="dateList dateList_ArticleModule  "  >#}
+{#                        <li><a href="/ygsqgl/397.htm" target="_blank">英国T1T2T4签证办理要多少存款</a><span>2017-02-01</span></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 
 {#   <div class="grid grid_16" >#}
 {#        <div class="widgetSet lxbjj ui-sortable-handle ">#}

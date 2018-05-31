@@ -92,8 +92,15 @@ class MGRArticle(AppBase):
 			return self.title
 
 
+IMAGE_STYLE = {
+	0:u"上传",
+	1:u"基础",
+}
+
 #7 图片库
 class MGRImage(AppBase):
+
+	style = models.IntegerField(u'图片类型',choices=IMAGE_STYLE.items(),default=0)
 	url = models.CharField(max_length=1000, verbose_name=u'云地址',null=True,blank=True)
 	local_path = models.ImageField(u'图标',upload_to='static/img/',default="",null=True,blank=True)
 	class Meta:

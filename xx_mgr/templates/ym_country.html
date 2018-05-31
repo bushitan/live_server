@@ -28,6 +28,14 @@
     padding: 15px 10px 10px 0;
     color: #fff;
 }
+.min{
+    min-height: 283px;
+}
+.gsgk ul.summaryList .title {
+    line-height: 1px !important;
+    margin-bottom: 5px;
+}
+.tplArea .neiye .standardWidget .wHeader { overflow: hidden}
 </style>
 
 
@@ -38,9 +46,8 @@
 <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_ArticleModule">
 	<div class="ImageDisplayBox imageDisplay_100" style="height: 100px; position: relative;">
 
-			<a style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1;" href="/ymtg/96.htm" target="_blank">
-
-			<img src="{{ ad.title }}" data-original="/_m/cache/29/e3/29e372c0ef0794a55aaef23545f3580c.jpg" style="width: 670px; height: 100px; margin: 0px; display: inline;" alt="移民推广">
+			<a style="position: absolute; top: 0px; left: 0px; z-index: 1; opacity: 1;" href="/live/xx_mgr/lx/article/{{ nav_index }}/{{ one_article.id }}/" target="_blank">
+			<img src="{{ one_article.cover.url }}" data-original="/_m/cache/29/e3/29e372c0ef0794a55aaef23545f3580c.jpg" style="width: 670px; height: 100px; margin: 0px; display: inline;" alt="移民推广">
 
 			</a>
 
@@ -78,21 +85,23 @@ $(function() {
 	}
 	ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle/jquery.cycle.all.js"]}, init);
 });
-</script></div></div></div><div class="grid grid_7"><div class="customContent"><img src="http://www.5migrate.com/_m/uploads/u/1/2017-01-21_002551.jpg" alt="" width="260" height="100"></div></div><div class="separator clear"></div>
+</script></div></div></div><div class="grid grid_7"><div class="customContent">
+    <img src="{{ two_article.cover.url }}" alt="" width="260" height="100"></div>
+</div><div class="separator clear"></div>
 
     <div class="grid grid_10 neiye">
         <div class="widget widget_247_54 standardWidget"><div class="wHeader">
-            <h2 class="caption">{{ info_tag.name }}</h2>
-            <a class="more" href="/mgym/">更多...</a>
+            <h2 class="caption">{{ three_tag.name }}</h2>
+            <a class="more" href="{{ cover_base_url  }}/{{ nav_index }}/{{ three_tag.id }}/">更多...</a>
     </div>
             <div class="wBody">
 
 
-<ul class="dateList dateList_ArticleModule">
+<ul class="dateList dateList_ArticleModule min" >
 
-    {% for article in info_article_list %}
+    {% for article in three_article_list %}
 
-        <li><a href="/mgym/88.htm" target="_blank">{{ article.title|slice:"10" }}</a><span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
+        <li><a href="{{ article.cover.url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title|slice:"10" }}</a><span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
     {% endfor %}
 
 </ul></div></div></div>
@@ -100,7 +109,7 @@ $(function() {
         <div class="grid grid_14">
             <div class="widgetSet gsgk ui-sortable-handle">
                 <ul class="setHeader">
-                    {% for tag in detail_tag_list %}
+                    {% for tag in four_tag_list %}
                          {% if forloop.first %}
                             <li class="firstTab current">
                          {% elif  forloop.last %}
@@ -108,13 +117,13 @@ $(function() {
                          {% else %}
                             <li>
                          {% endif %}
-                            <a>{{ tag.name }}</a>
+                            <a href="{{ cover_base_url }}/{{ nav_index }}/{{ tag.id }}">{{ tag.name }}</a>
                          </li>
                     {% endfor %}
                 </ul>
                 <div class="setBody">
 
-                     {% for article in detail_article_list %}
+                     {% for article in four_article_list %}
                      <div class="widget widget_564_214 standardWidget ui-sortable-handle gsgn current">
                         <div class="wHeader">
 {#                                            <h2 class="caption">焦点新闻</h2>#}
@@ -124,15 +133,20 @@ $(function() {
                             <ul class="summaryList summaryList_ArticleModule">
                                 <li>
                                     <div class="imgBox">
-                                        <a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">
+                                        <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">
 
-                                            <img src="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" data-original="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" style="width: 250px; height: 250px; display: inline;">
+                                            <img src="{{ article.cover.url }}" data-original="{{ article.cover.url }}" style="width: 250px; height: 250px; display: inline;">
                                         </a>
                                     </div>
-                                    <a class="title" href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">{{ article.title }}</a>
+                                    <a class="title" href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title }}</a>
                                     <div class="summary">
                                        {{ article.subtitle }}
-                                        <span class="more"><a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[详细]</a></span> <span class="more"><a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[更多]</a></span>
+                                        <span class="more">
+                                            <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">[详细]</a>
+                                        </span>
+{#                                        <span class="more">#}
+{#                                            <a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[更多]</a>#}
+{#                                        </span>#}
                                     </div>
                                 </li>
 
@@ -145,7 +159,7 @@ $(function() {
         </div>
 
 
-{#        </div>#}
+        </div>
 
 
 

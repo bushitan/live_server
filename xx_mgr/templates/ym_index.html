@@ -4,18 +4,59 @@
 {#21#}
 {#213#}
 <!--动态加载模块开始-->
+    <style>
+    .ymgj_main {
+         margin-top: 0px;
+    }
+    .wBody{
+        min-height: 286px;
+    }
+    .tplArea ul.dateList li a {
+{#        font-size:none;#}
+        line-height:34px;
+    }
+    </style>
 <div name="ymgj_main" class="container container_24 tplArea ymgj_main">
-{{ one_tag_list.0.name }}
 
 
-{#                    <li>#}
-{#                        <a>{{ tag_list.1.name }}</a>#}
-{#                    </li>#}
-{#                    <li class="lastTab">#}
-{#                        <a>{{ tag_list.2.name }}</a>#}
-{#                    </li>#}
+    <div class="grid grid_24 banner_a"><div class="grid grid_24 alpha omega banner_b"><div class="widget widget_10_5" data-title="焦点图" href="/banner/">
 
+        <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_LinkModule">
+            <div class="ImageDisplayBox imageDisplay_10" style="position: relative;">
+                <a href="" target="_blank" title="1" class="cycle-slide cycle-sentinel" style="position: static; top: 0px; left: 0px; z-index: 99; opacity: 1; display: block; visibility: hidden;">
+                    <img src="http://img.12xiong.top/xx_mgr_7_2018_05_31_11_04_23.jpg" style="width: 1680px; height: 380px; margin: 0px; visibility: hidden;" alt="1">
+                </a>
+                <a href="" target="_blank" title="1" class="cycle-slide cycle-slide-active" style="position: absolute; top: 0px; left: 0px; z-index: 99; opacity: 1; display: block; visibility: visible;">
+                    <img src="http://img.12xiong.top/xx_mgr_7_2018_05_31_11_04_23.jpg" style="width:1680px; height:380px; margin:0px 0px 0px 0px;" alt="1">
+                </a>
+            </div>
+            </div>
+                <script type="text/javascript">
+                $(function() {
+                    function init(){
+                        var box = $(".imageDisplay_10");
+                        box.each(function(){
+                            if(this.initCycle)
+                                return;
+                            this.initCycle = true;
+                            var box = $(this);
+                            var wrap = box.closest('.ImageDisplayBoxWrap');
+                            box.cycle({
+                                slides: "> a"
+                            });
+                        });
+                    }
+                    ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle2/jquery.cycle2.min.js"]}, init);
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+{#    焦点新闻#}
         <div class="grid grid_15">
+    <div style="height:25px"></div>
             <div class="widgetSet gsgk ui-sortable-handle">
                 <ul class="setHeader">
                     {% for tag in one_tag_list %}
@@ -26,7 +67,7 @@
                          {% else %}
                             <li>
                          {% endif %}
-                            <a>{{ tag.name }}</a>
+                            <a href="{{ cover_base_url }}/{{ nav_index }}/{{ tag.id }}/">{{ tag.name }}</a>
                          </li>
                     {% endfor %}
                 </ul>
@@ -42,15 +83,16 @@
                             <ul class="summaryList summaryList_ArticleModule">
                                 <li>
                                     <div class="imgBox">
-                                        <a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">
-
-                                            <img src="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" data-original="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" style="width: 250px; height: 250px; display: inline;">
+                                        <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">
+                                            <img src="{{ article.cover.url }}" data-original="/Content/admin/js/ueditor/net/upload/image/20180529/6366318530627640679036939.jpg" style="width: 250px; height: 250px; display: inline;">
                                         </a>
                                     </div>
-                                    <a class="title" href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">{{ article.title }}</a>
+                                    <a class="title" href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title }}</a>
                                     <div class="summary">
                                        {{ article.subtitle }}
-                                        <span class="more"><a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[详细]</a></span> <span class="more"><a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[更多]</a></span>
+                                        <span class="more"><a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">[详细]</a></span> <span class="more">
+{#                                        <a href="/Front/YimingMenuDetail?menuID=c61794e904b04ef99a9b0172ba3c34dd&amp;modelID=cd4462275d434d82b1590b0f4d141d9e&amp;rootMenuID=" target="_blank">[更多]</a>#}
+                                    </span>
                                     </div>
                                 </li>
 
@@ -65,6 +107,7 @@
 
 {#    移民资讯#}
         <div class="grid grid_9">
+    <div style="height:25px"></div>
             <div class="widget widget_47_30 standardWidget ui-sortable-handle lxzx">
                 <div class="wHeader">
                     <h2 class="caption">{{ two_tag.name }}</h2>
@@ -88,30 +131,34 @@
 
 
 {#移民攻略#}
-<div class="grid grid_15 lxgl_a"><div class="grid grid_15 alpha omega lxgl_b"><div class="grid grid_2 alpha ymgl_n"><div class="customContent"><a href="http://www.5migrate.com/ymgl">更多...</a></div></div></div><div class="grid grid_15 alpha omega lxgl_c"><div class="grid grid_7 alpha"><div class="widget widget_51_31 lxgl_zy ui-sortable-handle" data-title="移民攻略摘要" href="/ymgl_zy/">
-<ul class="summaryList summaryList_ArticleModule">
-	<li>
-		<div class="imgBox">
-			<a href="/ymgl_zy/54.htm" target="_blank">
+<div class="grid grid_15 lxgl_a"><div class="grid grid_15 alpha omega lxgl_b"><div class="grid grid_2 alpha ymgl_n"><div class="customContent">
+    <a href="{{ cover_base_url }}/{{ nav_index }}/{{ three_tag.id }}/">更多...</a>
+</div></div></div>
+    <div class="grid grid_15 alpha omega lxgl_c" style="height:285px;">
+        <div class="grid grid_7 alpha"><div class="widget widget_51_31 lxgl_zy ui-sortable-handle" data-title="移民攻略摘要" href="/ymgl_zy/">
+        <ul class="summaryList summaryList_ArticleModule">
+            <li>
+                <div class="imgBox">
+                    <a href="{{ article_base_url }}/{{ nav_index }}/{{ three_article_list.0.id }}/" target="_blank">
 
-			<img src="/_m/cache/63/cb/63cbda6cbab103b6ddcf7439cf212847.jpg" data-original="/_m/cache/63/cb/63cbda6cbab103b6ddcf7439cf212847.jpg" style="width: 240px; height: 144px; margin: 3px 0px; display: inline;">
+                    <img src="{{ three_article_list.0.cover.url  }}"  style="width: 240px; height: 144px; margin: 3px 0px; display: inline;">
 
-			</a>
-		</div>
-		<a class="title" href="/ymgl_zy/54.htm" target="_blank" title="怎样安排留学期间打工时间更为合理？">{{ three_article_list.0.title }}</a>
-		<div class="summary">
-			   {{ three_article_list.0.subtitle }}
-			<span class="more"><a href="/ymgl_zy/54.htm" target="_blank">[详细]</a></span>
-		</div>
+                    </a>
+                </div>
+                <a class="title" href="{{ article_base_url }}/{{ nav_index }}/{{ three_article_list.0.id }}/" target="_blank" title="怎样安排留学期间打工时间更为合理？">{{ three_article_list.0.title }}</a>
+                <div class="summary">
+                       {{ three_article_list.0.subtitle }}
+                    <span class="more"><a href="{{ article_base_url }}/{{ nav_index }}/{{ three_article_list.0.id }}/" target="_blank">[详细]</a></span>
+                </div>
 
-	</li>
-
-</ul></div></div><div class="grid grid_7 lxgl"><div class="widget widget_52_32 lxgl" data-title="移民攻略" href="/ymgl/">
+            </li>
+        </ul>
+        </div></div><div class="grid grid_7 lxgl"><div class="widget widget_52_32 lxgl" data-title="移民攻略" href="/ymgl/">
 <ul class="list list_ArticleModule">
     {% for article in three_article_list %}
          {% if forloop.first %}
          {% else %}
-            <li><a href="/ymgl/64.htm" target="_blank" title="澳洲10年往返签正式实施啦！澳洲留学探亲好利器！">{{ article.title|slice:"15" }}</a></li>
+            <li><a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank" title="澳洲10年往返签正式实施啦！澳洲留学探亲好利器！">{{ article.title|slice:"15" }}</a></li>
          {% endif %}
     {% endfor %}
 
@@ -128,14 +175,14 @@
         <div class="wHeader">
 
 
-            <a href="/Front/YimingMenuDetail?menuID=783e0a31121549329b8c49fda563ee2e&amp;modelID=3a9ff76a1ff047268852052797eeae73&amp;rootMenuID=" class="more">更多...</a>
+            <a href="{{ cover_base_url }}/{{ nav_index }}/{{ four_tag.id }}/" class="more">更多...</a>
         </div>
         <div class="wBody">
 
             <ul class="list list_ArticleModule">
                     {% for article in four_article_list %}
                         <li>
-                            <a href="/Front/YiMingNewsDetail?NewsID=5bdaaa1b372142518fbd3639301456f8&amp;type=1&amp;menuID=783e0a31121549329b8c49fda563ee2e&amp;modelName=成功案例" target="_blank" title="日本研究生留学需要满足的一些硬性条件">
+                            <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank" title="日本研究生留学需要满足的一些硬性条件">
                                 {{ article.title|slice:"10" }}
                             </a>
                             <span>{{ article.issue_time|date:"Y/m/d" }}</span>
