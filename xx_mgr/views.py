@@ -365,10 +365,46 @@ class UploadImage(YMBase, ListView):
 class LiteFatherTag(LXBase, ListView):
 	def get(self, request, *args, **kwargs):
 
-		_website = 0
+		# _website = 0
+		_website = request.GET.get('website',"")
 		_father = action_page.GetFatherTag( _website)
 		_dict = {
 			"father_tag_list":_father
+		}
+		return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+class LiteCoverArticle(LXBase, ListView):
+	def get(self, request, *args, **kwargs):
+
+		# _website = 0
+		_father_id = request.GET.get('father_id',"")
+		_cover_article = action_page.GetCoverArticleByFather( _father_id)
+		_dict = {
+			"cover_article_list":_cover_article
+		}
+		return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+###获取封面
+class LiteCover(LXBase, ListView):
+	def get(self, request, *args, **kwargs):
+
+		# _website = 0
+		_tag_id = request.GET.get('tag_id',"")
+		_cover_list = action_page.GetCoverByTag( _tag_id)
+		# _dict = {
+		# 	"cover_list":_cover_list
+		# }
+		return MESSAGE_RESPONSE_SUCCESS(_cover_list)
+
+
+###获取封面
+class LiteArticle(LXBase, ListView):
+	def get(self, request, *args, **kwargs):
+		# _website = 0
+		_article_id = request.GET.get('article_id',"")
+		_article_dict = action_page.GetArticle( _article_id)
+		_dict = {
+			"article_dict":_article_dict
 		}
 		return MESSAGE_RESPONSE_SUCCESS(_dict)
 

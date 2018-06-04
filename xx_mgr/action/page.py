@@ -106,19 +106,20 @@ class ActionPage():
 		# _son_query = self.query_tag.FilterQuery(father = father_id)
 		# _son_list = []
 		_tag = self.query_tag.Get(id = tag_id)
-		_article_list =  self.query_article.Filter(tag_id = tag_id)[0:4]
+		_cover_list =  self.query_article.Filter(tag_id = tag_id)[0:4]
 		_dict = {
 			"tag":_tag,
-			"article_list":_article_list,
+			"cover_list":_cover_list,
 		}
 		return _dict
-	def GetArticleMatrixByFather(self,father_id):
+	def GetCoverArticleByFather(self,father_id):
 		_son_query = self.query_tag.FilterQuery(father = father_id)
 		_page_list = []
 		for son in _son_query:
 			_cover = self.GetCoverByTag(son.id)
 			_page_list.append(_cover)
 		return _page_list
+	
 	def GetArticle(self,article_id):
 		if self.query_article.IsExists() is True:
 			return self.query_article.Get(id = article_id)
