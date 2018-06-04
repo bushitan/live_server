@@ -41,7 +41,7 @@ class ArticleFilter(TagFilter):
 class MGRTagAdmin(AppAdmin):
 
 	# fieldsets = ('web_site',"father",)
-	list_display = ("id","is_show",'web_site',"father","pid","name","name_admin","serial",)
+	list_display = ("id","is_show",'web_site','show_mobile',"father","pid","name","name_admin","serial",)
 	suit_form_tabs = (('content', u'栏目编辑'),)
 	fieldsets = (
 		(u"分类", {
@@ -49,7 +49,7 @@ class MGRTagAdmin(AppAdmin):
 			'fields': ['web_site',"father","pid","name","name_admin","serial",]
 		}),
     )
-	list_editable = ('web_site',"father","name","name_admin","serial","pid",)
+	list_editable = ('web_site','show_mobile',"father","name","name_admin","serial","pid",)
 	list_filter = ('web_site',TagFilter,)
 	raw_id_fields = ('father',)
 

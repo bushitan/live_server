@@ -8,11 +8,16 @@ class QueryArticle(QueryBase):
 	#用于封面展示的数据
 	def _PackDict(self,obj):
 		return {
-			"tag_id":obj.id,
+			"article_id":obj.id,
+			"tag_id":obj.tag_id,
+			"cover_url" : obj.cover.url if obj.cover is not None else "",
+			"title":obj.title,
+			"subtitle":obj.subtitle,
+			"content":obj.content,
+			"create_time":obj.create_time.strftime("%Y-%m-%d"),
 			# "web_site":obj.web_site,
 			# "father_id":obj.father_id,
 			# "pid":obj.pid,
-			# "create_time":obj.create_time.strftime("%Y-%m-%d"),
 		}
 	#
 	# def _PackCover(self,obj):

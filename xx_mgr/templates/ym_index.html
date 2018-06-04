@@ -16,44 +16,54 @@
         line-height:34px;
     }
     </style>
-<div name="ymgj_main" class="container container_24 tplArea ymgj_main">
 
 
-    <div class="grid grid_24 banner_a"><div class="grid grid_24 alpha omega banner_b"><div class="widget widget_10_5" data-title="焦点图" href="/banner/">
+ <div name="ymgj_banner" class="container container_24 tplArea ymgj_banner">
+    <div class=" banner_b">
+        <div class="widget widget_43_29" data-title="移民国家焦点图" href="/ymgj_jdt/">
+            <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_LinkModule">
+                <div class="ImageDisplayBox imageDisplay_43">
+                   {% for article in five_article_list %}
+                        <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank" title="1">
+                            <img src="{{ article.cover.url }}" style="width:1680px; height:380px; margin:0px 0px 0px 0px;" alt="1" />
+                        </a>
+                    {% endfor %}
 
-        <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_LinkModule">
-            <div class="ImageDisplayBox imageDisplay_10" style="position: relative;">
-                <a href="" target="_blank" title="1" class="cycle-slide cycle-sentinel" style="position: static; top: 0px; left: 0px; z-index: 99; opacity: 1; display: block; visibility: hidden;">
-                    <img src="http://img.12xiong.top/xx_mgr_7_2018_05_31_11_04_23.jpg" style="width: 1680px; height: 380px; margin: 0px; visibility: hidden;" alt="1">
-                </a>
-                <a href="" target="_blank" title="1" class="cycle-slide cycle-slide-active" style="position: absolute; top: 0px; left: 0px; z-index: 99; opacity: 1; display: block; visibility: visible;">
-                    <img src="http://img.12xiong.top/xx_mgr_7_2018_05_31_11_04_23.jpg" style="width:1680px; height:380px; margin:0px 0px 0px 0px;" alt="1">
-                </a>
+                </div>
             </div>
-            </div>
-                <script type="text/javascript">
-                $(function() {
-                    function init(){
-                        var box = $(".imageDisplay_10");
-                        box.each(function(){
-                            if(this.initCycle)
-                                return;
-                            this.initCycle = true;
-                            var box = $(this);
-                            var wrap = box.closest('.ImageDisplayBoxWrap');
-                            box.cycle({
-                                slides: "> a"
-                            });
+            <script type="text/javascript">
+            $(function() {
+                function init(){
+                    var box = $(".imageDisplay_43");
+                    box.each(function(){
+                        if(this.initCycle)
+                            return;
+                        this.initCycle = true;
+
+                        var box = $(this);
+                        var wrap = box.closest('.ImageDisplayBoxWrap');
+
+
+                        box.cycle({
+
+
+                            slides: "> a"
                         });
-                    }
-                    ensureMedia({"_css": {}, "_js": ["/static/admin/js/jquery.js", "/static/_Client/JQuery/cycle2/jquery.cycle2.min.js"]}, init);
-                });
-                </script>
-            </div>
+                    });
+                }
+                ensureMedia({"_css": {}, "_js": ["http://www.5migrate.com/static/admin/js/jquery.js", "http://www.5migrate.com/static/_Client/JQuery/cycle2/jquery.cycle2.min.js"]}, init);
+            });
+            </script>
         </div>
     </div>
+</div>
 
 
+
+
+
+
+<div name="ymgj_main" class="container container_24 tplArea ymgj_main">
 {#    焦点新闻#}
         <div class="grid grid_15">
     <div style="height:25px"></div>

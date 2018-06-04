@@ -56,6 +56,7 @@ class MGRTag(AppBase):
 	web_site = models.IntegerField(u'所属网站',default=0,choices=WEB_SITE.items(),)
 	father = models.ForeignKey( "self", verbose_name=u'父类栏目',null=True,blank=True)
 	pid = models.IntegerField(u'pid',null=True,blank=True)
+	show_mobile = models.IntegerField(u'是否移动端显示',default=YES,choices=IS_SHOW.items(),)
 	class Meta:
 		verbose_name_plural = verbose_name = u'栏目'
 		ordering = ['-serial']
@@ -110,9 +111,16 @@ class MGRImage(AppBase):
 
 	def save(self):
 		#ID 为空，新增图片
-		if self.id is None:
+		if self.local_path == "":
 			super(MGRImage, self).save() #先保存一遍
+			return
+
+		if self.id is None:
+			print "id 222"
+			super(MGRImage, self).save() #先保存一遍
+			print "id23255"
 			QNUploadImage(self)
+
 
 		#未保存前，获取原来的地址
 		m = MGRImage.objects.get(id = self.id)

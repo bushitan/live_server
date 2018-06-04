@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import  ListView
 # Create your views here.
 
+from lib.message import *
 import json
 import logging
 from action.page import *
@@ -58,6 +59,7 @@ class YMIndexView(YMBase, ListView):
 		kwargs['two_tag'],kwargs['two_article_list'] = action_page.queryOnly(PID_YM_INDEX,2,8)
 		kwargs['three_tag'],kwargs['three_article_list'] = action_page.queryOnly(PID_YM_INDEX,3,9)
 		kwargs['four_tag'],kwargs['four_article_list'] = action_page.queryOnly(PID_YM_INDEX,4,8)
+		kwargs['five_tag'],kwargs['five_article_list'] = action_page.queryOnly(PID_YM_INDEX,5,4)
 
 		# one_tag_list,one_article_list ,two_tag,two_article_list    ,three_tag, three_article_list   ,  four_tag,four_article_list  =  action_page.GetYMIndex()
 		#
@@ -206,7 +208,7 @@ class LXIndexView(LXBase, ListView):
 		kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
 		kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
 		kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
-		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)
+		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
 		kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
 
 		return super(LXIndexView, self).get_context_data(**kwargs)
@@ -358,35 +360,28 @@ class UploadImage(YMBase, ListView):
 		adminIMG.save()
 		return HttpResponse(
 			 "<script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>" % adminIMG.url)
+		
 
-		# # print 111111,data
-		# print 222,data
-        #
-		# if not data:
-		# 	logger.error(
-		# 		u'[UserControl]用户上传头像为空:[%s]'.format(
-		# 			request.user.username
-		# 		)
-		# 	)
-		# 	return HttpResponse(u"上传头像错误", status=500)
-        #
-		# imgData = base64.b64decode(data)
+class LiteFatherTag(LXBase, ListView):
+	def get(self, request, *args, **kwargs):
 
-		# filename = "tx_100x100_{}.jpg".format(request.user.id)
-		# filedir = "vmaig_auth/static/tx/"
-		# if not os.path.exists(filedir):
-		# 	os.makedirs(filedir)
-        #
-		# path = filedir + filename
-        #
-		# file = open(path, "wb+")
-		# file.write(imgData)
-		# file.flush()
-		# file.close()
-        #
-		# # out.save(path)
-        #
-		# return HttpResponse(u"上传头像成功!\n(注意有10分钟缓存)")
+		_website = 0
+		_father = action_page.GetFatherTag( _website)
+		_dict = {
+			"father_tag_list":_father
+		}
+		return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

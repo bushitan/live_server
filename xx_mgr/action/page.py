@@ -84,19 +84,48 @@ class ActionPage():
 		return one_tag_list,one_article_list
 
 
-
 	def GetArticleListByTagID(self,tag_id):
 		_tag = self.query_tag.GetQuery(id = tag_id)
 		_article_list = self.query_article.FilterQuery(tag = tag_id)
 		return _tag,_article_list
-
-
 	def GetArticleByID(self,article_id):
 		if self.query_article.IsExists() is True:
 			return self.query_article.GetQuery(id = article_id)
 		else:
 			return False
 
+
+
+	#################小程序API#################
+	def GetFatherTag(self,website):
+		return self.query_tag.Filter(father = None,web_site = website)
+	def GetSonTagByFather(self,father_id):
+		return self.query_tag.Filter(father = father_id)
+
+	def GetCoverByTag(self,tag_id):
+		# _son_query = self.query_tag.FilterQuery(father = father_id)
+		# _son_list = []
+		_tag = self.query_tag.Get(id = tag_id)
+		_article_list =  self.query_article.Filter(tag_id = tag_id)[0:4]
+		_dict = {
+			"tag":_tag,
+			"article_list":_article_list,
+		}
+		return _dict
+	def GetArticleMatrixByFather(self,father_id):
+		_son_query = self.query_tag.FilterQuery(father = father_id)
+		_page_list = []
+		for son in _son_query:
+			_cover = self.GetCoverByTag(son.id)
+			_page_list.append(_cover)
+		return _page_list
+	def GetArticle(self,article_id):
+		if self.query_article.IsExists() is True:
+			return self.query_article.Get(id = article_id)
+		else:
+			return False
+		# for son in _son_query:
+			# _son_list.append(_article_list)
 
 
 
@@ -106,5 +135,7 @@ if __name__ == "__main__":
 	django.setup()
 	a = ActionPage()
 	# print a.GetYMIndex()
-	print a.getOnly(12,1)
+	# print a.getOnly(12,1)
 	# a.pvpRoomDict
+	# print a.GetSonTagByFather(81)
+	print a.GetCoverByTag(81)
