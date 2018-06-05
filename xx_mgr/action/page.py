@@ -100,12 +100,23 @@ class ActionPage():
 	def GetFatherTag(self,website):
 		return self.query_tag.Filter(father = None,web_site = website)
 	def GetSonTagByFather(self,father_id):
-		return self.query_tag.Filter(father = father_id)
+		return self.query_tag.Filter(father = father_id,show_mobile=YES)
 
 	def GetCoverByTag(self,tag_id):
 		# _son_query = self.query_tag.FilterQuery(father = father_id)
 		# _son_list = []
+		_xiao =[  31, 30, 29, 6, 7, 8, 22, 21, 20, 14, 13, 12, 50, 49, 48]
+		_ben =[  28, 111, 110, 109, 108, 9, 117, 116, 115, 114, 19, 126, 125, 124, 123, 11, 135, 134, 133, 132, 47, 144, 143, 142, 141]
+		_shuo = [107, 106, 105, 104, 103, 113, 112, 102, 101, 100, 122, 121, 120, 119, 118, 131, 130, 129, 128, 127, 140, 139, 138, 137, 136]
+
 		_tag = self.query_tag.Get(id = tag_id)
+		if int(_tag["tag_id"]) in _xiao:
+			_tag["tag_name"] = u"（中小学）-"+_tag["tag_name"]
+		if int(_tag["tag_id"]) in _ben:
+			_tag["tag_name"] = u"（本科）-"+_tag["tag_name"]
+		if int(_tag["tag_id"]) in _shuo:
+			_tag["tag_name"] = u"（硕士）-"+_tag["tag_name"]
+
 		_cover_list =  self.query_article.Filter(tag_id = tag_id)[0:4]
 		_dict = {
 			"tag":_tag,
@@ -113,7 +124,7 @@ class ActionPage():
 		}
 		return _dict
 	def GetCoverArticleByFather(self,father_id):
-		_son_query = self.query_tag.FilterQuery(father = father_id)
+		_son_query = self.query_tag.FilterQuery(father = father_id,show_mobile=YES)
 		_page_list = []
 		for son in _son_query:
 			_cover = self.GetCoverByTag(son.id)
@@ -129,6 +140,16 @@ class ActionPage():
 			# _son_list.append(_article_list)
 
 
+	def GetSwiper(self,swiper_tag_id):
+		return self.query_article.Filter(tag_id = swiper_tag_id)
+		# if self.query_article.IsExists() is True:
+		# 	return self.query_article.Get(id = article_id)
+		# else:
+		# 	return False
+		# for son in _son_query:
+			# _son_list.append(_article_list)
+
+
 
 
 if __name__ == "__main__":
@@ -139,4 +160,10 @@ if __name__ == "__main__":
 	# print a.getOnly(12,1)
 	# a.pvpRoomDict
 	# print a.GetSonTagByFather(81)
-	print a.GetCoverByTag(81)
+	# print a.GetCoverByTag(81)
+	query_tag = QueryTag()
+	_list = query_tag.FilterQuery(web_site=0,pid=6)
+	_temp = []
+	for i in _list:
+		_temp.append( i.id )
+	print _temp

@@ -397,7 +397,7 @@ class LiteCover(LXBase, ListView):
 		return MESSAGE_RESPONSE_SUCCESS(_cover_list)
 
 
-###获取封面
+###获取文章
 class LiteArticle(LXBase, ListView):
 	def get(self, request, *args, **kwargs):
 		# _website = 0
@@ -405,6 +405,17 @@ class LiteArticle(LXBase, ListView):
 		_article_dict = action_page.GetArticle( _article_id)
 		_dict = {
 			"article_dict":_article_dict
+		}
+		return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+###获取轮播图
+class LiteSwiper(LXBase, ListView):
+	def get(self, request, *args, **kwargs):
+		# _website = 0
+		_swiper_tag_id = request.GET.get('swiper_tag_id',"")
+		_article_list = action_page.GetSwiper( _swiper_tag_id)
+		_dict = {
+			"swiper_list":_article_list
 		}
 		return MESSAGE_RESPONSE_SUCCESS(_dict)
 

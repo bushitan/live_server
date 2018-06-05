@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^lite/cover_article/$', LiteCoverArticle.as_view()),
     url(r'^lite/cover/$', LiteCover.as_view()),
     url(r'^lite/article/$', LiteArticle.as_view()),
+    url(r'^lite/swiper/$', LiteSwiper.as_view()),
     # url(r'^media/(?P<path>.*)$', serve,{'document_root': MEDIA_ROOT, }),
     # url(r'^tag/delete/$', TagAdd.as_view()),
     # url(r'^tag/get_list/$', TagAdd.as_view()),

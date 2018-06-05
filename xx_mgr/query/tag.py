@@ -15,8 +15,8 @@ class QueryTag(QueryBase):
 			"pid":obj.pid,
 			# "create_time":obj.create_time.strftime("%Y-%m-%d"),
 		}
-	def Cover(self):
-		s
+	# def Cover(self):
+
 if __name__ == "__main__":
 	import os,django
 	django.setup()
