@@ -421,6 +421,41 @@ class LiteSwiper(LXBase, ListView):
 
 
 
+######################### 手机网页 ##########################
+
+###获取轮播图
+class MobileIndex(BaseMixin, ListView):
+	template_name = 'mobile_index.html'
+	# context_object_name = 'article_list'
+
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = 0
+		PID_LX_INDEX = 21
+		kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
+		kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
+		kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
+		kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
+		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
+		kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
+		# kwargs['nav_index'] =  int(self.nav_index)
+		# # print kwargs['nav_index']
+		# kwargs['one_tag'],kwargs['one_article']  = action_page.getOnly(self.pid,1)
+		# # print kwargs['one_article']
+		# kwargs['two_tag'], kwargs['two_article']  = action_page.getOnly(self.pid,2)
+		# kwargs['three_tag'], kwargs['three_article']  = action_page.getOnly(self.pid,3)
+        #
+		# kwargs['four_tag_list'], kwargs['four_article_list']  = action_page.queryMore(self.pid,4)
+		# kwargs['five_tag_list'], kwargs['five_article_list']  = action_page.queryMore(self.pid,5)
+		# kwargs['six_tag_list'], kwargs['six_article_list']  = action_page.queryMore(self.pid,6)
+
+		return super(MobileIndex, self).get_context_data(**kwargs)
+
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.pid = self.kwargs.get('pid')
+		return super(MobileIndex, self).get(request, *args, **kwargs)
 
 
 

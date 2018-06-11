@@ -1,0 +1,74 @@
+
+body{
+     /* background-color: #f7f7f7;  */
+       background-color: #f8f5f0;
+    margin: 0px;
+    padding: 0px;
+    width: 100% !important;
+    height: 100% !important;;
+       /*background-color: #eeeeee;*/
+      /* background-color: #888;  */
+    /* background-color: #fff;   */
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif,Microsoft YaHei;
+    font-family : "Microsoft YaHei";
+    /* letter-spacing:1px; */
+}
+
+/* ¶ÔÆë */
+.xx_flex{
+    display: flex;
+}
+.xx_flex__center{
+    justify-content: center;
+}
+.xx_flex__between{
+    justify-content: space-between
+}
+.xx_flex__around{
+    justify-content: space-around
+}
+
+
+
+.page__p_15{    padding: 0 15px;}
+.page__p_a_15{    padding: 15px;}
+.page__p_t_15{    padding: 15px 0;}
+
+.page__line_gray{
+    content: "";
+    border-bottom: 1px #f0f0f0 solid;
+}
+
+
+.page__space_4{    height: 4px;}
+.page__space_6{    height: 6px;}
+.page__space_8{    height: 8px;}
+.page__space_10{    height: 10px;}
+
+
+.page__font_9_gray{
+    font-size: 9pt;
+    color: #8d8d8d;
+}
+
+.page__font_gray{   color: #888; }
+.page_font_green{    color: #2ebe60;}
+.page_font_gold{    color: #b68934;}
+.page_bg_green{    background-color: #2ebe60;}
+.page_font_white{    color: #fff;}
+.page_bg_white{    background-color: #fff;}
+
+
+.page_size_9{
+    font-size: 9pt;
+}
+.page_size_10{
+    font-size: 10pt;
+}
+.page_size_11{
+    font-size: 11pt;
+}
+
+
+
