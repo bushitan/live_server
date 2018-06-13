@@ -56,7 +56,10 @@ class MGRTag(AppBase):
 	web_site = models.IntegerField(u'所属网站',default=0,choices=WEB_SITE.items(),)
 	father = models.ForeignKey( "self", verbose_name=u'父类栏目',null=True,blank=True)
 	pid = models.IntegerField(u'pid',null=True,blank=True)
+
+	logo = models.ForeignKey( "MGRImage", verbose_name=u'手机图标',null=True,blank=True)
 	show_mobile = models.IntegerField(u'是否移动端显示',default=YES,choices=IS_SHOW.items(),)
+	name_mobile = models.CharField(max_length=100, verbose_name=u'手机显示名称',default="",null=True,blank=True)
 	class Meta:
 		verbose_name_plural = verbose_name = u'栏目'
 		ordering = ['-serial']

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <meta name="keywords" content="广西麦格瑞,麦格瑞出国,广西留学移民,广西出国,南宁出国">
+
+    <link href="/live/static/app.css" rel="stylesheet" media="all"/>
+{#    <title></title>#}
+{#    <link href="/live/static/app.css" rel="stylesheet" media="all"/>#}
+{#    <link href="/live/static/index.css" rel="stylesheet" media="all"/>#}
+{#    <script src="http://www.lwdweb.top:27230/Content/front/js/jquery.js"></script>#}
+{#    <script src="http://www.lwdweb.top:27230/Content/front/js/LAB.min.js"></script>#}
+{#    <script src="http://www.lwdweb.top:27230/Content/front/js/ensureMedia.js"></script>#}
+    <style>
+
+
+    </style>
+</head>
+<body>
+ {%block main%} {% endblock %}
+
+ <div style="height: 51px;"></div>
+<div class="mgr_tab">
+
+    {% if nav_index == 0 %}
+        <div class="node lx_left">  留学</div>
+        <div class="node lx_right"> 移民</div>
+    {% else %}
+        <div class="node ym_left">  留学</div>
+        <div class="node ym_right"> 移民</div>
+    {% endif %}
+</div>
+</body>
+</html>

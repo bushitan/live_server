@@ -16,6 +16,9 @@ class ActionPage():
 	def GetNav(self,web_site):
 		return  self.query_tag.FilterQuery(web_site = web_site,father = None)
 
+	def MobileGetNav(self,web_site):
+		return  self.query_tag.FilterQuery(web_site = web_site,father = None,show_mobile=YES)
+
 	def GetYMIndex(self):
 		one_tag_list = self.query_tag.FilterQuery(father__pid = PID_YM_INDEX,pid = 1)
 		one_article_list = []

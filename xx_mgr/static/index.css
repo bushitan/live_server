@@ -1,46 +1,74 @@
 
-
+.mgr_header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;background-color:#ffffff ;
+}
+.mgr_header .logo{
+    width: 128px;
+    height: auto;
+}
+.mgr_header .phone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.phone img{
+    width: 180px;
+    height: auto;
+}
 
 .team .rol{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .team .node{
     display: flex;
     flex-direction:column ;
-    width: 75px;
-    /* m: auto; */
-     justify-content: center;
-     text-align: center;
-     font-size: 9pt;
-     color:#141414;
+    width: 25%;
+    justify-content: center;
+    text-align: center;
+    font-size: 9pt;
+    color:#141414;
+    margin-bottom: 15px;
 }
 .team img{
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
     margin: 0 auto 4px ;
+    border-radius: 50%;
 }
 
 
 
-.cover_title{
-        margin: 0;
-    font-size: 1.2rem;
+.news_header{
+    display: flex;
+    justify-content: space-between;
+}
+.news_header .title{
+    margin: 0;
+    font-size: 13pt;
     color: #b68934;
     padding-left: 0.4rem;
     border-left: 3px solid #b68934;
     line-height: 1.1rem;
 }
 
+.news_header .more{
+    color: #888888;
+    font-size: 9pt;
+}
 
 
 
 
-
+.news_border{
+    border-radius: 5px;
+    background-color: #fff;
+}
 .news{
     padding: 0 15px;
-    background-color: #fff;
 }
 .news .node{
     display: flex;
@@ -57,7 +85,7 @@
 .news .title{
     font-size: 11pt;
     color:  #151515;
-    min-height: 35pt;
+    /*min-height: 35pt;*/
 }
 .news .summery{
     font-size: 9pt;
@@ -103,12 +131,51 @@
 /*À¸Ä¿·Ö¸îÏß  */
 .news .line__gray{
     content: "";
-    border-bottom: 1rpx #f0f0f0 solid;
+    border-bottom: 1px #f0f0f0 solid;
+}
+
+.mgr_footer_img{
+    width: 100%;;
+    height: auto;
+}
+.mgr_footer{
+    background-color: #000b2b;
+    color: #ffffff;
+    padding: 15px;
+    font-size: small;
+    line-height: 20px;
+    /*text-align: center;*/
+}
+.mgr_footer .center{
+    text-align: center;
+}
+
+.mgr_footer .icon{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.mgr_footer .icon img{
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
 }
 
 
-.mgr_footer{
-    background-color: #00134D;
-    color: #ffffff;
-    padding: 15px;
+
+
+
+.xx_article{
+}
+.xx_article .title{
+    font-size: 11pt;
+    font-weight: bolder;
+    text-align: center;
+}
+.xx_article .des{
+    font-size: 9pt;
+    text-align: center;
+}
+.xx_article .dotted_line{
+    border-bottom: 1px dotted #ccc;
 }

@@ -1,4 +1,6 @@
-
+a {
+    text-decoration: none;
+}
 body{
      /* background-color: #f7f7f7;  */
        background-color: #f8f5f0;
@@ -54,10 +56,12 @@ body{
 
 .page__font_gray{   color: #888; }
 .page_font_green{    color: #2ebe60;}
-.page_font_gold{    color: #b68934;}
+/*µ­É« #f8f5f0    ÖØÉ« #c6995f    #f8f5f0*/
+.page_font_gold{    color: #c6995f;}
 .page_bg_green{    background-color: #2ebe60;}
 .page_font_white{    color: #fff;}
 .page_bg_white{    background-color: #fff;}
+.page_bg_gold{    background-color: #f8f5f0;}
 
 
 .page_size_9{
@@ -70,5 +74,40 @@ body{
     font-size: 11pt;
 }
 
+
+.mgr_tab{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #ebebeb;
+}
+.mgr_tab .node {
+    padding: 15px 0;
+    text-align: center;
+    flex-grow: 1;
+}
+.mgr_tab .lx_left{
+    background-color: #eb2047;
+    color: #ffffff;
+}
+.mgr_tab .lx_right{
+    background-color: #ffffff;
+    color: #000;
+}
+.mgr_tab .ym_left{
+    background-color: #ffffff;
+    color: #000000;
+}
+.mgr_tab .ym_right{
+    background-color: #c6995f;
+    color: #ffffff;
+}
+.mgr_back{
+    background-color: #ffffff;
+    padding: 15px;
+    font-size: 10pt;
+}
 
 

@@ -1,0 +1,43 @@
+
+{% extends "mobile/base.html" %}
+
+{%block main%}
+    <link href="/live/static/index.css" rel="stylesheet" media="all"/>
+    <div class="mgr_back">返回</div>
+
+    <div class='page__p_15 page_bg_gold'>
+
+         {% for tag in tag_list %}
+            <div  class='page__p_t_15 news_header' >
+                    <div class='page_font_gold title'>{{ tag.tag_name }}</div>
+                    <a href="{{ tab_base_url }}/{{ nav_index }}/{{ nav.id }}" class="more">MORE</a>
+            </div>
+
+            <div class='page__line_gray'  ></div>
+        {% endfor %}
+        <div class='page__line_gray'></div>
+        <div class="news_border">
+            <div class='news'>
+                 {% for article in article_list %}
+                     <div  >
+                        <div class=' node'>
+                            <div class='left'>
+                                <div class='title'> {{ article.title  }}</div>
+                                <div class='time'>{{ article.issue_time|date:"Y/m/d" }}</div>
+                            </div>
+                            {% if article.cover != None %}
+                                 <div class='cover' >
+                                    <img src='{{ article.cover.url }}' />
+                                </div>
+                            {% endif %}
+
+                        </div>
+                        <div class='line__gray'  ></div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

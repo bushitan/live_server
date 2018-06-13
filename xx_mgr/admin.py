@@ -44,6 +44,10 @@ class MGRTagAdmin(AppAdmin):
 	list_display = ("id","is_show",'web_site','show_mobile',"father","pid","name","name_admin","serial",)
 	suit_form_tabs = (('content', u'栏目编辑'),)
 	fieldsets = (
+		(u"手机端", {
+			'classes': ('suit-tab', 'suit-tab-content',),
+			'fields': ['show_mobile','logo','name_mobile',]
+		}),
 		(u"分类", {
 			'classes': ('suit-tab', 'suit-tab-content',),
 			'fields': ['web_site',"father","pid","name","name_admin","serial",]
@@ -52,7 +56,7 @@ class MGRTagAdmin(AppAdmin):
 	list_editable = ('web_site','show_mobile',"father","name","name_admin","serial","pid",)
 	list_filter = ('web_site',TagFilter,)
 	search_fields = ("pid",)
-	raw_id_fields = ('father',)
+	raw_id_fields = ('father','logo',)
 
 admin.site.register(MGRTag,MGRTagAdmin)
 

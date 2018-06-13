@@ -423,30 +423,31 @@ class LiteSwiper(LXBase, ListView):
 
 ######################### 手机网页 ##########################
 
-###获取轮播图
-class MobileIndex(BaseMixin, ListView):
-	template_name = 'mobile_index.html'
+class MobileBase(BaseMixin):
+	def get_context_data(self, *args, **kwargs):
+
+		kwargs['nav_list'] = action_page.MobileGetNav(0)
+		kwargs['tab_base_url'] = "/live/xx_mgr/mobile/tab"
+		kwargs['cover_base_url'] = "/live/xx_mgr/mobile/cover"
+		kwargs['article_base_url'] = "/live/xx_mgr/mobile/article"
+		# print  11111, kwargs['nav_list']
+		context = super(MobileBase, self).get_context_data(**kwargs)
+		return context
+
+###手机版首页
+class MobileIndex(MobileBase, ListView):
+	template_name = 'mobile/index.html'
 	# context_object_name = 'article_list'
 
 	def get_context_data(self, **kwargs):
-		kwargs['nav_index'] = 0
-		PID_LX_INDEX = 21
+		kwargs['nav_index'] = 1
+		PID_LX_INDEX = 21  #留学
 		kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
 		kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
 		kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
 		kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
 		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
 		kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
-		# kwargs['nav_index'] =  int(self.nav_index)
-		# # print kwargs['nav_index']
-		# kwargs['one_tag'],kwargs['one_article']  = action_page.getOnly(self.pid,1)
-		# # print kwargs['one_article']
-		# kwargs['two_tag'], kwargs['two_article']  = action_page.getOnly(self.pid,2)
-		# kwargs['three_tag'], kwargs['three_article']  = action_page.getOnly(self.pid,3)
-        #
-		# kwargs['four_tag_list'], kwargs['four_article_list']  = action_page.queryMore(self.pid,4)
-		# kwargs['five_tag_list'], kwargs['five_article_list']  = action_page.queryMore(self.pid,5)
-		# kwargs['six_tag_list'], kwargs['six_article_list']  = action_page.queryMore(self.pid,6)
 
 		return super(MobileIndex, self).get_context_data(**kwargs)
 
@@ -456,6 +457,54 @@ class MobileIndex(BaseMixin, ListView):
 		self.nav_index = self.kwargs.get('nav_index')
 		self.pid = self.kwargs.get('pid')
 		return super(MobileIndex, self).get(request, *args, **kwargs)
+
+####子栏目列表###
+class MobileTabView(MobileBase, ListView):
+	template_name = 'mobile/tab.html'
+	def get_context_data(self, **kwargs):
+		# kwargs['nav_index'] = int(self.nav_index)
+		# kwargs['tag'] ,kwargs['article_list'] = action_page.GetSonTagByFather(self.tag_id)
+		kwargs['tag_list']  = action_page.GetSonTagByFather(self.father_id)
+		print kwargs['tag_list']
+		return super(MobileTabView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.father_id = self.kwargs.get('father_id')
+		# self.tag_id = 2
+		return super(MobileTabView, self).get(request, *args, **kwargs)
+
+
+####手机封面列表###
+class MobileCoverView(MobileBase, ListView):
+	template_name = 'mobile/cover.html'
+	def get_context_data(self, **kwargs):
+		# kwargs['nav_index'] = int(self.nav_index)
+		kwargs['tag'] ,kwargs['article_list'] = action_page.GetArticleListByTagID(self.tag_id)
+		return super(MobileCoverView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.tag_id = self.kwargs.get('tag_id')
+		# self.tag_id = 40
+		return super(MobileCoverView, self).get(request, *args, **kwargs)
+
+######## 文章列表
+class MobileArticleView(LXBase, ListView):
+	template_name = 'mobile/article.html'
+	# context_object_name = 'article_list'
+	def get_context_data(self, **kwargs):
+		kwargs['nav_index'] = int(self.nav_index)
+		kwargs['article'] = action_page.GetArticleByID(self.article_id)
+		return super(MobileArticleView, self).get_context_data(**kwargs)
+	def get_queryset(self):
+		pass
+	def get(self, request, *args, **kwargs):
+		self.nav_index = self.kwargs.get('nav_index')
+		self.article_id = self.kwargs.get('article_id')
+		return super(MobileArticleView, self).get(request, *args, **kwargs)
 
 
 
