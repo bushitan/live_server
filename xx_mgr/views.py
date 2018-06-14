@@ -426,7 +426,9 @@ class LiteSwiper(LXBase, ListView):
 class MobileBase(BaseMixin):
 	def get_context_data(self, *args, **kwargs):
 
-		kwargs['nav_list'] = action_page.MobileGetNav(0)
+		kwargs['nav_list'] = action_page.MobileGetNav(self.web_site)
+
+		kwargs['base_url'] = "/live/xx_mgr/mobile/index"
 		kwargs['tab_base_url'] = "/live/xx_mgr/mobile/tab"
 		kwargs['cover_base_url'] = "/live/xx_mgr/mobile/cover"
 		kwargs['article_base_url'] = "/live/xx_mgr/mobile/article"
@@ -440,22 +442,34 @@ class MobileIndex(MobileBase, ListView):
 	# context_object_name = 'article_list'
 
 	def get_context_data(self, **kwargs):
-		kwargs['nav_index'] = 1
-		PID_LX_INDEX = 21  #留学
-		kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
-		kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
-		kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
-		kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
-		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
-		kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
+		kwargs['web_site'] = int(self.web_site)
+
+		if kwargs['web_site'] == 0:
+			PID_LX_INDEX = 21  #留学
+
+			kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
+			kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
+			kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
+			kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
+			kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
+			kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
+		if kwargs['web_site'] == 1:
+			PID_LX_INDEX = 11  #移民
+			kwargs['one_tag_list'],kwargs['one_article_list']  = action_page.queryMore(PID_LX_INDEX,1)
+			kwargs['two_tag'], kwargs['two_article_list']  =action_page.queryOnly(PID_LX_INDEX,2,8)
+			print kwargs['two_tag'], kwargs['two_article_list']
+			kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
+			kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
+			# kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
+			# kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
+		print self.web_site,PID_LX_INDEX
+
 
 		return super(MobileIndex, self).get_context_data(**kwargs)
-
 	def get_queryset(self):
 		pass
 	def get(self, request, *args, **kwargs):
-		self.nav_index = self.kwargs.get('nav_index')
-		self.pid = self.kwargs.get('pid')
+		self.web_site = self.kwargs.get('web_site')
 		return super(MobileIndex, self).get(request, *args, **kwargs)
 
 ####子栏目列表###

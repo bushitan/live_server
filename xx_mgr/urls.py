@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'^lite/swiper/$', LiteSwiper.as_view()),
 
 
-    url(r'^mobile/index/$', MobileIndex.as_view()),
+    url(r'^mobile/index/(?P<web_site>\w+)/$', MobileIndex.as_view()),
     url(r'^mobile/tab/(?P<nav_index>\w+)/(?P<father_id>\w+)/$', MobileTabView.as_view()),
     url(r'^mobile/cover/(?P<nav_index>\w+)/(?P<tag_id>\w+)/$', MobileCoverView.as_view()),
     url(r'^mobile/article/(?P<nav_index>\w+)/(?P<article_id>\w+)/$', MobileArticleView.as_view()),
