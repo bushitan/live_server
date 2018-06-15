@@ -8,7 +8,7 @@
     <div class='page__p_15 page_bg_gold'>
 
          {% for tag in tag_list %}
-            <div  class='page__p_t_15 news_header' >
+            <a  class='page__p_t_15 news_header' href="{{ cover_base_url }}/{{ web_site }}/{{ tag.tag_id }}" >
                     <div class='page_font_gold title'>
 {#                        {{ tag.tag_name }}#}
                     {% if web_site == 0 %}
@@ -17,8 +17,8 @@
                         {{ tag.name }}
                     {% endif %}
                     </div>
-                    <a href="{{ cover_base_url }}/{{ web_site }}/{{ tag.tag_id }}" class="more">MORE</a>
-            </div>
+                    <a  class="more">MORE</a>
+            </a>
 
             <div class='page__line_gray'  ></div>
         {% endfor %}
