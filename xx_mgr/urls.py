@@ -37,9 +37,9 @@ urlpatterns = [
 
 
     url(r'^mobile/index/(?P<web_site>\w+)/$', MobileIndex.as_view()),
-    url(r'^mobile/tab/(?P<nav_index>\w+)/(?P<father_id>\w+)/$', MobileTabView.as_view()),
-    url(r'^mobile/cover/(?P<nav_index>\w+)/(?P<tag_id>\w+)/$', MobileCoverView.as_view()),
-    url(r'^mobile/article/(?P<nav_index>\w+)/(?P<article_id>\w+)/$', MobileArticleView.as_view()),
+    url(r'^mobile/tab/(?P<web_site>\w+)/(?P<father_id>\w+)/$', MobileTabView.as_view()),
+    url(r'^mobile/cover/(?P<web_site>\w+)/(?P<tag_id>\w+)/$', MobileCoverView.as_view()),
+    url(r'^mobile/article/(?P<web_site>\w+)/(?P<article_id>\w+)/$', MobileArticleView.as_view()),
     # url(r'^mobile/article/$', MobileArticleView.as_view()),
 
     # url(r'^media/(?P<path>.*)$', serve,{'document_root': MEDIA_ROOT, }),

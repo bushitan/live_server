@@ -3,14 +3,21 @@
 
 {%block main%}
     <link href="/live/static/index.css" rel="stylesheet" media="all"/>
-    <div class="mgr_back">返回</div>
+    <div class="mgr_back">  <a href="javascript:history.go(-1)">返回</a></div>
 
     <div class='page__p_15 page_bg_gold'>
 
          {% for tag in tag_list %}
             <div  class='page__p_t_15 news_header' >
-                    <div class='page_font_gold title'>{{ tag.tag_name }}</div>
-                    <a href="{{ tab_base_url }}/{{ nav_index }}/{{ nav.id }}" class="more">MORE</a>
+                    <div class='page_font_gold title'>
+{#                        {{ tag.tag_name }}#}
+                    {% if web_site == 0 %}
+                        {{ tag.name_mobile}}
+                    {% else %}
+                        {{ tag.name }}
+                    {% endif %}
+                    </div>
+                    <a href="{{ cover_base_url }}/{{ web_site }}/{{ tag.tag_id }}" class="more">MORE</a>
             </div>
 
             <div class='page__line_gray'  ></div>

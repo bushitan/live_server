@@ -125,14 +125,21 @@
     color:  #8d8d8d;
 }
 
-
-
+.news_none{
+    color:#888888;
+    text-align: center;
+}
 
 /*À¸Ä¿·Ö¸îÏß  */
-.news .line__gray{
-    content: "";
-    border-bottom: 1px #f0f0f0 solid;
-}
+/*.news .line__gray{*/
+    /*content: "";*/
+    /*border-bottom: 1px #f0f0f0 solid;*/
+/*}*/
+
+
+
+
+
 
 .mgr_footer_img{
     width: 100%;;
@@ -178,4 +185,9 @@
 }
 .xx_article .dotted_line{
     border-bottom: 1px dotted #ccc;
+}
+.xx_content img {
+    /*max-width: 300px;*/
+    width: 100%;
+    height: auto;
 }

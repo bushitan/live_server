@@ -3,17 +3,18 @@
 
 {%block main%}
     <link href="/live/static/index.css" rel="stylesheet" media="all"/>
-    <div class="mgr_back">返回</div>
+    <div class="mgr_back">  <a href="javascript:history.go(-1)">返回</a></div>
 
 {#	<div style="height:15px;"></div>#}
 		<div class="page__p_15 xx_article">
 			<p class="title">留学日本打工：这些规则你要知道	</p>
 {#			<div style="height:10px;"></div>#}
-			<p class="des">2016-12-06 阅读次数:{{ article.click_ratee }} </p>
+			<p class="des">2016-12-06</p>
+{#        阅读次数:{{ article.click_ratee }}#}
 {#			<div style="height:15px;"></div>#}
 			<div class="dotted_line"></div>
 {#			<div style="height:15px;"></div>#}
-			<div class=" content">
+			<div class="xx_content">
                 {% autoescape off %}
                     {{ article.content }}
                 {% endautoescape %}

@@ -22,10 +22,10 @@
 {#            <div class="ImageDisplayBoxWrap ImageDisplayBoxWrap_LinkModule">#}
                 <div class="ImageDisplayBox imageDisplay_43">
                    {% for article in five_article_list %}
-                        <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank" title="1">
+                        <a href="{{ article_base_url }}/{{ web_site }}/{{ article.id }}/" target="_blank" title="1">
                             <img src="{{ article.cover.url }}" style="width:100%; height:200px; margin:0px 0px 0px 0px;" alt="1" />
                         </a>
-                        <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank" title="1">
+                        <a href="{{ article_base_url }}/{{ web_site }}/{{ article.id }}/" target="_blank" title="1">
                             <img src="http://img.12xiong.top/xx_mgr_16_2018_05_31_14_36_24.jpg" style="width:100%; height:200px; margin:0px 0px 0px 0px;" alt="2" />
                         </a>
                     {% endfor %}
@@ -63,7 +63,7 @@
         <div style="height:15px"></div>
         <div class='rol'>
             {%  for nav in nav_list %}
-                <a href="{{ tab_base_url }}/{{ nav_index }}/{{ nav.id }}" class='node' >
+                <a href="{{ tab_base_url }}/{{ web_site }}/{{ nav.id }}" class='node' >
                     <img src='{{ nav.logo.url }}'/>
                     <div>{{ nav.name }}</div>
                 </a>
@@ -75,13 +75,13 @@
     <div class='page__p_15 page_bg_gold'>
         <div  class='page__p_t_15 news_header' >
                 <div class='page_font_gold title'>{{ two_tag.name }}</div>
-                <a href="{{ cover_base_url }}/{{ nav_index }}/{{ two_tag.id }}" class="more">MORE</a>
+                <a href="{{ cover_base_url }}/{{ web_site }}/{{ two_tag.id }}" class="more">MORE</a>
         </div>
         <div class='page__line_gray'></div>
         <div class="news_border">
             <div class='news'>
                  {% for article in two_article_list %}
-                     <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}" >
+                     <a href="{{ article_base_url }}/{{ web_site }}/{{ article.id }}" >
                         <div class=' node'>
                             <div class='left'>
                                 <div class='title'> {{ article.title  }}</div>
@@ -106,14 +106,14 @@
 {#    成功案例#}
     <div class='page__p_15 page_bg_gold'>
         <div  class='page__p_t_15 news_header' >
-                <div class='page_font_gold title'>{{ four_article_list.name }}</div>
-                <a href="{{ cover_base_url }}/{{ nav_index }}/{{ two_tag.id }}" class="more">MORE</a>
+                <div class='page_font_gold title'>{{ four_tag.name }}</div>
+                <a href="{{ cover_base_url }}/{{ web_site }}/{{ four_tag.id }}" class="more">MORE</a>
         </div>
         <div class='page__line_gray'></div>
         <div class="news_border">
             <div class='news'>
                  {% for article in four_article_list %}
-                     <a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}" >
+                     <a href="{{ article_base_url }}/{{ web_site }}/{{ article.id }}" >
                         <div class=' node'>
                             <div class='left'>
                                 <div class='title'> {{ article.title  }}</div>

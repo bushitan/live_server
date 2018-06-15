@@ -103,7 +103,7 @@ class ActionPage():
 	def GetFatherTag(self,website):
 		return self.query_tag.Filter(father = None,web_site = website)
 	def GetSonTagByFather(self,father_id):
-		return self.query_tag.Filter(father = father_id,show_mobile=YES)
+		return self.query_tag.FilterQuery(father = father_id,show_mobile=YES)
 
 	def GetCoverByTag(self,tag_id):
 		# _son_query = self.query_tag.FilterQuery(father = father_id)
