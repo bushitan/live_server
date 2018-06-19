@@ -8,9 +8,9 @@ class QueryTag(QueryBase):
 	#用于封面展示的数据
 	def _PackDict(self,obj):
 		return {
-			"tag_id":obj.id,
-			"tag_name":obj.name,
-			"tag_name_mobile":obj.name_mobile,
+			"id":obj.id,
+			"name":obj.name,
+			"name_mobile":obj.name_mobile,
 			"web_site":obj.web_site,
 			"father_id":obj.father_id,
 			"pid":obj.pid,

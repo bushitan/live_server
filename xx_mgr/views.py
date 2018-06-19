@@ -455,7 +455,7 @@ class MobileIndex(MobileBase, ListView):
 		print kwargs['two_tag'], kwargs['two_article_list']
 		kwargs['three_tag'], kwargs['three_article_list']  = action_page.queryOnly(PID_LX_INDEX,3,9)
 		kwargs['four_tag'], kwargs['four_article_list']  = action_page.queryOnly(PID_LX_INDEX,4,8)
-			# kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
+		kwargs['five_tag'], kwargs['five_article_list']  = action_page.queryOnly(PID_LX_INDEX,5,4)  #轮播图
 			# kwargs['six_tag'], kwargs['six_article_list']  = action_page.queryOnly(PID_LX_INDEX,6,4)
 		# print self.web_site,PID_LX_INDEX
 

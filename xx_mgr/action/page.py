@@ -17,7 +17,14 @@ class ActionPage():
 		return  self.query_tag.FilterQuery(web_site = web_site,father = None)
 
 	def MobileGetNav(self,web_site):
-		return  self.query_tag.FilterQuery(web_site = web_site,father = None,show_mobile=YES)
+		_nav_list = self.query_tag.Filter(web_site = web_site,father = None,show_mobile=YES)
+		if int(web_site) == 0 :
+			_nav_list.append( self.query_tag.Get(id = 46))#海外游学
+			_nav_list.append( self.query_tag.Get(id = 45)) #成功案例
+
+		_about_me = self.query_tag.Get(id = 44) #关于我们
+		_nav_list.append(_about_me)
+		return _nav_list
 
 	def GetYMIndex(self):
 		one_tag_list = self.query_tag.FilterQuery(father__pid = PID_YM_INDEX,pid = 1)
@@ -159,14 +166,15 @@ if __name__ == "__main__":
 	import os,django
 	django.setup()
 	a = ActionPage()
+	print 	len(a.MobileGetNav(1))
 	# print a.GetYMIndex()
 	# print a.getOnly(12,1)
 	# a.pvpRoomDict
 	# print a.GetSonTagByFather(81)
 	# print a.GetCoverByTag(81)
-	query_tag = QueryTag()
-	_list = query_tag.FilterQuery(web_site=0,pid=6)
-	_temp = []
-	for i in _list:
-		_temp.append( i.id )
-	print _temp
+	# query_tag = QueryTag()
+	# _list = query_tag.FilterQuery(web_site=0,pid=6)
+	# _temp = []
+	# for i in _list:
+	# 	_temp.append( i.id )
+	# print _temp
