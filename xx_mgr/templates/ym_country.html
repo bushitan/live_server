@@ -101,7 +101,7 @@ $(function() {
 
     {% for article in three_article_list %}
 
-        <li><a href="{{ article.cover.url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title|slice:"10" }}</a><span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
+        <li><a href="{{ article_base_url }}/{{ nav_index }}/{{ article.id }}/" target="_blank">{{ article.title|slice:"10" }}</a><span>{{ article.issue_time|date:"Y/m/d" }}</span></li>
     {% endfor %}
 
 </ul></div></div></div>
