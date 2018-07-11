@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^live/pvp/', include('pvp.urls')),
     url(r'^live/ppt/', include('ppt.urls')),
     url(r'^live/xx_mgr/', include('xx_mgr.urls')),
+    url(r'^live/speak/', include('speak.urls')),
 ]

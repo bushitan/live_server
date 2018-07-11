@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'pvp',
     'ppt',
     'xx_mgr',
+    'speak',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -151,6 +152,12 @@ SUIT_CONFIG = {
                 'xx_mgr.MGRArticle',
                 'xx_mgr.MGRImage',
                 'xx_mgr.MGRKeyWord',
+            )
+        },
+        {'app': 'speak', 'label': u'说英语', 'icon': 'icon-fire',
+            'models': (
+                'speak.SpeakTheme',
+                'speak.SpeakUser',
             )
         },
     ),

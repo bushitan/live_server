@@ -16,6 +16,7 @@ QINIU_CALLBACK_URL = "https://www.12xiong.top/day365/lite/upload/callback/"
 QINIU_CALLBACK_BODY = "key=$(key)&hash=$(etag)&w=$(imageInfo.width)&h=$(imageInfo.height)&duration=$(avinfo.video.duration)&fsize=$(fsize)&vw=$(avinfo.video.width)&vh=$(avinfo.video.height)"
 QINIU_CALLBACK_HOST = "120.27.97.33"
 QINIU_FSIZE_LIMIT = 6815744
+QINIU_KEY_HASH = {}  ##七牛上传的hash文件信息
 
 YES = 1
 NO = 0
