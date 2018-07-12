@@ -9,7 +9,7 @@ from lite.models import *
 
 class SpeakTheme(AppBase):
 	title =  models.CharField(max_length=100, verbose_name=u'题目',default="",null=True,blank=True)
-	content =  models.CharField(max_length=100, verbose_name=u'内容',default="",null=True,blank=True)
+	content =  models.TextField(verbose_name=u'内容',default="",null=True,blank=True)
 	voice = models.ForeignKey(FileLibrary, verbose_name=u'老师示范录音', related_name='speak_teacher_voice',null=True,blank=True)
 
 	class Meta:
