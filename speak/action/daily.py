@@ -28,8 +28,8 @@ class ActionDaily():
     #获取主题
     def getTheme(self,theme_id):
         _theme = self.query_theme.Get(id = theme_id)
-        _student_list = self.query_speak_user.Filter(theme_id = _theme['id'])
-        _visitor_list = self.query_speak_user.Filter(theme_id = _theme['id'])
+        _student_list = self.query_speak_user.Filter(theme_id = _theme['id'],user__is_teacher = YES)
+        _visitor_list = self.query_speak_user.Filter(theme_id = _theme['id'],user__is_teacher = NO)
         return {
             "theme":_theme,
             "student_list":_student_list,
