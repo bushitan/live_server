@@ -37,18 +37,30 @@ class ActionDaily():
         }
 
     # 上传录音
-    def addVoice(self,session,voice_url,theme_id):
+    def addVoice(self,session,voice_url,voice_key,theme_id):
         with transaction.atomic():
             user = self.query_user.GetQuery(session=session)
             _voice = self.query_file.Add(
                 url = voice_url,
                 style = FILE_AUDIO,
+                name = voice_key,
             )
             self.query_speak_user.Add(
                 user = user,
                 voice_id = _voice['file_id'],
                 theme_id = theme_id,
             )
+        return True
+    # 删除录音
+    def deleteVoice(self,session,theme_id):
+        with transaction.atomic():
+            user = self.query_user.GetQuery(session=session)
+            _query = self.query_speak_user.FilterQuery(user = user,theme_id=theme_id)
+            for s in _query:
+                _voice_file = self.query_file.GetQuery(id=s.voice_id)
+                self.qiniu.delete(_voice_file.name)  #根据key删除七牛的音频文件
+                self.query_file.Delete(_voice_file ) #删除音频文件
+            self.query_speak_user.Delete(_query) #删除房间的上传记录
         return True
 
     def getQiniuToken(self,session,suffix):

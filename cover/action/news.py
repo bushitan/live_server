@@ -17,6 +17,7 @@ class ActionNews():
         return self.query_tag.Filter(is_show = YES,app__app_id = app_id)
     def GetCoverListByTagID(self,tag_id):
         # a = self.query_tag.FilterQuery(id=1)
+        print tag_id
         return self.query_news.Filter(tag = tag_id)
         # return   self.query_news.Get(name = 'zhuanlan')
         # return   self.query_news.Get(tag_id = '1')

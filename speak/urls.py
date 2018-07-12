@@ -10,6 +10,9 @@ urlpatterns = [
 
     url(r'^get/theme_list/$', GetThemeList.as_view()),
     url(r'^get/theme/$', GetTheme.as_view()),
+    url(r'^get/token/$', GetToken.as_view()),
+    url(r'^add/voice/$', AddVoice.as_view()),
+    url(r'^delete/voice/$', DeleteVoice.as_view()),
     # url(r'^register/$', WXRegister.as_view()),
     # url(r'^company/get/info/$', CompanyGetInfo.as_view()),
     # url(r'^user/set/info/$', UserSetInfo.as_view()),

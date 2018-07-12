@@ -12,15 +12,33 @@ admin.site.register(Tag,TagAdmin)
 class ArticleAdmin(AppAdmin):
     list_display = ("id","style","room","title","is_top","is_show","is_alive","serial","issue_time",)
     temp_suit_form_tabs = (('base', u'内容编辑'),)
-    def get_form(self, request, obj=None, *args, **kwargs):
-        print 38748923789,obj
-        if obj is not None:
-            print obj.style
-            self.temp_fieldsets = ArticleDetail(obj.style)  #当前文章的样式
-            print self.temp_fieldsets
-        else:
-            self.temp_fieldsets = ArticleDetail( ARTICLE_STYLE_NORMAL)  #默认样式
-        return super(ArticleAdmin, self).get_form(request,obj, **kwargs)
+    temp_fieldsets = (
+        (u"展示", {
+            'classes': ('suit-tab', 'suit-tab-base',),
+            'fields': ['style',]
+        }),
+        (u"视频", {
+            'classes': ('suit-tab', 'suit-tab-base',),
+            'fields': ['video_src',]
+        }),
+        (u"标题", {
+            'classes': ('suit-tab', 'suit-tab-base',),
+            'fields': ['title','subtitle','summary','source',]
+        }),
+        (u"正文", {
+            'classes': ('suit-tab', 'suit-tab-base',),
+            'fields': ['content','content_width',]
+        }),
+    )
+    # def get_form(self, request, obj=None, *args, **kwargs):
+    #     print 38748923789,obj
+    #     if obj is not None:
+    #         print obj.style
+    #         self.temp_fieldsets = ArticleDetail(obj.style)  #当前文章的样式
+    #         print self.temp_fieldsets
+    #     else:
+    #         self.temp_fieldsets = ArticleDetail( ARTICLE_STYLE_NORMAL)  #默认样式
+    #     return super(ArticleAdmin, self).get_form(request,obj, **kwargs)
 
     raw_id_fields = ('room',)
     class Media:

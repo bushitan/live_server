@@ -26,3 +26,48 @@ class GetTheme( ListView):
                 'theme_dict': action_daily.getTheme(_theme_id),
             }
             return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+
+# 获取七牛上传的token
+class GetToken( ListView):
+    def __init__(self):
+        super(GetToken,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _suffix = request.GET.get('suffix',"")
+            _token,_key = action_daily.getQiniuToken(_session,_suffix)
+            _dict = {
+                'token': _token,
+                'key': _key,
+                "voice_url":QINIU_HOST + _key
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+# 用户上传语音
+class AddVoice( ListView):
+    def __init__(self):
+        super(AddVoice,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _voice_url = request.GET.get('voice_url',"")
+            _voice_key = request.GET.get('voice_key',"")
+            _theme_id = request.GET.get('theme_id',"")
+
+            _dict = {
+                'msg': action_daily.addVoice(_session,_voice_url,_voice_key,_theme_id)
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+# 用户删除语音
+class DeleteVoice( ListView):
+    def __init__(self):
+        super(DeleteVoice,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _theme_id = request.GET.get('theme_id',"")
+
+            _dict = {
+                'msg': action_daily.deleteVoice(_session,_theme_id)
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
