@@ -30,3 +30,35 @@ class SpeakUserAdmin(AppAdmin):
 		}),
     )
 admin.site.register(SpeakUser,SpeakUserAdmin)
+
+#积分
+class SpeakBonusAdmin(AppAdmin):
+	list_display = ('id','user_self','user_other','theme','action','score',)
+	suit_form_tabs = (('content', u'提交作业'),)
+	# raw_id_fields = ('voice',)
+	fieldsets = (
+		(u"分类", {
+			'classes': ('suit-tab', 'suit-tab-content',),
+			'fields': ['user_self','user_other','theme','action','score',]
+		}),
+    )
+admin.site.register(SpeakBonus,SpeakBonusAdmin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

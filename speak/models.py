@@ -29,3 +29,18 @@ class SpeakUser(AppBase):
 
 	def __unicode__(self):
 		return '%s' % (self.name_admin)
+
+#会员积分
+class SpeakBonus(AppBase):
+	user_self = models.ForeignKey(User,related_name=u"bonus_self",verbose_name=u'自己',null=True,blank=True)
+	user_other = models.ForeignKey(User,related_name=u"bonus_other",verbose_name=u'对方',null=True,blank=True)
+	theme = models.ForeignKey(SpeakTheme ,verbose_name=u'所属题目',null=True,blank=True)
+	action = models.IntegerField(u'操作',choices=SPEAK_ACTION.items(),null=True,blank=True)
+	score = models.IntegerField(u'分数',null=True,blank=True)
+
+	class Meta:
+		verbose_name_plural = verbose_name = u'用户积分'
+		ordering = ['-serial']
+
+	def __unicode__(self):
+		return '%s' % (self.user_self)

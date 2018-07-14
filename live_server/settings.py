@@ -158,6 +158,7 @@ SUIT_CONFIG = {
             'models': (
                 'speak.SpeakTheme',
                 'speak.SpeakUser',
+                'speak.SpeakBonus',
             )
         },
     ),
