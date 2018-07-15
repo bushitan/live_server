@@ -13,6 +13,12 @@ urlpatterns = [
     url(r'^get/token/$', GetToken.as_view()),
     url(r'^add/voice/$', AddVoice.as_view()),
     url(r'^delete/voice/$', DeleteVoice.as_view()),
+    url(r'^bonus/check/$', BonusCheck.as_view()),
+    url(r'^bonus/share/$', BonusShare.as_view()),
+    url(r'^bonus/exchange/$', BonusExchangeGift.as_view()),
+    url(r'^bonus/get/record/$', BonusGetRecord.as_view()),
+    url(r'^bonus/get/score/$', BonusGetScore.as_view()),
+
     # url(r'^register/$', WXRegister.as_view()),
     # url(r'^company/get/info/$', CompanyGetInfo.as_view()),
     # url(r'^user/set/info/$', UserSetInfo.as_view()),

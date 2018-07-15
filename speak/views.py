@@ -5,6 +5,9 @@ from lib.message import *
 from action.daily import *
 action_daily = ActionDaily()
 
+from action.bonus import *
+action_bonus = ActionBonus()
+
 
 # 获取当前房间的封面，简介
 class GetThemeList( ListView):
@@ -71,3 +74,66 @@ class DeleteVoice( ListView):
             }
             return MESSAGE_RESPONSE_SUCCESS(_dict)
 
+
+
+# 打卡
+class BonusCheck( ListView):
+    def __init__(self):
+        super(BonusCheck,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _theme_id = request.GET.get('theme_id',"")
+            _dict = {
+                'bonus_dict': action_bonus.addCheck(_session, _theme_id)
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+# share_id 分享者的id
+# session 是受邀者的
+class BonusShare( ListView):
+    def __init__(self):
+        super(BonusShare,self).__init__()
+    def get(self, request, *args, **kwargs):
+            self_id = request.GET.get('share_id',"")
+            _other_session = request.GET.get('session',"")
+            result,msg = action_bonus.addShare(self_id, _other_session)
+            _dict = {
+                'result':result,
+                'msg':msg,
+                # 'bonus_dict': bonus_dict,
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+#兑换礼物
+class BonusExchangeGift( ListView):
+    def __init__(self):
+        super(BonusExchangeGift,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _other_session = request.GET.get('other_session',"")
+            _cost_score = request.GET.get('cost_score',"")
+            _dict = {
+                'bonus_dict':action_bonus.exchangeGift(_session, _other_session,_cost_score)
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+#获取兑换记录
+class BonusGetRecord( ListView):
+    def __init__(self):
+        super(BonusGetRecord,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _dict = {
+                'record_list':action_bonus.getRecode(_session )
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+#获取兑换记录
+class BonusGetScore( ListView):
+    def __init__(self):
+        super(BonusGetScore,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _dict = {
+                'score_dict':action_bonus.getScore(_session )
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
