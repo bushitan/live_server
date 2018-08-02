@@ -44,3 +44,15 @@ class SpeakBonus(AppBase):
 
 	def __unicode__(self):
 		return '%s' % (self.user_self)
+
+#设置积分
+class SpeakSetScore(AppBase):
+	action = models.IntegerField(u'操作',choices=SPEAK_ACTION.items(),null=True,blank=True)
+	score = models.IntegerField(u'分数',null=True,blank=True)
+
+	class Meta:
+		verbose_name_plural = verbose_name = u'设置积分'
+		ordering = ['-serial']
+
+	def __unicode__(self):
+		return '%s' % (self.action)

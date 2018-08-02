@@ -159,6 +159,7 @@ SUIT_CONFIG = {
                 'speak.SpeakTheme',
                 'speak.SpeakUser',
                 'speak.SpeakBonus',
+                'speak.SpeakSetScore',
             )
         },
     ),

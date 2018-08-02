@@ -76,6 +76,7 @@ class DeleteVoice( ListView):
 
 
 
+
 # 打卡
 class BonusCheck( ListView):
     def __init__(self):
@@ -83,8 +84,10 @@ class BonusCheck( ListView):
     def get(self, request, *args, **kwargs):
             _session = request.GET.get('session',"")
             _theme_id = request.GET.get('theme_id',"")
+            _code,_msg =  action_bonus.addCheck(_session, _theme_id)
             _dict = {
-                'bonus_dict': action_bonus.addCheck(_session, _theme_id)
+                'code':_code,
+                'msg':_msg,
             }
             return MESSAGE_RESPONSE_SUCCESS(_dict)
 
@@ -96,11 +99,25 @@ class BonusShare( ListView):
     def get(self, request, *args, **kwargs):
             self_id = request.GET.get('share_id',"")
             _other_session = request.GET.get('session',"")
-            result,msg = action_bonus.addShare(self_id, _other_session)
+            _code,_msg = action_bonus.addShare(self_id, _other_session)
             _dict = {
-                'result':result,
-                'msg':msg,
-                # 'bonus_dict': bonus_dict,
+                'code':_code,
+                'msg':_msg,
+            }
+            return MESSAGE_RESPONSE_SUCCESS(_dict)
+
+# 报名获取积分
+class BonusSignIn( ListView):
+    def __init__(self):
+        super(BonusSignIn,self).__init__()
+    def get(self, request, *args, **kwargs):
+            _session = request.GET.get('session',"")
+            _name = request.GET.get('name',"")
+            _phone = request.GET.get('phone',"")
+            _code,_msg = action_bonus.addSignIn(_session, _name,_phone)
+            _dict = {
+                'code':_code,
+                'msg':_msg,
             }
             return MESSAGE_RESPONSE_SUCCESS(_dict)
 

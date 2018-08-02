@@ -34,7 +34,7 @@ admin.site.register(SpeakUser,SpeakUserAdmin)
 #积分
 class SpeakBonusAdmin(AppAdmin):
 	list_display = ('id','user_self','user_other','theme','action','score',)
-	suit_form_tabs = (('content', u'提交作业'),)
+	suit_form_tabs = (('content', u'用户积分'),)
 	# raw_id_fields = ('voice',)
 	fieldsets = (
 		(u"分类", {
@@ -43,6 +43,17 @@ class SpeakBonusAdmin(AppAdmin):
 		}),
     )
 admin.site.register(SpeakBonus,SpeakBonusAdmin)
+#积分
+class SpeakSetScoreAdmin(AppAdmin):
+	list_display = ('id','action','score',)
+	suit_form_tabs = (('content', u'设置积分'),)
+	fieldsets = (
+		(u"分类", {
+			'classes': ('suit-tab', 'suit-tab-content',),
+			'fields': ['action','score',]
+		}),
+    )
+admin.site.register(SpeakSetScore,SpeakSetScoreAdmin)
 
 
 

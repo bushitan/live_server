@@ -35,6 +35,7 @@ class QueryBase(object):
 		return self.model.objects.filter(*args,**kwargs)
 
 	def Update(self,obj,*args,**kwargs):
+		print obj
 		obj.update(*args,**kwargs)
 		return self._PackList( self._PackDict,obj)
 

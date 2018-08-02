@@ -13,6 +13,8 @@ class QueryUser(QueryBase):
 			'avatar_url':query_get.avatar_url,
 			'nick_name':query_get.nick_name,
 			'is_teacher':query_get.is_teacher,
+			'phone':query_get.phone,
+			'name':query_get.name,
 		}
 		return _dict
 
